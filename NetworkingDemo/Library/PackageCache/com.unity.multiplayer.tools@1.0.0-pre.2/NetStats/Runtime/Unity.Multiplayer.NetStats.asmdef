@@ -1,0 +1,14 @@
+{
+    "name": "Unity.Multiplayer.NetStats",
+    "rootNamespace": "Unity.Multiplayer.Tools.NetStats",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

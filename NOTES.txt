@@ -1,0 +1,56 @@
+Networking documentation notes:
+
+-Determinism
+-Independant Simulation
+-Serialization
+
+Game needs to have same outcome every time when given a series of inputs (can't use Unity physics / float values)
+
+Must be able to step/update game states multiple times during a frame without rendering graphics or sampling input (easier to do from start so game logic can be seperate)
+Must be able to "predict" input from remote player when we do not have current information
+
+Must be able to save and load gamestates at any time, so that we can "rollback" when a prediction was incorrect.
+
+INPUT: 
+
+Direcional input can be expressed using Numpad Notation, where 5 is neutral. 
+
+789
+456
+123
+
+this could be stored as a 3 bit value, with no input given for neutral. (would this be an issue)
+
+000 = 1
+001 = 2
+010 = 3
+011 = 4
+100 = 6
+101 = 7
+110 = 8
+111 = 9
+
+button inputs can be represented with a 2 bit value
+
+00 = no input
+01 = pressed 
+10 = held
+11 = released (used for negative edge)
+
+so a button pressed for 1 frame would look like this 
+
+frame 0   frame  1   frame 2   frame 3
+  00        01         11         00
+
+each button needs to be identified. say there are four non-directional button actions, we can use another 2 bit number to represent them 
+
+00 = punch 
+01 = kick
+10 = slash 
+11 = heavy slash
+(this would be discarded when there is no input)
+
+pressing slash, holding for a frame, and releasing can look like this
+
+frame 0   frame 1   frame 2   frame 3   frame 4 
+  00_       0110      1010     1110       00_ 

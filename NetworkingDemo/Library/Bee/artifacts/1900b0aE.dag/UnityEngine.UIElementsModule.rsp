@@ -1,0 +1,556 @@
+-target:library
+-out:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UIElementsModule.dll"
+-refout:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UIElementsModule.ref.dll"
+-define:UNITY_2021_1_12
+-define:UNITY_2021_1
+-define:UNITY_2021
+-define:UNITY_5_3_OR_NEWER
+-define:UNITY_5_4_OR_NEWER
+-define:UNITY_5_5_OR_NEWER
+-define:UNITY_5_6_OR_NEWER
+-define:UNITY_2017_1_OR_NEWER
+-define:UNITY_2017_2_OR_NEWER
+-define:UNITY_2017_3_OR_NEWER
+-define:UNITY_2017_4_OR_NEWER
+-define:UNITY_2018_1_OR_NEWER
+-define:UNITY_2018_2_OR_NEWER
+-define:UNITY_2018_3_OR_NEWER
+-define:UNITY_2018_4_OR_NEWER
+-define:UNITY_2019_1_OR_NEWER
+-define:UNITY_2019_2_OR_NEWER
+-define:UNITY_2019_3_OR_NEWER
+-define:UNITY_2019_4_OR_NEWER
+-define:UNITY_2020_1_OR_NEWER
+-define:UNITY_2020_2_OR_NEWER
+-define:UNITY_2020_3_OR_NEWER
+-define:UNITY_2021_1_OR_NEWER
+-define:PLATFORM_ARCH_64
+-define:UNITY_64
+-define:UNITY_INCLUDE_TESTS
+-define:USE_SEARCH_ENGINE_API
+-define:USE_QUICK_SEARCH_MODULE
+-define:SCENE_TEMPLATE_MODULE
+-define:ENABLE_AR
+-define:ENABLE_AUDIO
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_EVENT_QUEUE
+-define:ENABLE_MICROPHONE
+-define:ENABLE_MULTIPLE_DISPLAYS
+-define:ENABLE_PHYSICS
+-define:ENABLE_TEXTURE_STREAMING
+-define:ENABLE_VIRTUALTEXTURING
+-define:ENABLE_UNET
+-define:ENABLE_LZMA
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_VR
+-define:ENABLE_WEBCAM
+-define:ENABLE_UNITYWEBREQUEST
+-define:ENABLE_WWW
+-define:ENABLE_CLOUD_SERVICES
+-define:ENABLE_CLOUD_SERVICES_COLLAB
+-define:ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
+-define:ENABLE_CLOUD_SERVICES_ADS
+-define:ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
+-define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
+-define:ENABLE_CLOUD_SERVICES_PURCHASING
+-define:ENABLE_CLOUD_SERVICES_ANALYTICS
+-define:ENABLE_CLOUD_SERVICES_UNET
+-define:ENABLE_CLOUD_SERVICES_BUILD
+-define:ENABLE_CLOUD_LICENSE
+-define:ENABLE_EDITOR_HUB_LICENSE
+-define:ENABLE_WEBSOCKET_CLIENT
+-define:ENABLE_DIRECTOR_AUDIO
+-define:ENABLE_DIRECTOR_TEXTURE
+-define:ENABLE_MANAGED_JOBS
+-define:ENABLE_MANAGED_TRANSFORM_JOBS
+-define:ENABLE_MANAGED_ANIMATION_JOBS
+-define:ENABLE_MANAGED_AUDIO_JOBS
+-define:INCLUDE_DYNAMIC_GI
+-define:ENABLE_MONO_BDWGC
+-define:ENABLE_SCRIPTING_GC_WBARRIERS
+-define:PLATFORM_SUPPORTS_MONO
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_VIDEO
+-define:PLATFORM_STANDALONE
+-define:PLATFORM_STANDALONE_WIN
+-define:UNITY_STANDALONE_WIN
+-define:UNITY_STANDALONE
+-define:ENABLE_RUNTIME_GI
+-define:ENABLE_MOVIES
+-define:ENABLE_NETWORK
+-define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+-define:ENABLE_OUT_OF_PROCESS_CRASH_HANDLER
+-define:ENABLE_CLUSTER_SYNC
+-define:ENABLE_CLUSTERINPUT
+-define:PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP
+-define:GFXDEVICE_WAITFOREVENT_MESSAGEPUMP
+-define:ENABLE_WEBSOCKET_HOST
+-define:ENABLE_MONO
+-define:NET_4_6
+-define:ENABLE_PROFILER
+-define:DEBUG
+-define:TRACE
+-define:UNITY_ASSERTIONS
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_64
+-define:UNITY_EDITOR_WIN
+-define:ENABLE_UNITY_COLLECTIONS_CHECKS
+-define:ENABLE_BURST_AOT
+-define:UNITY_TEAM_LICENSE
+-define:ENABLE_CUSTOM_RENDER_TEXTURE
+-define:ENABLE_DIRECTOR
+-define:ENABLE_LOCALIZATION
+-define:ENABLE_SPRITES
+-define:ENABLE_TERRAIN
+-define:ENABLE_TILEMAP
+-define:ENABLE_TIMELINE
+-define:ENABLE_INPUT_SYSTEM
+-define:UIE_PACKAGE
+-define:CSHARP_7_OR_LATER
+-define:CSHARP_7_3_OR_NEWER
+-r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll"
+-r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll"
+-r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll"
+-r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll"
+-r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.Unsafe.dll"
+-r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.collections@1.1.0/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll"
+-r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.nuget.mono-cecil@1.10.1/Mono.Cecil.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.DSPGraphModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.GIModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.HotReloadModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputLegacyModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.LocalizationModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ProfilerModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.StreamingModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.SubstanceModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextCoreModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.TLSModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsNativeModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityCurlModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityTestProtocolModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.VFXModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.VirtualTexturingModule.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/Microsoft.Win32.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/netstandard.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.AppContext.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.Concurrent.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.NonGeneric.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.Specialized.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.Annotations.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.EventBasedAsync.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.TypeConverter.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Console.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Data.Common.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Contracts.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Debug.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.FileVersionInfo.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Process.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.StackTrace.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.TextWriterTraceListener.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Tools.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.TraceSource.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Drawing.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Dynamic.Runtime.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.Calendars.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.Extensions.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.Compression.ZipFile.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.DriveInfo.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.Watcher.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.IsolatedStorage.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.MemoryMappedFiles.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.Pipes.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.UnmanagedMemoryStream.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Expressions.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Parallel.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Queryable.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Http.Rtc.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.NameResolution.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.NetworkInformation.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Ping.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Requests.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Security.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Sockets.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebHeaderCollection.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebSockets.Client.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebSockets.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ObjectModel.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.ILGeneration.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.Lightweight.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Extensions.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.Reader.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.ResourceManager.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.Writer.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.CompilerServices.VisualC.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Extensions.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Handles.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.RuntimeInformation.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Numerics.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Formatters.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Json.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Xml.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Claims.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Algorithms.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Csp.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Encoding.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.X509Certificates.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Principal.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.SecureString.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Duplex.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Http.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.NetTcp.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Primitives.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Security.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.Encoding.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.Encoding.Extensions.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.RegularExpressions.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Overlapped.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Tasks.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Tasks.Parallel.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Thread.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.ThreadPool.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Timer.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ValueTuple.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.ReaderWriter.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XDocument.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XmlDocument.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XmlSerializer.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Microsoft.CSharp.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Core.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Data.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.IO.Compression.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Net.Http.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Numerics.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Numerics.Vectors.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Runtime.Serialization.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Xml.dll"
+-r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Xml.Linq.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TextCoreTextEngineModule.ref.dll"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/AlignmentUtils.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/AssemblyInfo.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Atlas.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/BaseLiveReloadAssetTracker.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/BindableElement.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Bindings/VisualTreeBindingsUpdater.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ClampedDragger.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Clickable.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ClickDetector.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Collections/DictionaryExtensions.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ContextualMenuManager.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ContextualMenuManipulator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/BaseBoolField.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/BaseField.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/BaseSlider.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Binding.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Box.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Button.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/DropdownField.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Foldout.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/GenericDropdownMenu.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/GroupBox.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/HelpBox.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Image.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/IMixedValueSupport.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/INotifyValueChanged.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/KeyboardTextEditor.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Label.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/ListView.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/MinMaxSlider.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/PopupWindow.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/ProgressBar.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/RadioButton.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/RadioButtonGroup.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/RepeatButton.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Scroller.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/ScrollView.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Slider.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/SliderInt.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TextEditor.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TextEditorEngine.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TextField.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TextInputFieldBase.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/Toggle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TouchScreenTextEditor.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TreeView.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TreeViewItem.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TwoPaneSplitView.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Controls/TwoPaneSplitViewResizer.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Cursor.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DefaultEventSystem.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DisposeHelper.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/DragAndDropUtility.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/DragEventsProcessor.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/IDragAndDrop.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/IDragAndDropController.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/IListDragAndDropArgs.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/IListViewDragAndDropController.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/IReorderable.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/ListViewDragger.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DragAndDrop/ListViewReorderableDragAndDropController.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DropdownMenu.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/DropdownUtility.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/EasingCurves.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/EventDispatcher.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/CaptureEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/ChangeEvent.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/CommandEventDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/CommandEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/DebuggerEventDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/DefaultDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/DragAndDropEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/ElementUnderPointer.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/EventBase.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/EventCallback.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/EventCallbackRegistry.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/EventDebugger/EventDebugger.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/EventDebugger/EventDebuggerEventRecord.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/EventDebugger/EventDebuggerTrace.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/EventDebugger/GlobalCallbackRegistry.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/EventHandler.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/FocusEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/IEventDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/IMGUIEventDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/InputEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/KeyboardEventDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/KeyboardEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/LayoutEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/MouseCaptureDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/MouseEventDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/MouseEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/MouseEventsHelper.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/NavigationEventDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/NavigationEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/PanelEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/PointerCaptureDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/PointerDeviceState.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/PointerEventDispatchingStrategy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/PointerEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/PropagationPaths.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/StyleEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/TooltipEvent.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Events/UIEvent.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/FocusController.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GameObjects/DynamicAtlasSettings.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GameObjects/NavigateFocusRing.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GameObjects/PanelSettings.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GameObjects/RuntimeEventDispatcher.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GameObjects/RuntimePanel.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GameObjects/RuntimePanelUtils.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GameObjects/UIDocument.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GameObjects/UIDocumentHierarchyUtil.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/GroupBoxUtility.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/HierarchyTraversal.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/IDataWatchService.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/IGroupBox.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/IGroupManager.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ILiveReloadAssetTracker.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/IMGUIContainer.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ImmediateModeElement.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/InteractionEnums.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ISerializableJsonDictionary.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ITransform.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/KeyboardNavigationManipulator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ManipulatorActivationFilter.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Manipulators.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/MouseButton.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/MouseCaptureController.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/MouseManipulator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ObjectPool.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Panel.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/PointerCaptureController.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/PointerManipulator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ProjectionUtils.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRAllocator2D.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRAtlasAllocator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRAtlasManager.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRDynamicAtlasPage.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRenderer/UIRenderDevice.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRenderer/UIRenderDeviceAllocator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRenderer/UIRenderers.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRGradientSettingsAtlas.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRLayoutUpdater.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRLinkedPool.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRMeshBuilder.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRMeshGenerationContext.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRRenderChain.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRRenderEvents.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRRepaintUpdater.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRShaderInfoStorage.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRShaders.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRStylePainter.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRTessellation.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRTextCoreSettings.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRTextureBlitter.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRTextureRegistry.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRTextureSlotManager.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRUtility.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRVectorImageManager.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Renderer/UIRVEShaderInfoAllocator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Scheduler.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Spacing.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StringUtils.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Background.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/ComputedStyle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/CustomStyle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/FontDefinition.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/ComputedStyle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/InitialStyle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/InlineStyleAccess.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/IResolvedStyle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/IStyle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/ResolvedStyleAccess.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/ShorthandApplicator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/StyleDataStructs.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/StyleDebug.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/StylePropertyCache.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/StylePropertyEnums.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Generated/StylePropertyUtil.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/InlineStyleAccess.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/Length.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleBackground.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleColor.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleCursor.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleDataRef.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleDebug.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleEnum.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleFloat.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleFont.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleFontDefinition.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleInt.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleLength.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleTextShadow.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Style/StyleTypes.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleEnums.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StylePainter.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/CSSSpec.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/Dimension.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/ScalableImage.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleComplexSelector.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleProperty.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StylePropertyReader.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleRule.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSelector.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSelectorHelper.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSelectorPart.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSelectorRelationship.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSelectorType.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSheet.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSheetApplicator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSheetBuilder.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSheetCache.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSheetColor.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleSheetExtensions.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleValue.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleValueFunction.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleValueHandle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleValueKeyword.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleValueType.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/StyleVariable.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/Syntax/StyleSyntaxExpression.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/Syntax/StyleSyntaxParser.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/Syntax/StyleSyntaxToken.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/ThemeStyleSheet.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/Validation/StyleMatcher.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/Validation/StylePropertyCache.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/Validation/StylePropertyValueParser.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/StyleSheets/Validation/StyleValidator.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/TemplateContainer.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Text/PanelTextSettings.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Text/TextHandle.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/TextElement.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/TextShadow.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/Transitions.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UIElementsPackageUtility.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UIElementsRuntimeUtility.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UIElementsUtility.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UQuery.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/IUxmlAttributes.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/OrphanFactories.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/TemplateAsset.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/UxmlAttributeDescription.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/UxmlChildElementDescription.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/UxmlFactory.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/UxmlTypeRestriction.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/VisualElementAsset.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/VisualElementFactoryRegistry.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/UXML/VisualTreeAsset.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/ValueAnimation.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VectorImage.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElement.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementAnimation.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementExperimentalFeatures.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementFocusRing.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementHierarchy.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementMathUtils.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementScheduler.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementStyleAccess.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementStyleSheetSet.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementTooltip.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementTypeData.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualElementUtils.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualTreeAnimationUpdater.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualTreeAssetChangeTrackerUpdater.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualTreeHierarchyTracker.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualTreeStyleUpdater.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualTreeTransformClipUpdater.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualTreeUpdater.cs"
+"Library/PackageCache/com.unity.ui@1.0.0-preview.18/Core/VisualTreeViewDataUpdater.cs"
+-langversion:8.0
+/unsafe+
+/deterministic
+/optimize+
+/debug:portable
+/nologo
+/RuntimeMetadataVersion:v4.0.30319
+
+/nowarn:0169
+/nowarn:0649
+/utf8output
+/preferreduilang:en-US
+-warn:0

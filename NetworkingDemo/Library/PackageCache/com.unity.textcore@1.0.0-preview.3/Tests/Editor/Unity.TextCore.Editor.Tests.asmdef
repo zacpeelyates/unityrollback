@@ -1,0 +1,25 @@
+{
+    "name": "Unity.TextCore.Editor.Tests",
+    "rootNamespace": "",
+    "references": [
+        "Unity.TextCore",
+        "UnityEngine.TextCoreTextEngineModule",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

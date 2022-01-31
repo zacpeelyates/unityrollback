@@ -1,0 +1,25 @@
+{
+  "name": "com.unity.multiplayer.tools",
+  "displayName": "Multiplayer Tools",
+  "version": "1.0.0-pre.2",
+  "unity": "2020.3",
+  "description": "Adds a suite of tools that improve workflows for multiplayer development",
+  "dependencies": {
+    "com.unity.profiling.core": "1.0.0-pre.1"
+  },
+  "keywords": [
+    "Multiplayer",
+    "Netcode",
+    "GameObjects",
+    "Tools"
+  ],
+  "type": "tool",
+  "repository": {
+    "url": "https://github.com/Unity-Technologies/com.unity.multiplayer.tools.git",
+    "type": "git",
+    "revision": "2998057e8c36e6334a7b6b74db142e0012ec5233"
+  },
+  "upmCi": {
+    "footprint": "108634081b43102f14d08c1ecb7004fd9b2547bb"
+  }
+}

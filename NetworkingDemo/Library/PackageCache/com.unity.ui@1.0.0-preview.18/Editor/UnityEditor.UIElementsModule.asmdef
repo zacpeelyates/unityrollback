@@ -1,0 +1,34 @@
+{
+    "name": "UnityEditor.UIElementsModule",
+    "rootNamespace": "",
+    "references": [
+        "UnityEditor.TextCoreTextEngineModule",
+        "UnityEngine.TextCoreTextEngineModule",
+        "UnityEngine.UIElementsModule",
+        "UnityEngine",
+        "Unity.UIElements.Text",
+        "Unity.TextCore"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "ExCSS.Unity.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UIE_PACKAGE",
+        "UNITY_2020_2_OR_NEWER"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.ui",
+            "expression": "",
+            "define": "UIE_PACKAGE"
+        }
+    ],
+    "noEngineReferences": false
+}

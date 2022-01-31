@@ -108,7 +108,7 @@
 -define:ENABLE_INPUT_SYSTEM
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -118,7 +118,6 @@
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.QuickSearchModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.SceneTemplateModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIBuilderModule.dll"
--r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIElementsModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIElementsSamplesModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIServiceModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll"
@@ -166,7 +165,6 @@
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.TLSModule.dll"
--r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsNativeModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.UmbraModule.dll"
@@ -304,6 +302,8 @@
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Xml.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Xml.Linq.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
+-r:"Library/ScriptAssemblies/UnityEditor.UIElementsModule.dll"
+-r:"Library/ScriptAssemblies/UnityEngine.UIElementsModule.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Multiplayer.NetworkSolutionInterface.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.TestRunner.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.ref.dll"

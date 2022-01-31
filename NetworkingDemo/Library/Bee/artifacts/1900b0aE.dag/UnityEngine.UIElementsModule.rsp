@@ -109,13 +109,13 @@
 -define:UIE_PACKAGE
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll"
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll"
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll"
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll"
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.Unsafe.dll"
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.collections@1.1.0/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll"
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.nuget.mono-cecil@1.10.1/Mono.Cecil.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Mdb.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.burst@1.5.6/Unity.Burst.Unsafe.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.collections@1.1.0/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.nuget.mono-cecil@1.10.1/Mono.Cecil.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll"

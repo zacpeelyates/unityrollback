@@ -3,12 +3,12 @@ Library\Bee\artifacts\movedfrom\Unity.Multiplayer.MetricTypes.ref.dll_2373231441
 Library\Bee\artifacts\movedfrom\Unity.Multiplayer.NetStats.ref.dll_2728076554593463556.movedfrom
 Library\Bee\artifacts\movedfrom\Unity.Multiplayer.NetStatsReporting.ref.dll_17913315948517753264.movedfrom
 Library\Bee\artifacts\movedfrom\Unity.Multiplayer.NetworkSolutionInterface.ref.dll_4685805040663399556.movedfrom
-Library\Bee\artifacts\movedfrom\Unity.Burst.Cecil.dll_6893190763030165352.movedfrom
-Library\Bee\artifacts\movedfrom\Unity.Burst.Cecil.Mdb.dll_14365469416620594341.movedfrom
-Library\Bee\artifacts\movedfrom\Unity.Burst.Cecil.Pdb.dll_16046007447845705256.movedfrom
-Library\Bee\artifacts\movedfrom\Unity.Burst.Cecil.Rocks.dll_5153076621463120712.movedfrom
-Library\Bee\artifacts\movedfrom\Unity.Burst.Unsafe.dll_6962670907802919595.movedfrom
-Library\Bee\artifacts\movedfrom\Unity.Collections.LowLevel.ILSupport.dll_6237033973229291976.movedfrom
+Library\Bee\artifacts\movedfrom\Unity.Burst.Cecil.dll_1298593586472877864.movedfrom
+Library\Bee\artifacts\movedfrom\Unity.Burst.Cecil.Mdb.dll_9514805046190197861.movedfrom
+Library\Bee\artifacts\movedfrom\Unity.Burst.Cecil.Pdb.dll_11195343077415308776.movedfrom
+Library\Bee\artifacts\movedfrom\Unity.Burst.Cecil.Rocks.dll_1819807946224212744.movedfrom
+Library\Bee\artifacts\movedfrom\Unity.Burst.Unsafe.dll_14102913393268829931.movedfrom
+Library\Bee\artifacts\movedfrom\Unity.Collections.LowLevel.ILSupport.dll_11885638175265139080.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.Graphs.dll_4815177771959562714.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.CoreModule.dll_7999219106761461672.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.DeviceSimulatorModule.dll_9146371224287323801.movedfrom
@@ -18,7 +18,6 @@ Library\Bee\artifacts\movedfrom\UnityEditor.PackageManagerUIModule.dll_370038654
 Library\Bee\artifacts\movedfrom\UnityEditor.QuickSearchModule.dll_6283961015601891072.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.SceneTemplateModule.dll_3386156011062732161.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.UIBuilderModule.dll_14072424543335209170.movedfrom
-Library\Bee\artifacts\movedfrom\UnityEditor.UIElementsModule.dll_12010658945878265316.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.UIElementsSamplesModule.dll_13293760963261431241.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.UIServiceModule.dll_18175785870340335852.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.UnityConnectModule.dll_5645877129432093278.movedfrom
@@ -53,7 +52,6 @@ Library\Bee\artifacts\movedfrom\UnityEngine.SubstanceModule.dll_1488217598778008
 Library\Bee\artifacts\movedfrom\UnityEngine.TextCoreModule.dll_9944725927225169344.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEngine.TextRenderingModule.dll_351878176672569855.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEngine.TLSModule.dll_8321402778172446939.movedfrom
-Library\Bee\artifacts\movedfrom\UnityEngine.UIElementsModule.dll_12059755747869009711.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEngine.UIElementsNativeModule.dll_9066905533202426662.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEngine.UIModule.dll_17718378833791958696.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEngine.UNETModule.dll_2650943018611060812.movedfrom
@@ -63,3 +61,5 @@ Library\Bee\artifacts\movedfrom\UnityEngine.UnityTestProtocolModule.dll_83765931
 Library\Bee\artifacts\movedfrom\UnityEngine.VFXModule.dll_17607429861668307528.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEngine.VirtualTexturingModule.dll_11700583803482041265.movedfrom
 Library\Bee\artifacts\movedfrom\UnityEditor.WindowsStandalone.Extensions.dll_12412234509973849208.movedfrom
+Library\Bee\artifacts\movedfrom\UnityEditor.UIElementsModule.dll_10883244599722951301.movedfrom
+Library\Bee\artifacts\movedfrom\UnityEngine.UIElementsModule.dll_10932341401713695696.movedfrom

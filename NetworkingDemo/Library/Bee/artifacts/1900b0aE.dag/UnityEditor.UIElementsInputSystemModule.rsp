@@ -110,7 +110,7 @@
 -define:UNITY_INPUT_SYSTEM
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
+-r:"D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"D:/Development/Unity/Editors/Unity 2021.1.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"

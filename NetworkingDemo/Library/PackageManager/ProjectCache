@@ -1,6 +1,6 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Packages/manifest.json
+    m_FilePath: D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
@@ -8,7 +8,7 @@ m_ProjectFiles:
       ticks: 637792504088759258
     m_Hash: 2636105508
   m_LockFileStatus:
-    m_FilePath: D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Packages/packages-lock.json
+    m_FilePath: D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
@@ -19,7 +19,7 @@ m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
-m_ProjectPath: D:/Development/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Packages
+m_ProjectPath: D:/Development/ct5009/ct5009-assessment-2-tech-demo-ramkhisthrowing/NetworkingDemo/Packages
 m_EditorVersion: 2021.1.12f1 (afcadd793de6)
 m_ResolvedPackages:
 - packageId: com.unity.burst@1.5.6
@@ -27,7 +27,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.5.6
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.burst@1.5.6
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.burst@1.5.6
   assetPath: Packages/com.unity.burst
   name: com.unity.burst
   displayName: Burst
@@ -200,7 +200,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 2.0.9
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.ide.visualstudio@2.0.9
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.ide.visualstudio@2.0.9
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -281,7 +281,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.3.0
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.inputsystem@1.3.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.inputsystem@1.3.0
   assetPath: Packages/com.unity.inputsystem
   name: com.unity.inputsystem
   displayName: Input System
@@ -391,7 +391,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 0.11.0-preview.6
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.jobs@0.11.0-preview.6
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.jobs@0.11.0-preview.6
   assetPath: Packages/com.unity.jobs
   name: com.unity.jobs
   displayName: Jobs
@@ -529,7 +529,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0-pre.2
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.multiplayer.tools@1.0.0-pre.2
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.multiplayer.tools@1.0.0-pre.2
   assetPath: Packages/com.unity.multiplayer.tools
   name: com.unity.multiplayer.tools
   displayName: Multiplayer Tools
@@ -587,7 +587,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0-pre.5
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.netcode.gameobjects@1.0.0-pre.5
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.netcode.gameobjects@1.0.0-pre.5
   assetPath: Packages/com.unity.netcode.gameobjects
   name: com.unity.netcode.gameobjects
   displayName: Netcode for GameObjects
@@ -677,7 +677,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0-preview.18
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.ui@1.0.0-preview.18
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.ui@1.0.0-preview.18
   assetPath: Packages/com.unity.ui
   name: com.unity.ui
   displayName: UI Toolkit
@@ -780,7 +780,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.uielementsnative@1.0.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.uielementsnative@1.0.0
   assetPath: Packages/com.unity.modules.uielementsnative
   name: com.unity.modules.uielementsnative
   displayName: UIElements Native
@@ -842,7 +842,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0-preview.3
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.textcore@1.0.0-preview.3
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.textcore@1.0.0-preview.3
   assetPath: Packages/com.unity.textcore
   name: com.unity.textcore
   displayName: TextCore
@@ -896,7 +896,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.animation@1.0.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.animation@1.0.0
   assetPath: Packages/com.unity.modules.animation
   name: com.unity.modules.animation
   displayName: Animation
@@ -947,7 +947,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.physics@1.0.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.physics@1.0.0
   assetPath: Packages/com.unity.modules.physics
   name: com.unity.modules.physics
   displayName: Physics
@@ -998,7 +998,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.physics2d@1.0.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.physics2d@1.0.0
   assetPath: Packages/com.unity.modules.physics2d
   name: com.unity.modules.physics2d
   displayName: Physics 2D
@@ -1049,7 +1049,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.10.1
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.nuget.mono-cecil@1.10.1
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.nuget.mono-cecil@1.10.1
   assetPath: Packages/com.unity.nuget.mono-cecil
   name: com.unity.nuget.mono-cecil
   displayName: Mono Cecil
@@ -1117,7 +1117,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.1.0
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.collections@1.1.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.collections@1.1.0
   assetPath: Packages/com.unity.collections
   name: com.unity.collections
   displayName: Collections
@@ -1271,7 +1271,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0-pre.1
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.profiling.core@1.0.0-pre.1
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.profiling.core@1.0.0-pre.1
   assetPath: Packages/com.unity.profiling.core
   name: com.unity.profiling.core
   displayName: Unity Profiling Core API
@@ -1333,7 +1333,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.2.1
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.mathematics@1.2.1
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.mathematics@1.2.1
   assetPath: Packages/com.unity.mathematics
   name: com.unity.mathematics
   displayName: Mathematics
@@ -1402,7 +1402,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.uielements@1.0.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.uielements@1.0.0
   assetPath: Packages/com.unity.modules.uielements
   name: com.unity.modules.uielements
   displayName: UIElements
@@ -1469,7 +1469,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.ui@1.0.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.ui@1.0.0
   assetPath: Packages/com.unity.modules.ui
   name: com.unity.modules.ui
   displayName: UI
@@ -1520,7 +1520,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.imgui@1.0.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.imgui@1.0.0
   assetPath: Packages/com.unity.modules.imgui
   name: com.unity.modules.imgui
   displayName: IMGUI
@@ -1571,7 +1571,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.jsonserialize@1.0.0
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.modules.jsonserialize@1.0.0
   assetPath: Packages/com.unity.modules.jsonserialize
   name: com.unity.modules.jsonserialize
   displayName: JSONSerialize
@@ -1622,7 +1622,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.1.29
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.test-framework@1.1.29
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.test-framework@1.1.29
   assetPath: Packages/com.unity.test-framework
   name: com.unity.test-framework
   displayName: Test Framework
@@ -1725,7 +1725,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.6
   source: 1
-  resolvedPath: D:\Development\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.ext.nunit@1.0.6
+  resolvedPath: D:\Development\ct5009\ct5009-assessment-2-tech-demo-ramkhisthrowing\NetworkingDemo\Library\PackageCache\com.unity.ext.nunit@1.0.6
   assetPath: Packages/com.unity.ext.nunit
   name: com.unity.ext.nunit
   displayName: Custom NUnit

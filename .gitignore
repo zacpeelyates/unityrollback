@@ -75,3 +75,12 @@ crashlytics-build.properties
 *.obj
 *.dll
 *.meta
+*.movedfrom
+*.rsp
+*.json
+*.json
+*.cache
+*.log
+*.dll
+
+NetworkingDemo/Library*

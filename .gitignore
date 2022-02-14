@@ -84,3 +84,17 @@ crashlytics-build.properties
 *.dll
 
 NetworkingDemo/Library*
+NetworkingDemo/Library/ArtifactDB
+NetworkingDemo/Library/PackageCache/com.unity.collections@1.1.0/Unity.Collections.LowLevel.ILSupport/source~/Unity.Collections.LowLevel.ILSupport.CodeGen/Unity.Collections.LowLevel.ILSupport.CodeGen.asmdef.meta
+NetworkingDemo/Library/ScriptAssemblies/UnityEditor.UIElementsModule.dll
+NetworkingDemo/Library/ScriptAssemblies/UnityEngine.UIElementsModule.dll
+NetworkingDemo/Library/Search/transactions.db
+NetworkingDemo/Library/SourceAssetDB
+NetworkingDemo/Logs/AssetImportWorker0.log
+NetworkingDemo/Logs/shadercompiler-AssetImportWorker0.log
+NetworkingDemo/Logs/shadercompiler-UnityShaderCompiler.exe0.log
+NetworkingDemo/Temp/UnityLockfile
+*.asmdef
+*.meta
+*.yml
+*.md

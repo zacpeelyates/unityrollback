@@ -1,3 +1,0 @@
-<UXML xmlns="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <uie:LayerMaskField label="UXML Field" name="the-uxml-field" />
-</UXML>

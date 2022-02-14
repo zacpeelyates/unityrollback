@@ -1,3 +1,0 @@
-<UXML xmlns="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <Label text="UXML Label" name="the-uxml-label" />
-</UXML>

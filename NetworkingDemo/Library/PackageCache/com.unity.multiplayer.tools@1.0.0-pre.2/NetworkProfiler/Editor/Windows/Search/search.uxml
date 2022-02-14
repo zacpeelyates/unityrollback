@@ -1,3 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
-    <uie:ToolbarSearchField focusable="true" name="ToolbarSearchField" />
-</ui:UXML>

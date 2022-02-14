@@ -1,3 +1,0 @@
-<UXML xmlns="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <uie:EnumField label="UXML Field" name="the-uxml-field" include-obsolete-values="false"/>
-</UXML>

@@ -1,3 +1,0 @@
-<UXML xmlns="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <HelpBox text="UXML Help Box" message-type="Info" name="the-uxml-help-box" />
-</UXML>

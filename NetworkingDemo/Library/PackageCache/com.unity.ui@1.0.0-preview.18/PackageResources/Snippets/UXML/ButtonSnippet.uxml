@@ -1,3 +1,0 @@
-<UXML xmlns="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
-    <Button text="UXML Button" name="the-uxml-button" />
-</UXML>

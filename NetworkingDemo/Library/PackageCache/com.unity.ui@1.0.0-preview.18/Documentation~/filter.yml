@@ -1,7 +1,0 @@
-apiRules:
-- exclude:
-    uidRegex: UIElements.*Tests
-    type: Namespace
-- exclude:
-    uidRegex: Samples.*
-    type: Namespace

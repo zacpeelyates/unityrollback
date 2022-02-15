@@ -42,6 +42,10 @@ public class TcpHandler : MonoBehaviour
     #region Client
     public void InitClient()
     {
+        if(localClient != null)
+        {
+            Debug.LogError($"Client already initialised at: {config.remoteIP}::{config.remotePort}");
+        }
         localClient = new TcpClient(config.remoteIP, config.remotePort); //try to connect to remote peer
         if (localClient == null)
         {
@@ -89,7 +93,7 @@ public class TcpHandler : MonoBehaviour
         else
         {
             localClient.GetStream().Write(message, 0, message.Length);
-            Debug.Log("Sent " + message.ToString());
+            Debug.Log($"Sent {message}");
         }
     }
 
@@ -110,6 +114,10 @@ public class TcpHandler : MonoBehaviour
 
     private void MessageListenerTask()
     {
+        if (listener != null)
+        {
+            Debug.LogError($"listener already initialised, listening at");
+        }
         listener = new TcpListener(IPAddress.Parse(config.localIP), config.listenPort);
         listener.Start();
         Debug.Log("listening...");

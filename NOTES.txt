@@ -1,5 +1,9 @@
 Networking documentation notes:
 
+https://www.youtube.com/watch?v=wwLW6CjswxM
+https://docs.google.com/presentation/d/1E1vGCvsaeGq5G2oPKr5vxBQr77gfO64HeAIzAUN-yO4/htmlpresent
+
+
 -Determinism
 -Independant Simulation
 -Serialization

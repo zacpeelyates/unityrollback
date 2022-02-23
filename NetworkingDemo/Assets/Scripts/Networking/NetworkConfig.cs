@@ -21,6 +21,13 @@ public class NetworkConfig : MonoBehaviour
         listenPort = NetworkDefaults.LOCAL_PORT;
     }
 
+    public void SwapPorts()
+    {
+        int temp = remotePort;
+        remotePort = listenPort;
+        listenPort = temp;
+    }
+
     private string FindLocalIP()
     {
         foreach(IPAddress ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
@@ -31,6 +38,5 @@ public class NetworkConfig : MonoBehaviour
             }
         }
         return null;
-
     }
 }

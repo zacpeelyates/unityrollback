@@ -6,7 +6,7 @@ using System.Threading;
 using UnityEngine;
 
 [RequireComponent(typeof(NetworkConfig))]
-public class TcpHandler : MonoBehaviour
+public class Peer : MonoBehaviour
 {
     #region Members
     public NetworkConfig config;
@@ -20,18 +20,19 @@ public class TcpHandler : MonoBehaviour
     protected TcpListener listener; //listen for connections
     protected TcpClient localClient; //establishes connection to peer
 
-    private Queue<byte[]> MessageBuffer = new Queue<byte[]>();
+    public Queue<byte[]> MessageBuffer = new Queue<byte[]>();
     #endregion
 
     private void Awake()
     {
-        config = GetComponent<NetworkConfig>();
+        if(!config) config = GetComponent<NetworkConfig>();
     }
 
     public void Close()
     {
-        listener.Stop();
-        localClient.Close();
+
+        if(listener != null) listener.Stop();
+        if(localClient != null) localClient.Close();
     }
 
     private void OnApplicationQuit()
@@ -45,14 +46,19 @@ public class TcpHandler : MonoBehaviour
         if(localClient != null)
         {
             Debug.LogError($"Client already initialised at: {config.remoteIP}::{config.remotePort}");
-        }
-        localClient = new TcpClient(config.remoteIP, config.remotePort); //try to connect to remote peer
-        if (localClient == null)
-        {
-            Debug.LogError("Failed to initialize client");
             return;
         }
-        if (localClient.Connected)
+
+        try
+        {
+            localClient = new TcpClient(config.remoteIP, config.remotePort); //try to connect to remote peer 
+        } 
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
+
+        if (localClient != null && localClient.Connected)
         {
             Debug.Log("Connected");
             localClient.ReceiveTimeout = 1;
@@ -64,6 +70,9 @@ public class TcpHandler : MonoBehaviour
         {
             Debug.LogWarning("Failed to connect");
             outgoingConnectionFailed?.Invoke();
+            Debug.Log("Attempting to act as server as no server found...");
+            config.SwapPorts();
+            InitListener();
         }
 
     }
@@ -89,11 +98,14 @@ public class TcpHandler : MonoBehaviour
 
     public virtual void Send(byte[] message)
     {
-        if (!localClient.Connected) peerDisconnected?.Invoke();
-        else
+        if (localClient != null)
         {
-            localClient.GetStream().Write(message, 0, message.Length);
-            Debug.Log($"Sent {message}");
+            if (!localClient.Connected) peerDisconnected?.Invoke();
+            else
+            {
+                localClient.GetStream().Write(message, 0, message.Length);
+                Debug.Log($"Sent {message}");
+            }
         }
     }
 
@@ -116,12 +128,14 @@ public class TcpHandler : MonoBehaviour
     {
         if (listener != null)
         {
-            Debug.LogError($"listener already initialised, listening at");
+            Debug.LogError($"listener already initialised, listening at {config.localIP}::{config.listenPort}");
+            return;
         }
         listener = new TcpListener(IPAddress.Parse(config.localIP), config.listenPort);
         listener.Start();
         Debug.Log("listening...");
         TcpClient remoteClient = listener.AcceptTcpClient();
+        if (remoteClient == null) Debug.Log("Failed to accept a client"); 
         recievedConnection?.Invoke();
         CreateClientThread(remoteClient);
     }

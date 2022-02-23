@@ -1,67 +1,44 @@
 //32 bit fixed point implementation
 //should allow for cross-architecture determinism
-//uses a lot of unsafe maths. faster (and easier to write) but requires user to not be dividing by zero or over/underflowing
+//uses some unsafe math. faster (and easier to write) but requires user to not be dividing by zero or over/underflowing
 using System;
 
 public class FInt32
 {
-    readonly Int32 m_raw;
+    public Int32 m_raw { get; private set; }
 
     public static readonly FInt32 MAX = new FInt32(Int32.MaxValue);
     public static readonly FInt32 MIN = new FInt32(Int32.MinValue);
-    const int POINT = 16; // 1 sign place, 15 integer places, 16 fractional places
-
-    public static FInt32 MakeFromRaw(Int32 raw)
-    {
-        return new FInt32(raw);
-    }
-
-    public static FInt32 MakeFromParts(Int16 integral, Int32 fractional)
-    {
-        return new FInt32((integral << POINT) + fractional);
-    }
-
-
-    public Int16 Integral => (Int16)(m_raw >> POINT);
-    public Int16 Decimal => (Int16)(m_raw & 0x00000000FFFFFFFF);
-
-    private FInt32(Int32 raw)
-    {
-        m_raw = raw;
-    }
-
-    public static FInt32 operator *(FInt32 a, FInt32 b)
-    {
-
-        Int32 decResult = (a.Decimal * b.Decimal) >> POINT;
-        Int32 intResult = (a.Integral * b.Integral) << POINT;
-        Int32 m1Result = (a.Decimal * b.Integral);
-        Int32 m2Result = (a.Integral * b.Decimal);
-
-        return new FInt32(decResult + intResult + m1Result + m2Result);
-    }
+    const int POINT = 16; 
+    public static readonly int MAX_DECIMAL = (1 << POINT)-1;
+    public static readonly int MAX_INTEGRAL = ~MAX_DECIMAL;
     
-    public static FInt32 operator /(FInt32 a, FInt32 b)
-    {
-        //TODO
-        return new FInt32(Int32.MinValue);
-    }
+    public static FInt32 MakeFromParts(int integral, int fractional) => new FInt32((integral << POINT) + fractional);
+
+    public Int32 Integral => m_raw >> POINT;
+    public Int32 Decimal => m_raw & MAX_DECIMAL;
+
+    new public string ToString => ToDouble.ToString();
+    public double ToDouble => (double)m_raw / (1 << POINT);
+    private FInt32(Int32 raw) => m_raw = raw;
+    public static FInt32 MakeFromRaw(Int32 raw) => new FInt32(raw);
 
 
     public static FInt32 operator +(FInt32 a, FInt32 b) => new FInt32(a.m_raw + b.m_raw);
     public static FInt32 operator -(FInt32 a, FInt32 b) => new FInt32(a.m_raw - b.m_raw);
-    public static FInt32 operator %(FInt32 a, FInt32 b) => new FInt32(a.m_raw & b.m_raw);
+    public static FInt32 operator %(FInt32 a, FInt32 b) => new FInt32(a.m_raw % b.m_raw);
+    public static FInt32 operator *(FInt32 a, FInt32 b) => new FInt32((a.m_raw * b.m_raw) >> POINT);
+    public static FInt32 operator /(FInt32 a, FInt32 b) => new FInt32((a.m_raw << POINT) / b.m_raw);
+
+    public static FInt32 operator *(FInt32 f, int i) => new FInt32(f.m_raw * i);
     public static bool operator <(FInt32 a, FInt32 b) => a.m_raw < b.m_raw;
     public static bool operator >(FInt32 a, FInt32 b) => a.m_raw > b.m_raw;
     public static bool operator >=(FInt32 a, FInt32 b) => a.m_raw >= b.m_raw;
     public static bool operator <=(FInt32 a, FInt32 b) => a.m_raw <= b.m_raw;
-
-
-
-
-
-
-
+    public static bool operator ==(FInt32 a, FInt32 b) => a.m_raw == b.m_raw;
+    public static bool operator !=(FInt32 a, FInt32 b) => a.m_raw != b.m_raw;
 
 
 }
+
+

@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Anim : MonoBehaviour
+public class AnimHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    List<Animation> AnimationList;
 
-    // Update is called once per frame
-    void Update()
+   void PlayAnimation(int i)
     {
-        
+        AnimationList[i].Play();
     }
 }

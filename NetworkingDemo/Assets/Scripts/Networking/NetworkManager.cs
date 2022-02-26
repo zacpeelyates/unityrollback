@@ -8,6 +8,7 @@ public class NetworkManager : MonoBehaviour
     public Peer localPeer;
     private void Start()
     {
+
         if (!localPeer) localPeer = GetComponent<Peer>();
 
         //setup delegates
@@ -19,9 +20,7 @@ public class NetworkManager : MonoBehaviour
 
         localPeer.InitClient();
 
-        FInt32 a = FInt32.MakeFromParts(2,5);
-        FInt32 b = FInt32.MakeFromParts(2,0);
-        Debug.Log((a + b).ToString);
+
     }
 
     private void Update()

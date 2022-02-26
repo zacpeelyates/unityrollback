@@ -56,8 +56,8 @@ public class FInt32
     public static FInt32 FromString(string s)
     {
         s = s.Trim();
-        if (!float.TryParse(s, out float l)) return ZERO; //out if string is invalid;
-        if (!s.Contains(".")) return new FInt32((int)l << POINT); //early return if no decimal
+        if (!double.TryParse(s, out double d)) return ZERO; //out if string is invalid;
+        if (!s.Contains(".")) return new FInt32((int)d << POINT); //early return if no decimal
         string[] parts = s.Split('.');
         int.TryParse(parts[0], out int i); //integral
         bool zeroNegative = s[0] == '-' && i == 0; //special handling for numbers where -1 < value < 0
@@ -66,7 +66,8 @@ public class FInt32
         int denominator = 10; //start at 10 to skip 1 guaranteed iteration
         for (int j = 1; j < parts[1].Length; ++j) { denominator *= 10; }; //get denominator (number of units * 10)
         int o = ONE.m_raw; //FINT32 one as raw int
-        f *= (o / denominator); //convert fraction from f to 0.f (as raw)
+        f *= o; //convert f to raw
+        f /= denominator;//convert fraction from f to 0.f (as raw)
         if (i < 0 || zeroNegative) //handle value between -1 and 0
         {
             i -= o; //decrement integral

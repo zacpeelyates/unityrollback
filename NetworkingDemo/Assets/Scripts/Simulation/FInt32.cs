@@ -1,6 +1,3 @@
-//32 bit fixed point implementation
-//should allow for cross-architecture determinism
-//uses some unsafe math. faster (and easier to write) but requires user to not be dividing by zero or over/underflowing
 using System;
 using System.Text;
 
@@ -9,8 +6,8 @@ public class FInt32
     //members
     public Int32 m_raw { get; private set; } //raw underlying int32 value 
     //consts
-    //Point = number of bits after decimal point in fixed representation
-    public const int POINT = 8; //default 8 = 24 bit signed integer, 8 bit unsigned fractional
+    //Point = number of bits after decimal point in fixed representation, there will always be 32 bits total 
+    public const byte POINT = 8; //default 8 = 24 bit signed integer, 8 bit unsigned fractional
     public static readonly FInt32 MAX = new FInt32(Int32.MaxValue); //max representable value
     public static readonly FInt32 MIN = new FInt32(Int32.MinValue); //min representable value
     public static readonly FInt32 ZERO = new FInt32(0); //Zero const
@@ -42,6 +39,30 @@ public class FInt32
         for (int i = 0; i < p; ++i) result *= a; //long buffer used in * operator to help against overflow, not needed explicitly here
         return result;
     }
+
+    public static FInt32 Sqrt(FInt32 a)
+    {
+        //shamelessly translated from https://en.wikipedia.org/wiki/Integer_square_root#Example_implementation_in_C
+        //get sqrt of raw value and return new FINT32 using that value
+        if (a <= ZERO) return ZERO;
+        if (a == ONE) return ONE;
+
+        int raw = a.m_raw;
+        int temp = raw; //use temp as while loop will change value
+        byte bitLength = 0;
+        while ((temp >>= 1) > 0) ++bitLength; //number of bits needed to store raw
+        //wikipedia says this is the best guess for least number of iterations on average
+        uint root = (uint)2 << ((bitLength << 1) + 1); //initial guess
+
+        uint update = (uint)(root + raw / root) << 1; //first update
+        while(update < root) //wont pass if root = update (meaning we arent changing anything)
+        {
+            root = update;
+            update = (uint)(root + raw / root) << 1; //update
+        }
+        return new FInt32((int)root << (POINT<<1));
+    }
+
     //conversion
     public int ToInt => m_raw >> POINT; //returns truncated int, use Round for closest int value
     public float ToFloat => m_raw / (float)ONE.m_raw; //returns closest equivalent float (useful for when we want to give values to Unity after we simulate)
@@ -136,6 +157,7 @@ public class FInt32
     }
 
     //Possible TODO: trig lookup tables?
+
 
 }
 

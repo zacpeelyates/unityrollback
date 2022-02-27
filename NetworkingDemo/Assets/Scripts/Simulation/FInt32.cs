@@ -147,17 +147,17 @@ public class FInt32
             i = 0; //set i to zero
             sb.Append('-'); //handling for negative zero (e.g -0.1)
         }
-        sb.Append(i >> POINT).ToString();
+        sb.Append(i >> POINT).ToString(); //integral
 
-        if(f != 0)
+        if(f != 0) //fractional 
         {
-            sb.Append('.');
-            if (zeroNegative) f = o - f;
-            while (f > 0)
+            sb.Append('.'); 
+            if (zeroNegative) f = o - f; //increment + invert f if i = 0
+            while (f > 0) //while we have more digits to append
             {
-                f *= 10;
+                f *= 10; //shift along a digit
                 sb.Append((char)('0' + (f >> POINT))); //'0' + digit (0-9) = char as digit, shift f into single digit scope
-                f &= MAX_FRACTIONAL;
+                f &= MAX_FRACTIONAL; //mask out integral
             }
         }
 

@@ -36,7 +36,7 @@ public class FInt32
         if (p == 0) return ONE; //early out
         if (p <= 1) return a; //we only work with positive int exponents 
         FInt32 result = a;
-        for (int i = 0; i < p; ++i) result *= a; //long buffer used in * operator to help against overflow, not needed explicitly here
+        for (int i = 1; i < p; ++i) result *= a; //long buffer used in * operator to help against overflow, not needed explicitly here
         return result;
     }
 
@@ -47,20 +47,20 @@ public class FInt32
         if (a <= ZERO) return ZERO;
         if (a == ONE) return ONE;
 
-        int raw = a.m_raw;
-        int temp = raw; //use temp as while loop will change value
+        uint raw = (uint)a.m_raw;
+        uint temp = raw; //use temp as while loop will change value
         byte bitLength = 0;
         while ((temp >>= 1) > 0) ++bitLength; //number of bits needed to store raw
         //wikipedia says this is the best guess for least number of iterations on average
-        uint root = (uint)2 << ((bitLength << 1) + 1); //initial guess
+        uint root = (uint)2 << ((bitLength >> 1) + 1); //initial guess
 
-        uint update = (uint)(root + raw / root) << 1; //first update
+        uint update = (root + raw / root) >> 1; //first update
         while(update < root) //wont pass if root = update (meaning we arent changing anything)
         {
             root = update;
-            update = (uint)(root + raw / root) << 1; //update
+            update = (root + raw / root) >> 1; //update
         }
-        return new FInt32((int)root << (POINT<<1)); //actually not sure why we need the shifts here
+        return new FInt32((int)root << (POINT >> 1)); //actually not sure why we need the shifts here
         //it didnt work before but does now. lol.
     }
 

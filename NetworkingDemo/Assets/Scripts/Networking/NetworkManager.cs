@@ -6,6 +6,7 @@ using UnityEngine;
 public class NetworkManager : MonoBehaviour
 {
     public Peer localPeer;
+    
     private void Start()
     {
 
@@ -20,30 +21,35 @@ public class NetworkManager : MonoBehaviour
 
         localPeer.InitClient();
 
-
     }
 
     private void Update()
     {
         if (localPeer != null)
         {
-            while (localPeer.MessageBuffer.Count != 0)
+            if (localPeer.messagesToSend.Count != 0) localPeer.Send();
+            while (localPeer.recievedMessageQueue.Count != 0)
             {
-                Debug.Log("PARSING: " + localPeer.MessageBuffer.Dequeue());
+                HandleMessage(localPeer.recievedMessageQueue.Dequeue());
             }
-            localPeer.Send(new byte[] { 1, 0, 1, 0, 1, 0, 1, 1 });
         }
-        else Debug.Log("Peer not found");
+    }
+
+    void HandleMessage(byte[] message)
+    {
+        //send message to our game sim?
     }
 
     void OnOutgoingConnectionSucceeded()
     {
         Debug.Log("ESTABLISHED CONNECTION");
+        //Start game sim as client
     }
 
     void OnOutgoingConnectionFailed()
     {
         Debug.Log("FAILED TO CONNECT");
+        //Print error
     }
 
     void OnAllowRemoteConnections()
@@ -54,11 +60,13 @@ public class NetworkManager : MonoBehaviour
     void OnRecieveConnection()
     {
         Debug.Log("FOUND CLIENT");
+        //Start game sim as server
     }
 
     void OnPeerDisconnect()
     {
-        Debug.Log("LOST CLIENT");
+        Debug.Log("LOST PEER");
+        //Stop game sim
     }
 
 }

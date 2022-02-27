@@ -15,7 +15,6 @@ public static class Input
         DINPUT_UP,
         DINPUT_UP_FWD
 
-
         /*
          * Numpad Notation:
          * 
@@ -25,7 +24,15 @@ public static class Input
          * 
          * 5 is neutral/no input, numbers about neutral denote direction (e.g 2 = DOWN, 9 = UP_RIGHT, 6 = FWD)
          */
+    }
 
+
+    public static DirectionalInput FlipHorizonal(DirectionalInput d) //flips back inputs to fwd inputs and vice-versa - neutral input not affected
+    {
+        int i = (int)d;
+        if (i == 1 || i == 4 || i == 7) i += 2;
+        else if (i == 3 || i == 6 || i == 9) i -= 2;
+        return (DirectionalInput)i;
     }
 
     public enum ButtonInputType
@@ -33,7 +40,8 @@ public static class Input
         BINPUT_NONE, //no input for this button this frame
         BINPUT_PRESSED, //button was pressed this frame
         BINPUT_HELD, //button was pressed in a previous frame, and has not yet been released
-        BINPUT_RELEASED //button was released this frame (useful for negative edge)
+        BINPUT_RELEASED, //button was released this frame (useful for negative edge)
+        BINPUT_COUNT
     }
 
     public enum ButtonID
@@ -42,6 +50,7 @@ public static class Input
         BUTTON_KICK,
         BUTTON_SLASH,
         BUTTON_HSLASH,
+        BUTTON_COUNT
     }
 
     public struct Button
@@ -68,26 +77,20 @@ public static class Input
             {
                 //create a byte containing a pair of button information
                 byte buttonInfo = ButtonTo4Bit(buttons[i + j]);
-                buttonPair += (byte)(buttonInfo << j * 4);
+                buttonPair |= (byte)(buttonInfo << j * 4);
             }
             byteList.Add(buttonPair);
         }
         byte last = 0;
-        if (buttons.Count % 2 != 0) last += (byte)(ButtonTo4Bit(buttons[buttons.Count - 1]) << 4); //add non-paired button input
-        last += (byte)dir; //add motion input data
+        if (buttons.Count % 2 != 0) last |= (byte)(ButtonTo4Bit(buttons[buttons.Count - 1]) << 4); //add non-paired button input
+        last |= (byte)dir; //add motion input data
         byteList.Add(last);
 
         return byteList.ToArray();
         
     }
            
-    public static byte ButtonTo4Bit(Button b)
-    {
-        /*
-         * returns a 4 bit value (with 4 trailing zeroes) 
-         * where the first 2 bits are the button ID, and the last 2 bits are the type of input
-         */
-        return (byte)(((byte)b.id << 2) + b.input);
-    }
+    public static byte ButtonTo4Bit(Button b) => (byte)(((byte)b.id << 2) | (byte)b.input);
+    
 
 }

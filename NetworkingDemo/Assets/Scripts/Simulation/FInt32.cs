@@ -12,7 +12,7 @@ public class FInt32
     public static readonly FInt32 MIN = new FInt32(Int32.MinValue); //min representable value
     public static readonly FInt32 ZERO = new FInt32(0); //Zero const
     public static readonly FInt32 ONE = new FInt32(1 << POINT); //1 shifted to smallest integral unit 
-    public static readonly FInt32 HALF = new FInt32(1 << (POINT) - 1); //1 shifted to smallest fractional unit
+    public static readonly FInt32 HALF = new FInt32(1 << POINT - 1); //1 shifted to smallest fractional unit
     public static readonly FInt32 MIN_FRACTIONAL = new FInt32(1); //aka precision of data, we dont really need a MIN_INTEGRAL because we have... ONE...
     //max/masks
     public const Int32 MAX_FRACTIONAL = (1 << POINT) - 1; //max representable fraction value, also used as a mask to return only fractional info
@@ -60,7 +60,8 @@ public class FInt32
             root = update;
             update = (uint)(root + raw / root) << 1; //update
         }
-        return new FInt32((int)root << (POINT<<1));
+        return new FInt32((int)root << (POINT<<1)); //actually not sure why we need the shifts here
+        //it didnt work before but does now. lol.
     }
 
     //conversion
@@ -97,25 +98,25 @@ public class FInt32
         return new FInt32(i | (f & MAX_FRACTIONAL)); //return parsed string as FINT32 
     }
 
-    //operators, should be mostly self explanatory as we are just performing the maths on the underlying raw int values
+    //operators, should be mostly self-explanatory as we are just performing the maths on the underlying raw int values
     public static FInt32 operator +(FInt32 a, FInt32 b) => new FInt32(a.m_raw + b.m_raw);
     public static FInt32 operator -(FInt32 a, FInt32 b) => new FInt32(a.m_raw - b.m_raw);
     public static FInt32 operator -(FInt32 a) => ZERO - a; 
     public static FInt32 operator %(FInt32 a, FInt32 b) => new FInt32(a.m_raw % b.m_raw);
+    public static FInt32 operator *(FInt32 f, int i) => new FInt32(f.m_raw * i);
+    public static FInt32 operator *(int i, FInt32 f) => new FInt32(f.m_raw * i); //have to explicity state we are order-agnostic for multiplication
     public static FInt32 operator *(FInt32 a, FInt32 b)
     {
         long buffer = (long)a.m_raw * b.m_raw;
         return new FInt32((int)buffer >> POINT);
         //if i write this in one line compiler tries to optimize out the long cast and we get overflow
     }
-      
-    public static FInt32 operator *(FInt32 f, int i) => new FInt32(f.m_raw * i); 
-    public static FInt32 operator *(int i, FInt32 f) => new FInt32(f.m_raw * i); //have to explicity state we are order-agnostic for multiplication
+
     public static FInt32 operator /(FInt32 a, FInt32 b)
     {
         long buffer = (long)a.m_raw << POINT;
         return new FInt32((int)(buffer / b.m_raw));
-        //written longform to ensure use of long as buffer is not optimized out by compiler (see multi op)
+        //As above
     }
     public static FInt32 operator /(FInt32 f, int i) => new FInt32(f.m_raw / i);
     public static FInt32 operator /(int i, FInt32 f) => new FInt32(i / f.m_raw);
@@ -125,6 +126,9 @@ public class FInt32
     public static bool operator <=(FInt32 a, FInt32 b) => a.m_raw <= b.m_raw;
     public static bool operator ==(FInt32 a, FInt32 b) => a.m_raw == b.m_raw;
     public static bool operator !=(FInt32 a, FInt32 b) => a.m_raw != b.m_raw;
+
+    //implicit int conversion, all integers that can be stores in (32 - POINT) bits are representable
+    public static implicit operator FInt32(int i) => FromInt(i);
 
     //overrides to prevent warnings
     public override int GetHashCode() => m_raw.GetHashCode();
@@ -137,19 +141,23 @@ public class FInt32
         int f = Fractional;
         int o = ONE.m_raw;
 
-        bool negativeWithFractional = i < 0 && f > 0;
-        if(negativeWithFractional) if ((i += o) == 0) sb.Append('-');
+        bool zeroNegative = i < 0 && f > 0;  //special handling for numbers where -1 < value < 0
+        if (zeroNegative && i == -o) //if integral value is -1
+        {
+            i = 0; //set i to zero
+            sb.Append('-'); //handling for negative zero (e.g -0.1)
+        }
         sb.Append(i >> POINT).ToString();
 
         if(f != 0)
         {
             sb.Append('.');
-            if (negativeWithFractional) f = o - f;
+            if (zeroNegative) f = o - f;
             while (f > 0)
             {
                 f *= 10;
-                sb.Append((char)('0' + (f >> POINT))); //'0' + digit = char as digit
-                f &= ((1 << POINT) - 1);
+                sb.Append((char)('0' + (f >> POINT))); //'0' + digit (0-9) = char as digit, shift f into single digit scope
+                f &= MAX_FRACTIONAL;
             }
         }
 

@@ -20,7 +20,8 @@ public class Peer : MonoBehaviour
     protected TcpListener listener; //listen for connections
     protected TcpClient localClient; //establishes connection to peer
 
-    public Queue<byte[]> MessageBuffer = new Queue<byte[]>();
+    public Queue<byte[]> recievedMessageQueue = new Queue<byte[]>();
+    public Queue<byte[]> messagesToSend = new Queue<byte[]>();
     #endregion
 
     private void Awake()
@@ -88,23 +89,32 @@ public class Peer : MonoBehaviour
         TcpClient client = (TcpClient)obj;
         Debug.Log("Reciever thread active...");
         while(client.Connected)
-        {
-            byte[] message = NetworkUtils.StreamToBytes(client.GetStream());
-            MessageBuffer.Enqueue(message);
-            Debug.Log("recieved: " + message.ToString());
+        {          
+                byte[] message = NetworkUtils.StreamToBytes(client.GetStream());
+                recievedMessageQueue.Enqueue(message);
+                Debug.Log("recieved: " + message.ToString());                  
         }
     }
 
-
-    public virtual void Send(byte[] message)
+    public void EnqueueMessage(byte[] message)
     {
+        messagesToSend.Enqueue(message);
+    }
+
+    public virtual void Send()
+    {
+
         if (localClient != null)
         {
             if (!localClient.Connected) peerDisconnected?.Invoke();
             else
-            {
-                localClient.GetStream().Write(message, 0, message.Length);
-                Debug.Log($"Sent {message}");
+            {            
+                    NetworkStream s = localClient.GetStream();
+                    while (messagesToSend.Count != 0)
+                    {
+                        byte[] message = messagesToSend.Dequeue();
+                        s.Write(message, 0, message.Length);
+                    }                            
             }
         }
     }

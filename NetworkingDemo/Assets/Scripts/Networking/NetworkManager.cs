@@ -23,7 +23,7 @@ public class NetworkManager : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (localPeer != null)
         {
@@ -37,7 +37,8 @@ public class NetworkManager : MonoBehaviour
 
     void HandleMessage(byte[] message)
     {
-        //send message to our game sim?
+        //send message to our game sim
+        FrameInfo.FromBytes(new List<byte>(message));
     }
 
     void OnOutgoingConnectionSucceeded()

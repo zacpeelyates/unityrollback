@@ -64,7 +64,7 @@
                 {
                     "name": "1D Axis",
                     "id": "bb36fd4d-70b6-46f6-af40-f45f78fe5e64",
-                    "path": "1DAxis",
+                    "path": "1DAxis(whichSideWins=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

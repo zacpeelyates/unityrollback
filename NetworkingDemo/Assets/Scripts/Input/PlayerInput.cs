@@ -38,6 +38,7 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
         if (isVertical) inputVertical = value; else inputHorizontal = value;
         input = InputSerialization.ConvertInputAxisToDirectionalInput(inputHorizontal, inputVertical);
         Debug.Log(input);
+       
     }
 
     public void OnPunch(InputAction.CallbackContext context)

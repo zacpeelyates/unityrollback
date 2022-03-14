@@ -38,7 +38,8 @@ public class NetworkManager : MonoBehaviour
     void HandleMessage(byte[] message)
     {
         //send message to our game sim
-        FrameInfo.FromBytes(new List<byte>(message));
+        FrameInfo f = FrameInfo.FromBytes(new List<byte>(message));
+        
     }
 
     void OnOutgoingConnectionSucceeded()

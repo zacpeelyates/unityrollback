@@ -45,7 +45,7 @@ public static class InputSerialization
         int d = (int)dir;
         int h = (d % 3) - 2; //horizontal
         if (System.Math.Abs(h) > 1) h = -System.Math.Sign(h); //"overflow" (2 should be -1, -2 should be 1)
-        int v = (d - 5 - h) / 3; //vertical
+        int v = (d - (int)DirectionalInput.DINPUT_NEUTRAL - h) / 3; //vertical
         return ((sbyte)h, (sbyte)v); //return as tuple
 
         /*
@@ -129,7 +129,7 @@ public static class InputSerialization
     {
         Inputs i;
         i.buttons = null; //todo
-        i.dir = (DirectionalInput) ((b.Last() << 4) >> 4); //use bitshifts to remove unwanted bits
+        i.dir = (DirectionalInput) (b.Last() & 0xF) ; //mask out unwanted bits
 
         return i;
 

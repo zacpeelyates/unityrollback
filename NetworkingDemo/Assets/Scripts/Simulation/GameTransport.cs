@@ -10,7 +10,8 @@ public class GameTransport : MonoBehaviour
 
     private void Start()
     {
-        simulationThread = new Thread(GameSimulation.Init);
+        simulationThread = new Thread(GameSimulation.Run);
+        simulationThread.Start();
     }
 
     private void FixedUpdate()

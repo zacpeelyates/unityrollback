@@ -19,11 +19,11 @@ public class GameState
 
 
 
-    public void Tick()
+    public void Tick(InputSerialization.DirectionalInput[] directionalInputs)
     {
-        foreach(SimPlayer s in players)
+       for(int i = 0; i < players.Length; ++i)
         {
-            s.ApplyInput();
+            players[i].ApplyInput(directionalInputs[i]);
         }
     }
 
@@ -33,7 +33,6 @@ public class GameState
 public class SimPlayer
 {
     public FVec2 pos;
-    public FrameInfo f;
 
     public SimPlayer()
     {
@@ -41,25 +40,20 @@ public class SimPlayer
         pos.y = 0;
     }
 
-    public void ApplyInput()
+    public void ApplyInput(InputSerialization.DirectionalInput d)
     {
-        (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(f.GetDirectionalInput());
+       (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(d);
         pos.x += h * moveSpeed;
         pos.y += v * moveSpeed;
     }
 
-    public SimPlayer Copy()
-    {
-        SimPlayer s = new SimPlayer { pos = this.pos, f = this.f };
-        return s;
-    }
     public static readonly FInt32 moveSpeed = FInt32.HALF;
 }
 
 
 public struct FVec2
 {
-    public  FInt32 x, y;
+    public FInt32 x, y;
 
     public FInt32 Magnitude => FInt32.Sqrt(FInt32.Pow(x, 2) + FInt32.Pow(y, 2));
 

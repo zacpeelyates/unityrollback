@@ -2,21 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System;
 
 public class GameSimulation
 {
      static GameState current;
-     static bool isAlive;
+     public static bool isAlive = false;
      public static ushort currentFrame;
-     public static ConcurrentDictionary<ushort, FrameInfo> FrameDictionary;
-    const InputSerialization.DirectionalInput baseInput = InputSerialization.DirectionalInput.DINPUT_UNKNOWN; 
+     public static ConcurrentDictionary<ushort, InputSerialization.FrameInfo> FrameDictionary;
+     public static uint framesToProcess;
 
-    private static void Init()
+    private static void Init(bool p1Local)
     {
-        current = new GameState();
-        isAlive = true;
+        current = new GameState(p1Local);
         currentFrame = 0;
-        FrameDictionary = new ConcurrentDictionary<ushort, FrameInfo>();
+        FrameDictionary = new ConcurrentDictionary<ushort, InputSerialization.FrameInfo>();
+        framesToProcess = 0;
+        isAlive = true;
+    }
+
+    public static void AddRemoteInput(InputSerialization.Inputs remoteInput)
+    {
+        InputSerialization.FrameInfo temp = new InputSerialization.FrameInfo();
+        temp.SetRemoteInputs(remoteInput);
+        FrameDictionary.AddOrUpdate(remoteInput.FrameID, temp, (k,v) => v.ReturnWithNewRemote(remoteInput));
+        Console.WriteLine("Added network input to frame: " + remoteInput.FrameID);
+    }
+
+    public static void AddLocalInput(InputSerialization.Inputs localInput)
+    {
+        InputSerialization.FrameInfo temp = new InputSerialization.FrameInfo();
+        temp.SetLocalInputs(localInput);
+        FrameDictionary.TryAdd(localInput.FrameID, temp);
     }
 
     private static void SimulateForward(GameState g, uint frames)
@@ -26,29 +43,20 @@ public class GameSimulation
         SimulateForward(g, frames - 1);
     }
 
-    public static void Run()
+    public static void Run(bool p1Local)
     {
-        Init();
-        double dt = 1000.0 / 60.0;
-        double t;
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
+        Init(p1Local);
         while(isAlive) //update loop
         {
-            t = sw.ElapsedMilliseconds;
-            if (t >= dt)
-            {
-                
+            if (framesToProcess > 0)
+            {            
+                FrameDictionary.TryGetValue(currentFrame, out InputSerialization.FrameInfo f);
+                if (f == null) Console.WriteLine("Couldn't get current frame info!");
+                current.Tick(f);
+                framesToProcess--;
                 currentFrame++;
-                InputSerialization.DirectionalInput[] inputs = new InputSerialization.DirectionalInput[2] { baseInput, baseInput };
-                if (FrameDictionary.TryGetValue(currentFrame, out FrameInfo f))
-                {
-                    inputs[0] = f.GetLocalInputs().dir;
-                    inputs[1] = f.GetRemoteInputs().dir;
-                }
 
-                current.Tick(inputs);
-                sw.Restart();
+                Transport.current = current;
             }
         }
     }

@@ -88,33 +88,28 @@ public class Peer : MonoBehaviour
     {
         TcpClient client = (TcpClient)obj;
         Debug.Log("Reciever thread active...");
+        client.ReceiveTimeout = 100;
         while(client.Connected)
         {          
                 byte[] message = NetworkUtils.StreamToBytes(client.GetStream());
                 recievedMessageQueue.Enqueue(message);
-                Debug.Log("recieved: " + message.ToString());                  
+                Debug.Log("recieved: " + message[0].ToString());                  
         }
     }
-
-    public void EnqueueMessage(byte[] message)
-    {
-        messagesToSend.Enqueue(message);
-    }
-
     public virtual void Send()
     {
-
         if (localClient != null)
         {
             if (!localClient.Connected) peerDisconnected?.Invoke();
             else
             {            
-                    NetworkStream s = localClient.GetStream();
-                    while (messagesToSend.Count != 0)
-                    {
-                        byte[] message = messagesToSend.Dequeue();
-                        s.Write(message, 0, message.Length);
-                    }                            
+                NetworkStream s = localClient.GetStream();
+                while (messagesToSend.Count != 0)
+                {
+                     byte[] message = messagesToSend.Dequeue();
+                     s.Write(message, 0, message.Length);
+
+                }                            
             }
         }
     }

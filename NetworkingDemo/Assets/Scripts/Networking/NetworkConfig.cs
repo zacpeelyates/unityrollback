@@ -21,6 +21,11 @@ public class NetworkConfig : MonoBehaviour
         listenPort = NetworkDefaults.LOCAL_PORT;
     }
 
+    private void Awake()
+    {
+        localIP = FindLocalIP();
+    }
+
     public void SwapPorts()
     {
         int temp = remotePort;

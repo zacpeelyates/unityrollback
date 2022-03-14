@@ -6,43 +6,41 @@ public class GameState
 {
    public SimPlayer[] players = new SimPlayer[2];
 
-    static readonly FInt32 STARTPOS = 2 ;
+    static readonly FInt32 STARTPOS = 2;
 
-    public GameState()
+    public GameState(bool p1Local)
     {
-        players[0] = new SimPlayer();
-        players[1] = new SimPlayer();
+        players[0] = new SimPlayer(!p1Local); //local player
+        players[1] = new SimPlayer(p1Local); //remote player
 
         players[0].pos.x = -STARTPOS;
         players[1].pos.x = STARTPOS;
     }
 
-
-
-    public void Tick(InputSerialization.DirectionalInput[] directionalInputs)
+    public void Tick(InputSerialization.FrameInfo f)
     {
-       for(int i = 0; i < players.Length; ++i)
-        {
-            players[i].ApplyInput(directionalInputs[i]);
-        }
+       foreach(SimPlayer s in players)
+       {
+            s.ApplyInput(s.isRemote ? f.GetRemoteInputs() : f.GetLocalInputs());
+       }
     }
-
-
 }
 
 public class SimPlayer
 {
     public FVec2 pos;
+    public bool isRemote;
 
-    public SimPlayer()
+    public SimPlayer(bool remote)
     {
         pos.x = 0;
         pos.y = 0;
+        isRemote = remote;
     }
 
-    public void ApplyInput(InputSerialization.DirectionalInput d)
+    public void ApplyInput(InputSerialization.Inputs i)
     {
-       (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(d);
+       (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(i.dir);
         pos.x += h * moveSpeed;
         pos.y += v * moveSpeed;
     }

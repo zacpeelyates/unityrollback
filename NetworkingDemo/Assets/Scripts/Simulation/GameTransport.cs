@@ -19,13 +19,4 @@ public class GameTransport : MonoBehaviour
         frame++;
     }
 
-    static void SendInfoToSimulation(FrameInfo p1, FrameInfo p2)
-    {
-        if (p1.GetID() != p2.GetID())
-        {
-            Debug.LogError("frame IDs don't match!");
-            return;
-        }
-    }
-
 }

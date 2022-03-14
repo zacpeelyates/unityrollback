@@ -64,8 +64,8 @@ public static class InputSerialization
     public static DirectionalInput FlipHorizonal(DirectionalInput d) //flips back inputs to fwd inputs and vice-versa - neutral input not affected
     {
         int i = (int)d;
-        if (i == 1 || i == 4 || i == 7) i += 2;
-        else if (i == 3 || i == 6 || i == 9) i -= 2;
+        if (i % 3 == 1) i += 2;
+        else if (i % 3 == 0) i -= 2;
         return (DirectionalInput)i;
     }
 
@@ -94,56 +94,89 @@ public static class InputSerialization
     }
 
 
-    public static byte[] InputToBytes(Inputs inputs)
-    {
-        /*
-         *  each button is 4 bytes (2 for ID, 2 for type)
-         *  motion input is 4 bytes (need to store 0-9 for 8 dir + neutral)
-         *  each byte in returned byte[] will contain a pair of button inputs
-         *  the final byte will contain the motion input data with 4 unused bits
-         *  if there is an odd number of buttons, we can pack these unused bits with the final button data
-         */
+  
 
-        List<byte> byteList = new List<byte>();
-        for (int i = 0; i < inputs.buttons.Count; i += 2)
+    public class Inputs
+    {
+        public byte FrameID = 0;
+        public DirectionalInput dir = DirectionalInput.DINPUT_UNKNOWN;
+        public Button[] buttons = new Button[(int)ButtonID.BUTTON_COUNT];
+
+        public static byte[] ToBytes(Inputs inputs)
         {
-            byte buttonPair = 0;
-            for (int j = 0; j < 2; ++j)
+            /*
+             *  Array begins with frameID, then:
+             *  each button is 4 bytes (2 for ID, 2 for type)
+             *  motion input is 4 bytes (need to store 0-9 for 8 dir + neutral)
+             *  each byte in returned byte[] will contain a pair of button inputs
+             *  the final byte will contain the motion input data with 4 unused bits
+             *  if there is an odd number of buttons, we can pack these unused bits with the final button data
+             */
+
+            List<byte> byteList = new List<byte> { inputs.FrameID };
+            for (int i = 0; i < (int)ButtonID.BUTTON_COUNT; i += 2)
             {
-                //create a byte containing a pair of button information
-                byte buttonInfo = ButtonTo4Bit(inputs.buttons[i + j]);
-                buttonPair |= (byte)(buttonInfo << j * 4);
+                byte buttonPair = 0;
+                for (int j = 0; j < 2; ++j)
+                {
+                    //create a byte containing a pair of button information
+                    byte buttonInfo = ButtonTo4Bit(inputs.buttons[i + j]);
+                    buttonPair |= (byte)(buttonInfo << j * 4);
+                }
+                byteList.Add(buttonPair);
             }
-            byteList.Add(buttonPair);
+            byte last = 0;
+            if ((int)ButtonID.BUTTON_COUNT % 2 != 0) last |= (byte)(ButtonTo4Bit(inputs.buttons.Last()) << 4); //add non-paired button input
+            last |= (byte)inputs.dir; //add motion input data
+            byteList.Add(last);
+
+            return byteList.ToArray();
+
         }
-        byte last = 0;
-        if (inputs.buttons.Count % 2 != 0) last |= (byte)(ButtonTo4Bit(inputs.buttons.Last()) << 4); //add non-paired button input
-        last |= (byte)inputs.dir; //add motion input data
-        byteList.Add(last);
 
-        return byteList.ToArray();
+        public static Inputs FromBytes(byte[] bytes)
+        {
+            Inputs result = new Inputs
+            {
+                FrameID = bytes[0],
+                dir = (DirectionalInput)(bytes.Last() & 0xF) //dir is final 4 bits 
+            };
+            for(int i = 1, j = 0; i < bytes.Length-1; ++i, j+=2)
+            {
+                byte current = bytes[i];
+                Button a, b;
+                //split bytes into four 2 bit values, 2 per button in pair
+                a.id = (ButtonID)(current & 0xC0);
+                a.input = (ButtonInputType)(current & 0x30);
+                b.id = (ButtonID)(current & 0xC); 
+                b.input = (ButtonInputType)(current & 0x3);
+                
+                result.buttons[j] = a;
+                result.buttons[j + 1] = b;
+            }
 
-    }
-
-    public static Inputs BytesToInputs(List<byte> b)
-    {
-        Inputs i;
-        i.buttons = null; //todo
-        i.dir = (DirectionalInput) (b.Last() & 0xF) ; //mask out unwanted bits
-
-        return i;
-
-    }
-
-
-    public struct Inputs
-    {
-        public DirectionalInput dir;
-        public List<Button> buttons;
+            if ((int)ButtonID.BUTTON_COUNT % 2 != 0)
+            {
+                Button final;
+                byte b = (byte)(bytes.Last() & ~0xF);
+                final.id = (ButtonID)(b & 0xC0);
+                final.input = (ButtonInputType)(b & 0x30);
+                result.buttons[(int)ButtonID.BUTTON_COUNT - 1] = final;
+            }
+            return result;
+        }
     }
 
 
     public static byte ButtonTo4Bit(Button b) => (byte)(((byte)b.id << 2) | (byte)b.input);
-    
 
+    public class FrameInfo
+    {
+        private Inputs local, remote;
+        public Inputs GetLocalInputs() => local;
+        public Inputs GetRemoteInputs() => remote;
+        public void SetLocalInputs(Inputs i) => local = i;
+        public void SetRemoteInputs(Inputs i) => remote = i;
+
+    }
 }

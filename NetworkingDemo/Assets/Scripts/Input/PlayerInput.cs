@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     sbyte inputVertical;
     sbyte inputHorizontal;
     public InputSerialization.DirectionalInput input;
+    FrameInfo InputThisFrame;
 
 
     private void Awake()

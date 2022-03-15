@@ -11,6 +11,7 @@ public class GameSimulation
      public static ushort currentFrame;
      public static ConcurrentDictionary<ushort, InputSerialization.FrameInfo> FrameDictionary;
      public static uint framesToProcess;
+     const ushort MAX_FRAME_BUFFER = 7;
 
     private static void Init(bool p1Local)
     {
@@ -57,6 +58,10 @@ public class GameSimulation
                 currentFrame++;
 
                 Transport.current = current;
+            }
+            if(currentFrame > MAX_FRAME_BUFFER)
+            {
+                FrameDictionary.TryRemove((ushort)(currentFrame - MAX_FRAME_BUFFER), out _);
             }
         }
     }

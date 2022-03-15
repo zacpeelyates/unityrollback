@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
@@ -20,8 +20,8 @@ public class Peer : MonoBehaviour
     protected TcpListener listener; //listen for connections
     protected TcpClient localClient; //establishes connection to peer
 
-    public Queue<byte[]> recievedMessageQueue = new Queue<byte[]>();
-    public Queue<byte[]> messagesToSend = new Queue<byte[]>();
+    public ConcurrentQueue<byte[]> recievedMessageQueue = new ConcurrentQueue<byte[]>();
+    public ConcurrentQueue<byte[]> messagesToSend = new ConcurrentQueue<byte[]>();
     #endregion
 
     private void Awake()
@@ -61,7 +61,6 @@ public class Peer : MonoBehaviour
 
         if (localClient != null && localClient.Connected)
         {
-            Debug.Log("Connected");
             localClient.ReceiveTimeout = 1;
             outgoingConnectionSucceeded?.Invoke();
             CreateClientThread(localClient); //create new thread to handle connection
@@ -69,7 +68,6 @@ public class Peer : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Failed to connect");
             outgoingConnectionFailed?.Invoke();
             Debug.Log("Attempting to act as server as no server found...");
             config.SwapPorts();
@@ -108,9 +106,14 @@ public class Peer : MonoBehaviour
                 NetworkStream Stream = localClient.GetStream();
                 while (messagesToSend.Count != 0)
                 {
-                     byte[] message = messagesToSend.Dequeue();
-                     Stream.Write(message, 0, message.Length);
-
+                    if(messagesToSend.TryDequeue(out byte[] message))
+                    {
+                        Stream.Write(message, 0, message.Length);
+                    }
+                    else
+                    {
+                        Debug.Log("Couldn't access queue");
+                    }
                 }                            
             }
         }

@@ -32,7 +32,10 @@ public class NetworkManager : MonoBehaviour
             if (localPeer.messagesToSend.Count != 0) localPeer.Send();
             while (localPeer.recievedMessageQueue.Count > 0)
             {
-                HandleMessage(localPeer.recievedMessageQueue.Dequeue());
+                if(localPeer.recievedMessageQueue.TryDequeue(out byte[] message))
+                {
+                    HandleMessage(message);
+                }              
             }
         }
     }
@@ -51,8 +54,7 @@ public class NetworkManager : MonoBehaviour
     void OnOutgoingConnectionSucceeded()
     {
         Debug.Log("ESTABLISHED CONNECTION");
-        //Start game sim as client
-        GameThread = new Thread(RunAsClient) { IsBackground = true };
+        CreateGameThread(true); //Start game sim as client
     }
 
     private static void RunAsClient() => GameSimulation.Run(false); 
@@ -63,19 +65,25 @@ public class NetworkManager : MonoBehaviour
     void OnOutgoingConnectionFailed()
     {
         Debug.Log("FAILED TO CONNECT");
-        //Print error
     }
 
     void OnAllowRemoteConnections()
     {
         Debug.Log("SETTING UP SERVER");
+        CreateGameThread(false); //FOR TESTING PLEASE DELETE
     }
 
     void OnRecieveConnection()
     {
         Debug.Log("FOUND CLIENT");
-        //Start game sim as server
-        GameThread = new Thread(RunAsServer) { IsBackground = true };
+        CreateGameThread(false); //Start game sim as server
+    }
+
+    void CreateGameThread(bool isClient)
+    {
+        GameThread = isClient ? new Thread(RunAsClient) : new Thread(RunAsServer); //cant write the ternary operator in ctor because this is c# 8.0 and thats a >=9.0 feature
+        GameThread.IsBackground = true;
+        GameThread.Start();
     }
 
     void OnPeerDisconnect()

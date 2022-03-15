@@ -26,6 +26,8 @@ public class Renderer : MonoBehaviour
             p1.transform.position = new Vector3(pos1.x.ToFloat, pos1.y.ToFloat, zPos);
             p2.transform.position = new Vector3(pos2.x.ToFloat, pos2.y.ToFloat, zPos);
             //can add lots of nice undertiminestic float lerps and such here but testing for now
+
+            Transport.current = null;
         }
         
     }

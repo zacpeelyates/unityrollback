@@ -19,9 +19,10 @@ public class GameState
 
     public void Tick(InputSerialization.FrameInfo f)
     {
+       if (f == null) return;
        foreach(SimPlayer s in players)
        {
-            s.ApplyInput(s.isRemote ? f.GetRemoteInputs() : f.GetLocalInputs());
+           if(s!=null) s.ApplyInput(s.isRemote ? f.GetRemoteInputs() : f.GetLocalInputs());
        }
     }
 }
@@ -40,12 +41,13 @@ public class SimPlayer
 
     public void ApplyInput(InputSerialization.Inputs i)
     {
+       if (i == null) return;
        (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(i.dir);
-        pos.x += h * moveSpeed;
-        pos.y += v * moveSpeed;
+       pos.x += h * moveSpeed;
+       pos.y += v * moveSpeed;    
     }
 
-    public static readonly FInt32 moveSpeed = FInt32.HALF;
+    public static readonly FInt32 moveSpeed = FInt32.FromString("0.1");
 }
 
 
@@ -53,6 +55,13 @@ public struct FVec2
 {
     public FInt32 x, y;
 
+    public FVec2(FInt32 xpos, FInt32 ypos) 
+    {
+        x = xpos;
+        y = ypos;
+    }
+
+    public Vector3 ToVec3(float zPos) => new Vector3(x.ToFloat, y.ToFloat, zPos);
     public FInt32 Magnitude => FInt32.Sqrt(FInt32.Pow(x, 2) + FInt32.Pow(y, 2));
 
     public static FInt32 Distance(FVec2 a, FVec2 b) => FInt32.Sqrt(FInt32.Pow(a.x - b.x, 2) + FInt32.Pow(a.y - b.y, 2));

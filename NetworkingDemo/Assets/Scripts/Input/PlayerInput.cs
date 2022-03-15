@@ -36,7 +36,7 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
 
     private void Update()
     {
-        InputSerialization.DirectionalInput d = InputSerialization.DirectionalInput.DINPUT_UNKNOWN;
+        InputSerialization.DirectionalInput d = InputSerialization.DirectionalInput.DINPUT_NEUTRAL;
         if (InputThisFrame != null) d = InputThisFrame.dir;
         InputThisFrame = new InputSerialization.Inputs(GameSimulation.currentFrame)
         {

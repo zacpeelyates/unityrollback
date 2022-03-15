@@ -80,6 +80,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TestMessage"",
+                    ""type"": ""Button"",
+                    ""id"": ""61621deb-91fa-44da-9f9f-eaff0980798f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""HSlash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f4fce9f-7264-4256-9f37-b5f0c437d7a5"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TestMessage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -218,6 +238,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Kick = m_Player.FindAction("Kick", throwIfNotFound: true);
         m_Player_Slash = m_Player.FindAction("Slash", throwIfNotFound: true);
         m_Player_HSlash = m_Player.FindAction("HSlash", throwIfNotFound: true);
+        m_Player_TestMessage = m_Player.FindAction("TestMessage", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -283,6 +304,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Kick;
     private readonly InputAction m_Player_Slash;
     private readonly InputAction m_Player_HSlash;
+    private readonly InputAction m_Player_TestMessage;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -293,6 +315,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Kick => m_Wrapper.m_Player_Kick;
         public InputAction @Slash => m_Wrapper.m_Player_Slash;
         public InputAction @HSlash => m_Wrapper.m_Player_HSlash;
+        public InputAction @TestMessage => m_Wrapper.m_Player_TestMessage;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -320,6 +343,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @HSlash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHSlash;
                 @HSlash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHSlash;
                 @HSlash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHSlash;
+                @TestMessage.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestMessage;
+                @TestMessage.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestMessage;
+                @TestMessage.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTestMessage;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -342,6 +368,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @HSlash.started += instance.OnHSlash;
                 @HSlash.performed += instance.OnHSlash;
                 @HSlash.canceled += instance.OnHSlash;
+                @TestMessage.started += instance.OnTestMessage;
+                @TestMessage.performed += instance.OnTestMessage;
+                @TestMessage.canceled += instance.OnTestMessage;
             }
         }
     }
@@ -363,5 +392,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnKick(InputAction.CallbackContext context);
         void OnSlash(InputAction.CallbackContext context);
         void OnHSlash(InputAction.CallbackContext context);
+        void OnTestMessage(InputAction.CallbackContext context);
     }
 }

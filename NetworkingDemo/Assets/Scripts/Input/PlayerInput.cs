@@ -100,4 +100,9 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     {
         InputThisFrame.buttons[(int)InputSerialization.ButtonID.BUTTON_HSLASH] = ContextToInputType(context);
     }
+
+    public void OnTestMessage(InputAction.CallbackContext context)
+    {
+        networkManager.SendMessage(new byte[] { 1, 2, 3, 4 });
+    }
 }

@@ -101,12 +101,27 @@ namespace ParrelSync
             ClonesManager.CreateProjectFolder(cloneProject);
 
             //Copy Folders           
-            Debug.Log("Library copy: " + cloneProject.libraryPath);
-            ClonesManager.CopyDirectoryWithProgressBar(sourceProject.libraryPath, cloneProject.libraryPath,
-                "Cloning Project Library '" + sourceProject.name + "'. ");
-            Debug.Log("Packages copy: " + cloneProject.libraryPath);
-            ClonesManager.CopyDirectoryWithProgressBar(sourceProject.packagesPath, cloneProject.packagesPath,
-              "Cloning Project Packages '" + sourceProject.name + "'. ");
+            try
+            {
+                Debug.Log("Library copy: " + cloneProject.libraryPath);
+                ClonesManager.CopyDirectoryWithProgressBar(sourceProject.libraryPath, cloneProject.libraryPath,
+                    "Cloning Project Library '" + sourceProject.name + "'. ");
+            }
+            catch
+            {
+                Debug.Log("library error");
+            }
+
+            try
+            {
+                Debug.Log("Packages copy: " + cloneProject.libraryPath);
+                ClonesManager.CopyDirectoryWithProgressBar(sourceProject.packagesPath, cloneProject.packagesPath,
+                  "Cloning Project Packages '" + sourceProject.name + "'. ");
+            }
+            catch
+            {
+                Debug.Log("Package error");
+            }
 
 
             //Link Folders
@@ -543,7 +558,15 @@ namespace ParrelSync
             /// Calculate total bytes, if required.
             if (totalBytes == 0)
             {
-                totalBytes = ClonesManager.GetDirectorySize(source, true, progressBarPrefix);
+                try
+                {
+                    totalBytes = ClonesManager.GetDirectorySize(source, true, progressBarPrefix);
+                }
+                catch
+                {
+                    totalBytes = 69696969;
+                }
+               
             }
 
             /// Create destination directory, if required.
@@ -600,7 +623,17 @@ namespace ParrelSync
                 "Scanning '" + directory.FullName + "'...", 0f);
 
             /// Calculate size of all files in directory.
-            long filesSize = directory.GetFiles().Sum((FileInfo file) => file.Length);
+
+            long filesSize = 0;
+            try
+            {
+                filesSize = directory.GetFiles().Sum((FileInfo file) => file.Length);
+            }
+            catch (IOException)
+            {
+                Debug.Log("what");
+            }
+           
 
             /// Calculate size of all nested directories.
             long directoriesSize = 0;

@@ -100,4 +100,6 @@ NetworkingDemo/Temp/UnityLockfile
 *.md
 NetworkingDemo/Temp/workerlic
 NetworkingDemo/Temp/__Backupscenes/0.backup
-NetworkingDemo/Build/*
+NetworkingDemo/Build/**
+
+NetworkingDemo_clone_?/**

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GameState
 {
-   public SimPlayer[] players = new SimPlayer[2];
+    public SimPlayer[] players = new SimPlayer[2];
 
     static readonly FInt32 STARTPOS = 2;
+
+    public int frameID;
 
     public GameState(bool p1Local)
     {
@@ -15,15 +17,22 @@ public class GameState
 
         players[0].pos.x = -STARTPOS;
         players[1].pos.x = STARTPOS;
+
+        frameID = 0;
     }
 
-    public void Tick(InputSerialization.FrameInfo f)
+    public GameState Tick(InputSerialization.FrameInfo f)
     {
-       if (f == null) return;
-       foreach(SimPlayer s in players)
-       {
-           if(s!=null) s.ApplyInput(s.isRemote ? f.GetRemoteInputs() : f.GetLocalInputs());
-       }
+       GameState next = this;
+       next.frameID = frameID + 1;
+        if (f != null)
+        {
+            foreach (SimPlayer s in next.players)
+            {
+                if (s != null) s.ApplyInput(s.isRemote ? f.GetRemoteInputs() : f.GetLocalInputs());
+            }
+        }
+        return next;
     }
 }
 

@@ -48,7 +48,7 @@ public class NetworkManager : MonoBehaviour
     void HandleMessage(byte[] message)
     {
         //send message to our game sim       
-        GameSimulation.AddRemoteInput(InputSerialization.Inputs.FromBytes(message));    
+        GameSimulation.AddRemoteInput(InputSerialization.Inputs.FromBytes(message),false);    
     }
 
     void OnOutgoingConnectionSucceeded()
@@ -70,7 +70,6 @@ public class NetworkManager : MonoBehaviour
     void OnAllowRemoteConnections()
     {
         Debug.Log("SETTING UP SERVER");
-        CreateGameThread(false); //FOR TESTING PLEASE DELETE
     }
 
     void OnRecieveConnection()

@@ -16,6 +16,7 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     sbyte inputHorizontal;
     public InputSerialization.DirectionalInput dirInput;
     InputSerialization.Inputs InputThisFrame;
+    
 
 
 
@@ -38,26 +39,16 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     {
         InputSerialization.DirectionalInput d = InputSerialization.DirectionalInput.DINPUT_NEUTRAL;
         if (InputThisFrame != null) d = InputThisFrame.dir;
-        InputThisFrame = new InputSerialization.Inputs(GameSimulation.currentFrame)
-        {
-            dir = d //buffer input from previous frame if we have it
-        }; //reset inputs
+        InputThisFrame = new InputSerialization.Inputs(GameSimulation.localFrame) { dir = d  }; 
     }
 
     private void LateUpdate()
     {
-        
-        if (GameSimulation.isAlive) //give local input to game sim
-        {
-            GameSimulation.AddLocalInput(InputThisFrame);
-            GameSimulation.framesToProcess++;
-
-            //send input to remote
-            networkManager.SendMessage(InputSerialization.Inputs.ToBytes(InputThisFrame));
-        }
-        
-
-    }
+        if (!GameSimulation.isAlive) return;
+        GameSimulation.AddLocalInput(InputThisFrame); //give local input to game sim
+        networkManager.SendMessage(InputSerialization.Inputs.ToBytes(InputThisFrame)); //send input to remote
+        GameSimulation.framesToProcess++;     
+    }  
 
 
     public void OnVertical(InputAction.CallbackContext context)

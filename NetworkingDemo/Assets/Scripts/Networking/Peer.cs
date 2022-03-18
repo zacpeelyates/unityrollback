@@ -85,14 +85,27 @@ public class Peer : MonoBehaviour
     private void MessageRecieverTask(object obj)
     {
         TcpClient client = (TcpClient)obj;
+        client.NoDelay = true;
+        //remove this, testing 
+        client.SendTimeout = 10000;
+        client.ReceiveTimeout = 10000;
+        const int SIZE = InputSerialization.Inputs.MessageSizeInBytes;
+
         Debug.Log("Reciever thread active...");
         NetworkStream Stream = client.GetStream();
-        while(client.Connected)
-        {          
-                byte[] message = NetworkUtils.StreamToBytes(Stream);            
-                recievedMessageQueue.Enqueue(message);
-                Debug.Log("recieved: " + message.ToString());
-                Stream.Flush();
+        byte[] message = new byte[SIZE];
+        while (client.Connected)
+        {
+            if (Stream.CanRead)
+            {
+                
+                if (Stream.ReadAsync(message, 0, SIZE).Result >= SIZE)
+                {
+                    recievedMessageQueue.Enqueue(message);
+                    message = new byte[SIZE];
+                    Stream.FlushAsync();
+                }
+            }
         }
         Stream.Close();
     }
@@ -104,11 +117,12 @@ public class Peer : MonoBehaviour
             else
             {            
                 NetworkStream Stream = localClient.GetStream();
-                while (messagesToSend.Count != 0)
+                while (Stream.CanWrite && messagesToSend.Count != 0)
                 {
                     if(messagesToSend.TryDequeue(out byte[] message))
                     {
-                        Stream.Write(message, 0, message.Length);
+                        Stream.WriteAsync(message, 0, message.Length);
+                        Stream.FlushAsync();
                     }
                     else
                     {

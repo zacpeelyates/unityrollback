@@ -92,7 +92,7 @@ public static class InputSerialization
     {
         public ushort FrameID;
         public DirectionalInput dir;
-        public ButtonInputType[] buttons;
+        public ButtonInputType[] buttons = new ButtonInputType[(int)ButtonInputType.BINPUT_COUNT];
 
         enum INPUT_OFFSETS
         { 
@@ -109,21 +109,22 @@ public static class InputSerialization
             buttons = new ButtonInputType[(int)ButtonID.BUTTON_COUNT];
         }
 
+        public const int MessageSizeInBytes = 4;
+
         public static byte[] ToBytes(Inputs inputs)
         {
             /*
-             *  Array begins with frameID (2 bytes), then:
-             *  each button is 2 bits (buttoninputtype) in order of ButtonIDs
-             *  motion input is 4 bits (need to store 0-9 for 8 dir + neutral)
+             *  Array begins with frameID (2 bytes), then:                                  
+             *  each button is 2 bits (buttoninputtype) in order of ButtonIDs               
+             *  motion input is 4 bits (need to store 0-9 for 8 dir + neutral)              
              *  each byte in returned byte[] will contain 4 button inputs
              *  the final byte will contain the motion input data with 4 unused bits
              *  If we have 5 or 6 buttons in future, we can pack them in these unused bits
              */
-
             List<byte> result = new List<byte>
             {
-                (byte)((byte)inputs.FrameID >> 8),
-                (byte)(inputs.FrameID & 0xFF)
+                (byte)((inputs.FrameID >> 8) & 0xFF), //first 8 bits of 16bit frameID
+                (byte)(inputs.FrameID & 0xFF) //second 8 bits of 16 bit frame id
             };
 
             byte next = 0;
@@ -142,8 +143,8 @@ public static class InputSerialization
         {
             Inputs result = new Inputs
             {
-                FrameID = (ushort)((bytes[(int)INPUT_OFFSETS.ID] << 8)| bytes[(int)INPUT_OFFSETS.ID+1]),              
-                dir = (DirectionalInput)(bytes[(int)INPUT_OFFSETS.DIRECTIONAL] & 0xF) //dir is final 4 bits 
+                FrameID = (ushort)((bytes[(ushort)INPUT_OFFSETS.ID] << 8) | bytes[(ushort)INPUT_OFFSETS.ID+1]),              
+                dir = (DirectionalInput)(bytes[(ushort)INPUT_OFFSETS.DIRECTIONAL] & 0xF) //dir is final 4 bits 
             };
 
             for(int i = 0; i < (int)ButtonID.BUTTON_COUNT; ++i)
@@ -157,17 +158,19 @@ public static class InputSerialization
     public class FrameInfo
     {
         private Inputs local, remote;
+        public bool remoteIsPredicted = false;
         public Inputs GetLocalInputs() => local;
         public Inputs GetRemoteInputs() => remote;
         public void SetLocalInputs(Inputs i) => local = i;
         public void SetRemoteInputs(Inputs i) => remote = i;
 
-        public FrameInfo ReturnWithNewRemote(Inputs i)
+
+        public FrameInfo ReturnWithNewInput(Inputs i, bool isRemote)
         {
-            remote = i;
+            if (isRemote) remote = i;          
+            else local = i;
             return this;
         }
-
         
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class Buffer<T>
+public class RingBuffer<T>
 { 
 
     private T[] bufArray;
@@ -12,28 +12,15 @@ public class Buffer<T>
 
     public T this[int i] => bufArray[i];
 
-    public int Count => GetCount();
-    public int Size => GetSize();
+    public int Count => m_count;
+    public int Size => bufArray.Length;
 
-    public Buffer(int capacity = 8)
-    {
-        bufArray = new T[capacity];
-    }
+    public RingBuffer(int capacity = 8) => bufArray = new T[capacity];
+    
 
-    private void Increment(ref int i)
-    {
-        i = i++ % Size;
-    }
+    private void Increment(ref int i) => i = i++ % Size;
 
-    private int GetCount()
-    {
-        return m_count;
-    }
 
-    private int GetSize()
-    {
-        return bufArray.Length;
-    }
 
     public void Add(T item)
     {

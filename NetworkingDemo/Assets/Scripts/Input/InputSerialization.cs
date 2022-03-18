@@ -143,7 +143,7 @@ public static class InputSerialization
         {
             Inputs result = new Inputs
             {
-                FrameID = (ushort)((bytes[(ushort)INPUT_OFFSETS.ID] << 8) | bytes[(ushort)INPUT_OFFSETS.ID+1]),              
+                FrameID = (ushort)((bytes[(ushort)INPUT_OFFSETS.ID] << 8) | bytes[(ushort)INPUT_OFFSETS.ID+1]), //first two bytes make up 16 bit representation of frameID      
                 dir = (DirectionalInput)(bytes[(ushort)INPUT_OFFSETS.DIRECTIONAL] & 0xF) //dir is final 4 bits 
             };
 

@@ -27,10 +27,13 @@ public class FInt32
     public Int32 Fractional => m_raw & MAX_FRACTIONAL; //mask out integral, could also write ~MAX_INTEGRAL but this is more readable imo
 
     //math functions
+    public static int Sign(FInt32 a) => a == 0 ? 0 : a > 0 ? 1 : -1; //return sign of value (-1,1,0)
     public static FInt32 Floor(FInt32 a) => new FInt32(a.Integral); //remove fractional values (round down)
     public static FInt32 Ceiling(FInt32 a) => a.Fractional == 0 ? a : Floor(a + ONE); //if no fractional, return what we were passed, else return that plus 1 (round up)
     public static FInt32 Round(FInt32 a) => Floor(a + HALF); //round to nearest whole integer (could be up or down, 0.5 rounds up here)
     public static FInt32 Abs(FInt32 a) => a > ZERO ? a : -a; //return positive value of what we were passed
+    public static FInt32 Clamp(FInt32 a, FInt32 min, FInt32 max) => a < min ? min : a > max ? max : a; //clamp between min and max
+
     public static FInt32 Pow(FInt32 a, int p)
     {
         if (p == 0) return ONE; //early out
@@ -97,6 +100,9 @@ public class FInt32
         }
         return new FInt32(i | (f & MAX_FRACTIONAL)); //return parsed string as FINT32 
     }
+
+    public static FInt32 Min(FInt32 a, FInt32 b) => a < b ? a : b;
+    public static FInt32 Max(FInt32 a, FInt32 b) => a < b ? b : a;
 
     //operators, should be mostly self-explanatory as we are just performing the maths on the underlying raw int values
     public static FInt32 operator +(FInt32 a, FInt32 b) => new FInt32(a.m_raw + b.m_raw);

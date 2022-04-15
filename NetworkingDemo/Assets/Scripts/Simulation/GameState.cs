@@ -7,6 +7,7 @@ public class GameState
     public SimPlayer[] players = new SimPlayer[2];
 
     static readonly FInt32 STARTPOS = 2;
+    static readonly FInt32 GRAVITY = FInt32.FromString("0.1");
 
     public int frameID;
 
@@ -25,54 +26,68 @@ public class GameState
     {
        GameState next = this;
        next.frameID = frameID + 1;
-        if (f != null)
+       foreach (SimPlayer s in next.players)
         {
-            foreach (SimPlayer s in next.players)
+            if (s == null) continue;
+
+            if (s.IsGrounded)
             {
-                if (s != null) s.ApplyInput(s.isRemote ? f.GetRemoteInputs() : f.GetLocalInputs());
-            }
+                s.vel.y = 0;
+                s.pos.y = 0;
+            } else s.vel.y -= GRAVITY;
+
+            if (f != null)s.ApplyInput(s.isRemote ? f.GetRemoteInputs() : f.GetLocalInputs());
+
+            
+            s.pos += s.vel;
         }
-        return next;
+       return next;
     }
 }
 
 public class SimPlayer
 {
+    public static readonly FInt32 GROUND = 0;
     public FVec2 pos;
+    public FVec2 vel;
     public bool isRemote;
+    public bool IsGrounded => pos.y <= GROUND;
+
 
     public SimPlayer(bool remote)
     {
-        pos.x = 0;
-        pos.y = 0;
+        pos = new FVec2(0, 0);
+        vel = new FVec2(0, 0);
         isRemote = remote;
     }
+
+
 
     public void ApplyInput(InputSerialization.Inputs i)
     {
        if (i == null) return;
        (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(i.dir);
-       pos.x += h * moveSpeed;
-       pos.y += v * moveSpeed;    
+        FInt32 temp = vel.x;
+        vel.x += h * moveSpeed;
+        if (v > 0 && IsGrounded)
+        {
+            vel.y += v * 2;
+        }
+        if (v < 0 || h == 0 || FInt32.Abs(temp) > FInt32.Abs(vel.x))
+        {
+            vel.x = 0;
+            return;
+        }
+
+
+       vel.x = FInt32.Clamp(vel.x, -maxMovespeed,maxMovespeed);
     }
 
-    public static readonly FInt32 moveSpeed = FInt32.FromString("0.1");
+    public static readonly FInt32 moveSpeed = FInt32.FromString("0.01");
+    public static readonly FInt32 maxMovespeed = FInt32.FromString("0.1");
+    
 }
 
 
-public struct FVec2
-{
-    public FInt32 x, y;
 
-    public FVec2(FInt32 xpos, FInt32 ypos) 
-    {
-        x = xpos;
-        y = ypos;
-    }
-
-    public Vector3 ToVec3(float zPos) => new Vector3(x.ToFloat, y.ToFloat, zPos);
-    public FInt32 Magnitude => FInt32.Sqrt(FInt32.Pow(x, 2) + FInt32.Pow(y, 2));
-
-    public static FInt32 Distance(FVec2 a, FVec2 b) => FInt32.Sqrt(FInt32.Pow(a.x - b.x, 2) + FInt32.Pow(a.y - b.y, 2));
-}
 

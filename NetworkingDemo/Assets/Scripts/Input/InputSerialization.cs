@@ -94,6 +94,16 @@ public static class InputSerialization
         public DirectionalInput dir;
         public ButtonInputType[] buttons = new ButtonInputType[(int)ButtonInputType.BINPUT_COUNT];
 
+        private string ButtonsToString()
+        {
+            string result = "";
+            for(int i = 0; i < buttons.Length; ++i)
+            {
+                result += " " + ((ButtonID)i).ToString() + " " + buttons[i].ToString();
+            }
+            return result;
+        }
+
         enum INPUT_OFFSETS
         { 
             ID,
@@ -154,6 +164,8 @@ public static class InputSerialization
 
             return result;
         }
+
+        public override string ToString() => $"Frame: {FrameID} Dir: {dir} Buttons: {ButtonsToString()} ";
     }
     public class FrameInfo
     {

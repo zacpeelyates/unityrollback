@@ -11,7 +11,6 @@ public class NetworkManager : MonoBehaviour
     
     private void Start()
     {
-
         if (!localPeer) localPeer = GetComponent<Peer>();
 
         //setup delegates
@@ -48,7 +47,9 @@ public class NetworkManager : MonoBehaviour
     void HandleMessage(byte[] message)
     {
         //send message to our game sim       
-        GameSimulation.AddRemoteInput(InputSerialization.Inputs.FromBytes(message),false);    
+        var test = InputSerialization.Inputs.FromBytes(message);
+        //Debug.Log("Recived: " + test.ToString());
+        GameSimulation.AddRemoteInput(test,false);    
     }
 
     void OnOutgoingConnectionSucceeded()

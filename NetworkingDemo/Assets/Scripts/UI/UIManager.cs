@@ -23,6 +23,9 @@ TMP_Text localFrame;
     [SerializeField]
     TMP_Text ftp;
 
+    [SerializeField]
+    TMP_Text localInput;
+
     readonly float messageTime = 1.5f;
     float t = 0;
 
@@ -36,6 +39,7 @@ TMP_Text localFrame;
         remoteFrame.text = "Remote Frame: " + r.ToString();
         frameDifference.text = "Frame Advantage: " + (l - r).ToString();
         ftp.text = "Frames To Process: " + GameSimulation.framesToProcess;
+        localInput.text = "Local Input: " + Transport.current.cachedInfo.GetLocalInputs().ToString();
 
 
        if(debugText.text.Length != 0 && (t+=Time.deltaTime) >= messageTime)

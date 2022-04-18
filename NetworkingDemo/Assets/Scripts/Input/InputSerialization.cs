@@ -99,7 +99,7 @@ public static class InputSerialization
             string result = "";
             for(int i = 0; i < buttons.Length; ++i)
             {
-                result += " " + ((ButtonID)i).ToString() + " " + buttons[i].ToString();
+                result += "\n" + ((ButtonID)i).ToString() + " " + buttons[i].ToString();
             }
             return result;
         }
@@ -165,7 +165,7 @@ public static class InputSerialization
             return result;
         }
 
-        public override string ToString() => $"Frame: {FrameID} Dir: {dir} Buttons: {ButtonsToString()} ";
+        public override string ToString() => $"Frame: {FrameID} \nDir: {dir} \nButtons: {ButtonsToString()} ";
     }
     public class FrameInfo
     {

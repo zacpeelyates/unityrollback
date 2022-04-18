@@ -72,7 +72,7 @@ public class GameSimulation
             {
                 framesToProcess--;
                 PredictRemoteInputs(localFrame - LastRemoteFrame);
-                if (RollbackFrames.Count != 0) current = HandleRollbacks();
+                //if (RollbackFrames.Count != 0) current = HandleRollbacks();
                 FrameDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
                 current = current.Tick(f);
                 GameStateDictionary.Add(current.frameID, current);

@@ -18,9 +18,6 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     InputSerialization.Inputs InputThisFrame;
     ushort frame = 0; 
     
-
-
-
     private InputSerialization.ButtonInputType ContextToInputType(InputAction.CallbackContext context)
     {
         if (context.started) return InputSerialization.ButtonInputType.BINPUT_PRESSED;

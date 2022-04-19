@@ -26,20 +26,29 @@ TMP_Text localFrame;
     [SerializeField]
     TMP_Text localInput;
 
+    [SerializeField]
+    TMP_Text state;
+
     readonly float messageTime = 1.5f;
     float t = 0;
 
     private void Update()
     {
         ushort l =  GameSimulation.localFrame;
-        ushort r = GameSimulation.LastRemoteFrame;
+        ushort r =  GameSimulation.LastRemoteFrame;
       
 
         localFrame.text = "Local Frame: " + l.ToString();
         remoteFrame.text = "Remote Frame: " + r.ToString();
         frameDifference.text = "Frame Advantage: " + (l - r).ToString();
         ftp.text = "Frames To Process: " + GameSimulation.framesToProcess;
-        localInput.text = "Local Input: " + Transport.current.cachedInfo.GetLocalInputs().ToString();
+        if(Transport.current != null)
+        {
+            localInput.text = "Local Input: " + Transport.current.cachedInfo.GetLocalInputs().ToString();
+            state.text = "State: " + Transport.current.players[0].state;
+
+        }
+
 
 
        if(debugText.text.Length != 0 && (t+=Time.deltaTime) >= messageTime)

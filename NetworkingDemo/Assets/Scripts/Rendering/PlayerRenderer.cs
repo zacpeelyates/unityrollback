@@ -25,8 +25,8 @@ public class PlayerRenderer : MonoBehaviour
             gameObject.transform.position = basePos + simPlayer.pos.ToVec2();
 
             anim.SetBool("kick", simPlayer.state == PlayerState.PS_KICK);
-            if(simPlayer.state != PlayerState.PS_IDLE) Debug.Log(simPlayer.state);
             anim.SetBool("walk", simPlayer.state == PlayerState.PS_WALK);
+            anim.SetBool("crouch", simPlayer.state == PlayerState.PS_CROUCH);
         }
         
         

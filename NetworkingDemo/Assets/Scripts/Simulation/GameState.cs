@@ -7,8 +7,6 @@ public class GameState
     public SimPlayer[] players = new SimPlayer[2];
 
     static readonly FInt32 STARTPOS = 2 + FInt32.HALF;
-    static readonly FInt32 GRAVITY = FInt32.FromString("0.1");
-    static readonly FInt32 DRAG = FInt32.FromString("0.05");
     public InputSerialization.FrameInfo cachedInfo;
 
     public int frameID;
@@ -38,10 +36,8 @@ public class GameState
                 s.vel.y = 0;
                 s.pos.y = 0;
                 s.state = PlayerState.PS_IDLE;
-            }
-            else
+            } else
             {
-                s.vel.y -= GRAVITY;
                 s.state = PlayerState.PS_AIRBORNE;
             }
 
@@ -56,12 +52,14 @@ public class GameState
 public class SimPlayer
 {
     public static readonly FInt32 GROUND = 0;
+    public static readonly FInt32 JUMP = FInt32.FromString("0.01");
     public FVec2 pos;
     public FVec2 vel;
     public bool isRemote;
     public bool IsGrounded => pos.y <= GROUND;
     public PlayerState state;
-    
+    static readonly FInt32 GRAVITY = FInt32.FromString("0.002");
+
 
 
 
@@ -77,26 +75,24 @@ public class SimPlayer
 
     public void ApplyInput(InputSerialization.Inputs i)
     {
-        
-       if (i == null) return;
-       (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(i.dir);
+        if (i == null) return;
+        (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(i.dir);
         FInt32 temp = vel.x;
-        vel.y += IsGrounded && v > 0 ? v * 2 : 0;
+        if (!IsGrounded) vel.y -= GRAVITY;
+        if (IsGrounded && v > 0) vel.y += JUMP * v;
         vel.x += IsGrounded ? h * moveSpeed : 0;
         vel.x = FInt32.Clamp(vel.x, -maxMovespeed, maxMovespeed);
 
-        if (IsGrounded && v < 0 || h == 0 || FInt32.Abs(temp) > FInt32.Abs(vel.x))
-        {
-            vel.x = 0;
-        }
+        if (IsGrounded && h != 0) state = PlayerState.PS_WALK;
+        if (IsGrounded && v < 0) state = PlayerState.PS_CROUCH;
+        if (IsGrounded && i.buttons[(int)InputSerialization.ButtonID.BUTTON_KICK] == InputSerialization.ButtonInputType.BINPUT_HELD) state = PlayerState.PS_KICK;
+        if (state == PlayerState.PS_CROUCH  || h == 0|| FInt32.Abs(temp) > FInt32.Abs(vel.x)) vel.x = 0;
+       
 
-        //states
-
-        if (IsGrounded && vel.x != 0) state = PlayerState.PS_WALK;
     }
 
     public static readonly FInt32 moveSpeed = FInt32.FromString("0.01");
-    public static readonly FInt32 maxMovespeed = FInt32.FromString("0.025");
+    public static readonly FInt32 maxMovespeed = FInt32.FromString("0.02");
 
 }
 

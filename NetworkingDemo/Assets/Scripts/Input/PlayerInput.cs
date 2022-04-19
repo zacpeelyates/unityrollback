@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
 {
+
+
     [SerializeField]
     NetworkManager networkManager;
 
@@ -16,18 +18,12 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     sbyte inputHorizontal;
     public InputSerialization.DirectionalInput dirInput;
     InputSerialization.Inputs InputThisFrame;
-    ushort frame = 0; 
+    ushort frame = 0;
+    bool[] isHeld = new bool[(int)InputSerialization.ButtonID.BUTTON_COUNT];
     
-    private InputSerialization.ButtonInputType ContextToInputType(InputAction.CallbackContext context)
-    {
-        if (context.started) return InputSerialization.ButtonInputType.BINPUT_PRESSED;
-        if (context.performed) return InputSerialization.ButtonInputType.BINPUT_HELD;
-        if (context.canceled) return InputSerialization.ButtonInputType.BINPUT_RELEASED;
-        return InputSerialization.ButtonInputType.BINPUT_NONE;
-    }
-
+   
     private void Awake()
-    {    
+    {
        pia = new PlayerInputActions();
        pia.Player.Enable();
        pia.Player.SetCallbacks(this);    
@@ -44,51 +40,65 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     private void LateUpdate()
     {
         if (!GameSimulation.isAlive) return;
+        for(int i = 0; i < isHeld.Length; ++i )
+        {
+            if (isHeld[i]) InputThisFrame.buttons[i] = InputSerialization.ButtonInputType.BINPUT_HELD; //new unity system doesnt work good for holding so this is a hacky workaround
+        }
         GameSimulation.AddLocalInput(InputThisFrame); //give local input to game sim
         networkManager.SendMessage(InputSerialization.Inputs.ToBytes(InputThisFrame)); //send input to remote    
-    }  
-
-
-    public void OnVertical(InputAction.CallbackContext context)
-    {
-        OnDirection(context, true);
     }
 
-    public void OnHorizontal(InputAction.CallbackContext context)
-    {
-        OnDirection(context, false);
-    }
+
+
 
     private void OnDirection(InputAction.CallbackContext context, bool isVertical)
     {
         if (context.performed) return;
         sbyte value = (sbyte)context.ReadValue<float>();
-        if (isVertical) inputVertical = value; else inputHorizontal = value;
+        if (isVertical) inputVertical = value;
+        else inputHorizontal = value;
         dirInput = InputSerialization.ConvertInputAxisToDirectionalInput(inputHorizontal, inputVertical);
-       // Debug.Log(dirInput);
+        // Debug.Log(dirInput);
         InputThisFrame.dir = dirInput;
-       
     }
 
-    public void OnPunch(InputAction.CallbackContext context)
+
+    public void OnVertical(InputAction.CallbackContext context) => OnDirection(context, true);
+
+    public void OnHorizontal(InputAction.CallbackContext context) => OnDirection(context, false);
+
+    private InputSerialization.ButtonInputType ContextToInputType(InputAction.CallbackContext context, int index)
     {
-        InputThisFrame.buttons[(int)InputSerialization.ButtonID.BUTTON_PUNCH] = ContextToInputType(context);
+        if (context.canceled)
+        {
+            isHeld[index] = false;
+            return InputSerialization.ButtonInputType.BINPUT_RELEASED;
+        }
+
+        if (context.started)
+        {
+            isHeld[index] = true;
+            return InputSerialization.ButtonInputType.BINPUT_PRESSED;
+        }    
+
+        if (isHeld[index])
+        {
+            return InputSerialization.ButtonInputType.BINPUT_HELD;
+        }
+
+        return InputSerialization.ButtonInputType.BINPUT_NONE;
     }
 
-    public void OnKick(InputAction.CallbackContext context)
-    {
-        InputThisFrame.buttons[(int)InputSerialization.ButtonID.BUTTON_KICK] = ContextToInputType(context);
-    }
+    public void OnButton(InputAction.CallbackContext context, int index) => InputThisFrame.buttons[index] = ContextToInputType(context, index);
+    
+    public void OnPunch(InputAction.CallbackContext context) => OnButton(context, (int)InputSerialization.ButtonID.BUTTON_PUNCH);
 
-    public void OnSlash(InputAction.CallbackContext context)
-    {
-        InputThisFrame.buttons[(int)InputSerialization.ButtonID.BUTTON_SLASH] = ContextToInputType(context);
-    }
+    public void OnKick(InputAction.CallbackContext context) => OnButton(context, (int)InputSerialization.ButtonID.BUTTON_KICK);
 
-    public void OnHSlash(InputAction.CallbackContext context)
-    {
-        InputThisFrame.buttons[(int)InputSerialization.ButtonID.BUTTON_HSLASH] = ContextToInputType(context);
-    }
+    public void OnSlash(InputAction.CallbackContext context) => OnButton(context, (int)InputSerialization.ButtonID.BUTTON_SLASH);
+
+    public void OnHSlash(InputAction.CallbackContext context) => OnButton(context, (int)InputSerialization.ButtonID.BUTTON_HSLASH);
+
 
     public void OnTestMessage(InputAction.CallbackContext context)
     {

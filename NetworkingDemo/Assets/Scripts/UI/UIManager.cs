@@ -49,7 +49,6 @@ TMP_Text localFrame;
         if((g = Transport.current) != null)
         {
             SimPlayer local = g.players[0];
-            localInput.text = "Local Input: " + g.cachedInfo.GetLocalInputs().ToString();
             state.text = "State: " + local.state;
             posVel.text = $"posX:{local.pos.x}\nposY:{local.pos.y}\nvelX:{local.vel.x}\nVelY:{local.vel.y}";
         }

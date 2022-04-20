@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Linq;
+using System;
 
 public class GameSimulation
 {
@@ -13,7 +14,6 @@ public class GameSimulation
      const ushort MAX_FRAME_BUFFER = 8;
      private static HashSet<ushort> RollbackFrames;
      private static Dictionary<int, GameState> GameStateDictionary;
-     public static uint framesToProcess;
       
      
      
@@ -24,7 +24,6 @@ public class GameSimulation
     {
         current = new GameState(p1Local);
         localFrame = 0;
-        framesToProcess = 0;
         FrameDictionary = new ConcurrentDictionary<ushort, InputSerialization.FrameInfo>();
         isAlive = true;
         RollbackFrames = new HashSet<ushort>();
@@ -37,7 +36,6 @@ public class GameSimulation
         temp.SetLocalInputs(input);
         FrameDictionary.AddOrUpdate(input.FrameID, temp, (k, v) => v.ReturnWithNewInput(input, false));
         localFrame = input.FrameID;
-        framesToProcess++;
     }
 
     public static void AddRemoteInput(InputSerialization.Inputs input, bool isPredicted)
@@ -62,15 +60,24 @@ public class GameSimulation
         });
     }
 
+    readonly static long TICKS_PER_FRAME = 166667; //16.67ms for 60fps
     public static void Run(bool p1Local)
     {
         Init(p1Local);
         current.frameID = localFrame;
+        long prev = System.DateTime.UtcNow.Ticks;
+        long lag = 0; 
+        
+     
         while(isAlive) //update loop
         {
-            if (framesToProcess > 0)
+            long now = System.DateTime.UtcNow.Ticks;
+            long elapsed = now - prev;
+            prev = now;
+            lag += elapsed;
+            while (lag >= TICKS_PER_FRAME)
             {
-                framesToProcess--;
+                lag -= TICKS_PER_FRAME;
                 PredictRemoteInputs(localFrame - LastRemoteFrame);
                 //if (RollbackFrames.Count != 0) current = HandleRollbacks();
                 FrameDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
@@ -80,8 +87,7 @@ public class GameSimulation
                 GameStateDictionary.Remove(earliestBufferedFrame);
                 FrameDictionary.TryRemove(earliestBufferedFrame, out _);
                 Transport.current = current;
-            }
-            
+            }                    
         }
     }
 

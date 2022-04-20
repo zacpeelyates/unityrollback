@@ -106,3 +106,5 @@ NetworkingDemo_clone_?/**
 
 !NetworkingDemo/Packages/**
 !NetworkingDemo/Assets/**
+
+NetworkingDemo/ParrelSync/**

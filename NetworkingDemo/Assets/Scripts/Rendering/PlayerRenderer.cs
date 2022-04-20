@@ -27,6 +27,8 @@ public class PlayerRenderer : MonoBehaviour
             anim.SetBool("kick", simPlayer.state == PlayerState.PS_KICK);
             anim.SetBool("walk", simPlayer.state == PlayerState.PS_WALK);
             anim.SetBool("crouch", simPlayer.state == PlayerState.PS_CROUCH);
+            anim.SetBool("jump", simPlayer.state == PlayerState.PS_AIRBORNE);
+            anim.SetBool("land", simPlayer.IsGrounded);
         }
         
         

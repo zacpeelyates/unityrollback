@@ -33,8 +33,8 @@ public class GameState
 
             if (s.IsGrounded)
             {
-                s.vel.y = 0;
                 s.pos.y = 0;
+                s.vel.y = 0;
                 s.state = PlayerState.PS_IDLE;
             } else
             {
@@ -52,13 +52,15 @@ public class GameState
 public class SimPlayer
 {
     public static readonly FInt32 GROUND = 0;
-    public static readonly FInt32 JUMP = FInt32.FromString("0.01");
+    public static readonly FInt32 JUMP = FInt32.FromString("0.125");
     public FVec2 pos;
     public FVec2 vel;
     public bool isRemote;
     public bool IsGrounded => pos.y <= GROUND;
     public PlayerState state;
-    static readonly FInt32 GRAVITY = FInt32.FromString("0.002");
+    public static readonly FInt32 GRAVITY_PREAPEX = FInt32.FromString("0.0075");
+    public static readonly FInt32 GRAVITY_POSTAPEX = FInt32.FromString("0.075");
+    public static readonly FInt32 APEX = 2;
 
 
 
@@ -78,15 +80,14 @@ public class SimPlayer
         if (i == null) return;
         (sbyte h, sbyte v) = InputSerialization.ConvertDirectionalInputToAxis(i.dir);
         FInt32 temp = vel.x;
-        if (!IsGrounded) vel.y -= GRAVITY;
-        if (IsGrounded && v > 0) vel.y += JUMP * v;
+        vel.y += IsGrounded ? v>0 ? v*JUMP : 0 : pos.y >= APEX || vel.y < 0 ? -GRAVITY_POSTAPEX : -GRAVITY_PREAPEX;
         vel.x += IsGrounded ? h * moveSpeed : 0;
         vel.x = FInt32.Clamp(vel.x, -maxMovespeed, maxMovespeed);
 
         if (IsGrounded && h != 0) state = PlayerState.PS_WALK;
         if (IsGrounded && v < 0) state = PlayerState.PS_CROUCH;
         if (IsGrounded && i.buttons[(int)InputSerialization.ButtonID.BUTTON_KICK] == InputSerialization.ButtonInputType.BINPUT_HELD) state = PlayerState.PS_KICK;
-        if (state == PlayerState.PS_CROUCH  || h == 0|| FInt32.Abs(temp) > FInt32.Abs(vel.x)) vel.x = 0;
+        if (state == PlayerState.PS_CROUCH  || IsGrounded && h == 0|| FInt32.Abs(temp) > FInt32.Abs(vel.x)) vel.x = 0;
        
 
     }

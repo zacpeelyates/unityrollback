@@ -29,6 +29,9 @@ TMP_Text localFrame;
     [SerializeField]
     TMP_Text state;
 
+    [SerializeField]
+    TMP_Text posVel;
+
     readonly float messageTime = 1.5f;
     float t = 0;
 
@@ -42,11 +45,13 @@ TMP_Text localFrame;
         remoteFrame.text = "Remote Frame: " + r.ToString();
         frameDifference.text = "Frame Advantage: " + (l - r).ToString();
         ftp.text = "Frames To Process: " + GameSimulation.framesToProcess;
-        if(Transport.current != null)
+        GameState g;
+        if((g = Transport.current) != null)
         {
-            localInput.text = "Local Input: " + Transport.current.cachedInfo.GetLocalInputs().ToString();
-            state.text = "State: " + Transport.current.players[0].state;
-
+            SimPlayer local = g.players[0];
+            localInput.text = "Local Input: " + g.cachedInfo.GetLocalInputs().ToString();
+            state.text = "State: " + local.state;
+            posVel.text = $"posX:{local.pos.x}\nposY:{local.pos.y}\nvelX:{local.vel.x}\nVelY:{local.vel.y}";
         }
 
 

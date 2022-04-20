@@ -22,6 +22,8 @@ public class Peer : MonoBehaviour
 
     public ConcurrentQueue<byte[]> recievedMessageQueue = new ConcurrentQueue<byte[]>();
     public ConcurrentQueue<byte[]> messagesToSend = new ConcurrentQueue<byte[]>();
+    NetworkStream ConnectionStream;
+
     #endregion
 
     private void Awake()
@@ -92,44 +94,41 @@ public class Peer : MonoBehaviour
         const int SIZE = InputSerialization.Inputs.MessageSizeInBytes;
 
         Debug.Log("Reciever thread active...");
-        NetworkStream Stream = client.GetStream();
+        ConnectionStream = client.GetStream();
         byte[] message = new byte[SIZE];
         while (client.Connected)
         {
-            if (Stream.CanRead)
+            if (ConnectionStream.CanRead)
             {
                 
-                if (Stream.ReadAsync(message, 0, SIZE).Result >= SIZE)
+                if (ConnectionStream.ReadAsync(message, 0, SIZE).Result >= SIZE)
                 {
                     recievedMessageQueue.Enqueue(message);
                     message = new byte[SIZE];
-                    Stream.FlushAsync();
+                    ConnectionStream.FlushAsync();
                 }
             }
         }
-        Stream.Close();
+        ConnectionStream.Close();
     }
     public virtual void Send()
     {
-        if (localClient != null)
+        if (ConnectionStream != null)
         {
-            if (!localClient.Connected) peerDisconnected?.Invoke();
-            else
-            {            
-                NetworkStream Stream = localClient.GetStream();
-                while (Stream.CanWrite && messagesToSend.Count != 0)
+                if (!ConnectionStream.CanWrite) peerDisconnected?.Invoke();         
+                else while (ConnectionStream.CanWrite && messagesToSend.Count != 0)
                 {
                     if(messagesToSend.TryDequeue(out byte[] message))
                     {
-                        Stream.WriteAsync(message, 0, message.Length);
-                        Stream.FlushAsync();
+                        ConnectionStream.WriteAsync(message, 0, message.Length);
+                        ConnectionStream.FlushAsync();
                     }
                     else
                     {
                         Debug.Log("Couldn't access queue");
                     }
                 }                            
-            }
+            
         }
     }
 

@@ -29,8 +29,6 @@ TMP_Text localFrame;
     [SerializeField]
     TMP_Text state;
 
-    [SerializeField]
-    TMP_Text posVel;
 
     readonly float messageTime = 1.5f;
     float t = 0;
@@ -50,7 +48,7 @@ TMP_Text localFrame;
         {
             SimPlayer local = g.players[0];
             state.text = "State: " + local.state;
-            posVel.text = $"posX:{local.pos.x}\nposY:{local.pos.y}\nvelX:{local.vel.x}\nVelY:{local.vel.y}";
+            
         }
 
 

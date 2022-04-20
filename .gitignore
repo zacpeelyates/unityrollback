@@ -105,3 +105,4 @@ NetworkingDemo_clone_?/**
 #exceptions
 
 !NetworkingDemo/Packages/**
+!NetworkingDemo/Assets/**

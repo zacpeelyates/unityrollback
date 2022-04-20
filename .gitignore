@@ -78,12 +78,10 @@ crashlytics-build.properties
 *.movedfrom
 *.rsp
 *.json
-*.json
 *.cache
 *.log
-*.dll
 
-NetworkingDemo/Library*
+NetworkingDemo/Library/*
 NetworkingDemo/Library/ArtifactDB
 NetworkingDemo/Library/PackageCache/com.unity.collections@1.1.0/Unity.Collections.LowLevel.ILSupport/source~/Unity.Collections.LowLevel.ILSupport.CodeGen/Unity.Collections.LowLevel.ILSupport.CodeGen.asmdef.meta
 NetworkingDemo/Library/ScriptAssemblies/UnityEditor.UIElementsModule.dll
@@ -103,3 +101,7 @@ NetworkingDemo/Temp/__Backupscenes/0.backup
 NetworkingDemo/Build/**
 
 NetworkingDemo_clone_?/**
+
+#exceptions
+
+!NetworkingDemo/Packages/**

@@ -18,7 +18,6 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     sbyte inputHorizontal;
     public InputSerialization.DirectionalInput dirInput;
     InputSerialization.Inputs InputThisFrame;
-    ushort frame = 0;
     bool[] isHeld = new bool[(int)InputSerialization.ButtonID.BUTTON_COUNT];
     
    
@@ -33,8 +32,7 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     {
         InputSerialization.DirectionalInput d = InputSerialization.DirectionalInput.DINPUT_NEUTRAL;
         if (InputThisFrame != null) d = InputThisFrame.dir;
-        InputThisFrame = new InputSerialization.Inputs(frame) { dir = d  };
-        frame++;
+        InputThisFrame = new InputSerialization.Inputs((ushort)(GameSimulation.localFrame+1)) { dir = d  };
     }
 
     private void LateUpdate()

@@ -28,7 +28,10 @@ TMP_Text localFrame;
     TMP_Text state;
 
     [SerializeField]
-    TMP_Text framerate;
+    TMP_Text simFramerate;
+
+    [SerializeField]
+    TMP_Text renderFramerate;
 
     float t = 0;
     int frameOneSecondAgo = 0; 
@@ -45,18 +48,17 @@ TMP_Text localFrame;
         if((g = Transport.current) != null)
         {
             SimPlayer local = g.players[0];
-            state.text = "State: " + local.state;
-            
+            state.text = "State: " + local.state;         
         }
 
-
-
-       if((t+=Time.deltaTime) >= 1 && l != frameOneSecondAgo) //triggers every second
+       if((t+=Time.deltaTime) >= 1) //triggers every second
         {
             t = 0;
             RemoveLine(1);
-            framerate.text = "FPS: " + ((float)(l - frameOneSecondAgo)).ToString();
-            frameOneSecondAgo = l; 
+            simFramerate.text = "Sim FPS: " + ((float)(l - frameOneSecondAgo)).ToString();
+            frameOneSecondAgo = l;
+
+            renderFramerate.text = "Render FPS: " + Mathf.CeilToInt(Time.frameCount / Time.time);
         }     
     }
 

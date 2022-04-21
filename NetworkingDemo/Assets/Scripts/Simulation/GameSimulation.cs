@@ -35,7 +35,6 @@ public class GameSimulation
         InputSerialization.FrameInfo temp = new InputSerialization.FrameInfo();
         temp.SetLocalInputs(input);
         FrameDictionary.AddOrUpdate(input.FrameID, temp, (k, v) => v.ReturnWithNewInput(input, false));
-        localFrame = input.FrameID;
     }
 
     public static void AddRemoteInput(InputSerialization.Inputs input, bool isPredicted)
@@ -77,16 +76,23 @@ public class GameSimulation
             lag += elapsed;
             while (lag >= TICKS_PER_FRAME)
             {
+                //begin frame
+                localFrame++;
                 lag -= TICKS_PER_FRAME;
-                PredictRemoteInputs(localFrame - LastRemoteFrame);
-                //if (RollbackFrames.Count != 0) current = HandleRollbacks();
+                //handle rollbacks
+                if (RollbackFrames.Count > 0) HandleRollbacks();
+                //get inputs for this frame
                 FrameDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
+                //update gamestate
                 current = current.Tick(f);
+                //store gamestate in buffer
                 GameStateDictionary.Add(current.frameID, current);
-                ushort earliestBufferedFrame = (ushort)(current.frameID - MAX_FRAME_BUFFER);
-                GameStateDictionary.Remove(earliestBufferedFrame);
-                FrameDictionary.TryRemove(earliestBufferedFrame, out _);
+                //send gamestate to unity main thread / renderer
                 Transport.current = current;
+                //cleanup
+                ushort earliestBufferedFrame =(ushort)(localFrame - MAX_FRAME_BUFFER);
+                FrameDictionary.TryRemove(earliestBufferedFrame, out _);
+                GameStateDictionary.Remove(earliestBufferedFrame);
             }                    
         }
     }
@@ -99,7 +105,7 @@ public class GameSimulation
             GameStateDictionary.TryGetValue(RollbackFrames.Min(), out g);
         }
         if (g == null) return current;
-        for (int i = g.frameID; i <= localFrame;)
+        for (int i = g.frameID; i < localFrame;)
         {
             FrameDictionary.TryGetValue((ushort)i, out InputSerialization.FrameInfo f);
             g = g.Tick(f);

@@ -10,7 +10,7 @@ public class GameSimulation
      static GameState current;
      public static bool isAlive = false;
      public static ushort localFrame { get; private set; }
-     public static ConcurrentDictionary<ushort, InputSerialization.FrameInfo> FrameDictionary;
+     public static ConcurrentDictionary<ushort, InputSerialization.FrameInfo> FrameInputDictionary;
      const ushort MAX_FRAME_BUFFER = 8;
      private static HashSet<ushort> RollbackFrames;
      private static Dictionary<int, GameState> GameStateDictionary;
@@ -24,7 +24,7 @@ public class GameSimulation
     {
         current = new GameState(p1Local);
         localFrame = 0;
-        FrameDictionary = new ConcurrentDictionary<ushort, InputSerialization.FrameInfo>();
+        FrameInputDictionary = new ConcurrentDictionary<ushort, InputSerialization.FrameInfo>();
         isAlive = true;
         RollbackFrames = new HashSet<ushort>();
         GameStateDictionary = new Dictionary<int, GameState>();
@@ -34,7 +34,7 @@ public class GameSimulation
     {
         InputSerialization.FrameInfo temp = new InputSerialization.FrameInfo();
         temp.SetLocalInputs(input);
-        FrameDictionary.AddOrUpdate(input.FrameID, temp, (k, v) => v.ReturnWithNewInput(input, false));
+        FrameInputDictionary.AddOrUpdate(input.FrameID, temp, (k, v) => v.ReturnWithNewInput(input, false));
     }
 
     public static void AddRemoteInput(InputSerialization.Inputs input, bool isPredicted)
@@ -43,7 +43,7 @@ public class GameSimulation
         InputSerialization.FrameInfo temp = new InputSerialization.FrameInfo();
         temp.SetRemoteInputs(input);
         temp.remoteIsPredicted = isPredicted;
-        FrameDictionary.AddOrUpdate(input.FrameID, temp, (k, v) =>
+        FrameInputDictionary.AddOrUpdate(input.FrameID, temp, (k, v) =>
         {
             if(!isPredicted && v.remoteIsPredicted)
             {
@@ -80,9 +80,11 @@ public class GameSimulation
                 localFrame++;
                 lag -= TICKS_PER_FRAME;
                 //handle rollbacks
-                if (RollbackFrames.Count > 0) HandleRollbacks();
+                if (RollbackFrames.Count > 0) current = HandleRollbacks();
                 //get inputs for this frame
-                FrameDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
+                FrameInputDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
+                //predict remote inputs
+                if (f.GetRemoteInputs() == null) PredictRemoteInputs(localFrame - LastRemoteFrame);
                 //update gamestate
                 current = current.Tick(f);
                 //store gamestate in buffer
@@ -91,7 +93,7 @@ public class GameSimulation
                 Transport.current = current;
                 //cleanup
                 ushort earliestBufferedFrame =(ushort)(localFrame - MAX_FRAME_BUFFER);
-                FrameDictionary.TryRemove(earliestBufferedFrame, out _);
+                FrameInputDictionary.TryRemove(earliestBufferedFrame, out _);
                 GameStateDictionary.Remove(earliestBufferedFrame);
             }                    
         }
@@ -103,11 +105,12 @@ public class GameSimulation
         lock (GameStateDictionary)
         {
             GameStateDictionary.TryGetValue(RollbackFrames.Min(), out g);
+            RollbackFrames.Clear();
         }
         if (g == null) return current;
         for (int i = g.frameID; i < localFrame;)
         {
-            FrameDictionary.TryGetValue((ushort)i, out InputSerialization.FrameInfo f);
+            FrameInputDictionary.TryGetValue((ushort)i, out InputSerialization.FrameInfo f);
             g = g.Tick(f);
         }
         return g;        

@@ -26,6 +26,8 @@ public class NetworkManager : MonoBehaviour
 
     public static int pingTime = 404;
 
+    ManualResetEvent m = new ManualResetEvent(false);
+
     private void FixedUpdate()
     {
         if (localPeer != null)
@@ -35,7 +37,7 @@ public class NetworkManager : MonoBehaviour
             {
                 if (simulatedPing > 0)
                 {
-                    new System.Threading.ManualResetEvent(false).WaitOne(simulatedPing);
+                    m.WaitOne(simulatedPing);
                 }
                 localPeer.Send();
             }

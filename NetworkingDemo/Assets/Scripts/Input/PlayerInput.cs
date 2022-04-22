@@ -33,7 +33,7 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     {
         InputSerialization.DirectionalInput d = InputSerialization.DirectionalInput.DINPUT_NEUTRAL;
         if (InputThisFrame != null) d = InputThisFrame.dir;
-        InputThisFrame = new InputSerialization.Inputs((ushort)(GameSimulation.localFrame+INPUT_DELAY)) { dir = d  };
+        InputThisFrame = new InputSerialization.Inputs((ushort)(GameSimulation.LocalFrame+INPUT_DELAY)) { dir = d  };
     }
 
     private void LateUpdate()

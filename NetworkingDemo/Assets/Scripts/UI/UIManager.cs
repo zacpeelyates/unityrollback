@@ -49,8 +49,8 @@ TMP_Text localFrame;
 
     private void Update()
     {
-        ushort l =  GameSimulation.localFrame;
-        ushort r =  GameSimulation.LastRemoteFrame;
+        int l =  GameSimulation.LocalFrame;
+        int r =  GameSimulation.LastRemoteFrame;
 
 
         localFrame.text = "Local Frame: " + l.ToString();

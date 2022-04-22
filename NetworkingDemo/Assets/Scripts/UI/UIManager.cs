@@ -33,6 +33,9 @@ TMP_Text localFrame;
     [SerializeField]
     TMP_Text renderFramerate;
 
+    [SerializeField]
+    TMP_Text rollbackCount;
+
     float t = 0;
     int frameOneSecondAgo = 0; 
     private void Update()
@@ -44,6 +47,7 @@ TMP_Text localFrame;
         localFrame.text = "Local Frame: " + l.ToString();
         remoteFrame.text = "Remote Frame: " + r.ToString();
         frameDifference.text = "Frame Advantage: " + (l - r).ToString();
+        rollbackCount.text = $"Total Rollbacks: {GameSimulation.rollbackCount}";
         GameState g;
         if((g = Transport.current) != null)
         {

@@ -14,7 +14,7 @@ public class GameSimulation
      const ushort MAX_FRAME_BUFFER = 8;
      private static HashSet<ushort> RollbackFrames;
      private static Dictionary<int, GameState> GameStateDictionary;
-      
+     public static uint rollbackCount = 0; 
      
      
 
@@ -84,7 +84,7 @@ public class GameSimulation
                 //get inputs for this frame
                 FrameInputDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
                 //predict remote inputs
-                if (f.GetRemoteInputs() == null) PredictRemoteInputs(localFrame - LastRemoteFrame);
+                if (f==null || f.GetRemoteInputs() == null) PredictRemoteInputs(localFrame - LastRemoteFrame);
                 //update gamestate
                 current = current.Tick(f);
                 //store gamestate in buffer
@@ -113,6 +113,7 @@ public class GameSimulation
             FrameInputDictionary.TryGetValue((ushort)i, out InputSerialization.FrameInfo f);
             g = g.Tick(f);
         }
+        rollbackCount++;
         return g;        
     }
 

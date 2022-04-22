@@ -41,7 +41,10 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
         if (!GameSimulation.isAlive) return;
         for(int i = 0; i < isHeld.Length; ++i )
         {
-            if (isHeld[i]) InputThisFrame.buttons[i] = InputSerialization.ButtonInputType.BINPUT_HELD; //new unity system doesnt work good for holding so this is a hacky workaround
+            if (isHeld[i])
+            {
+                InputThisFrame.buttons[i] = InputSerialization.ButtonInputType.BINPUT_HELD; //new unity system doesnt work good for holding so this is a hacky workaround
+            }
         }
         GameSimulation.AddLocalInput(InputThisFrame); //give local input to game sim
         networkManager.SendMessage(InputSerialization.Inputs.ToBytes(InputThisFrame)); //send input to remote    

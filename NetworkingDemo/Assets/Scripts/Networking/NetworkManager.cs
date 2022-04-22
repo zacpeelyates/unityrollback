@@ -27,7 +27,7 @@ public class NetworkManager : MonoBehaviour
 
     public static int pingTime = 404;
 
-    ManualResetEvent m = new ManualResetEvent(false);
+    readonly ManualResetEvent m = new ManualResetEvent(false);
 
     private void FixedUpdate()
     {

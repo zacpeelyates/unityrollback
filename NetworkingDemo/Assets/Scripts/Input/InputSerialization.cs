@@ -53,11 +53,11 @@ public static class InputSerialization
          *  example:
          *  d = 3 (down + forward)
          *  horizontal = (3 % 3) -2 = -2
-         *  horizontal gets corrected to 1
+         *  horizontal gets corrected to 1 (line 48)
          *  vertical = (3 - 5 - 1) / 3 = -3/3 = -1
          *  
          *  returns horizontal 1, vertical -1 
-         *  we can check this against the reverse method, 5 + h + 3v = 5 + 1 - 3 = 3 which is the d we started with
+         *  we can check this against the reverse method, 5 + h + 3v = 5 + 1 - 3 = 3 which is the direction input we started with
          */
     }
 
@@ -137,8 +137,8 @@ public static class InputSerialization
                 (byte)(inputs.FrameID & 0xFF) //second 8 bits of 16 bit frame id
             };
 
-            byte next = 0;
 
+            byte next = 0;
             for(int i = (int)ButtonID.BUTTON_COUNT-1; i >= 0; --i )
             {
                 next |= (byte)((byte)inputs.buttons[i] << (i << 1));
@@ -156,10 +156,13 @@ public static class InputSerialization
                 FrameID = (ushort)((bytes[(ushort)INPUT_OFFSETS.ID] << 8) | bytes[(ushort)INPUT_OFFSETS.ID+1]), //first two bytes make up 16 bit representation of frameID      
                 dir = (DirectionalInput)(bytes[(ushort)INPUT_OFFSETS.DIRECTIONAL] & 0xF) //dir is final 4 bits 
             };
-
-            for(int i = 0; i < (int)ButtonID.BUTTON_COUNT; ++i)
+            byte buttons = bytes[(int)INPUT_OFFSETS.BUTTONS];
+            for (int i = 0; i < (int)ButtonID.BUTTON_COUNT; ++i)
             {
-                result.buttons[i] = (ButtonInputType)(bytes[(int)INPUT_OFFSETS.BUTTONS] & (0xC0 >> (i << 1))); //mask 2-bit values until end of byte
+                byte shift = (byte)(i << 1);
+                byte mask = (byte)(0b11000000 >> shift);
+                byte value = (byte)((buttons & mask) >> 6-shift);
+                result.buttons[((int)ButtonID.BUTTON_COUNT) - (i+1)] = (InputSerialization.ButtonInputType)value;
             }
 
             return result;

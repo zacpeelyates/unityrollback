@@ -42,7 +42,15 @@ TMP_Text localFrame;
     TMP_Text InputBuffer;
 
     [SerializeField]
+    TMP_Text p1state;
+
+    [SerializeField]
+    TMP_Text p2state;
+
+    [SerializeField]
     NetworkManager net;
+
+  
 
     float t = 0;
     int frameOneSecondAgo = 0;
@@ -61,7 +69,12 @@ TMP_Text localFrame;
         simPing.text = "Simulated Ping: " + net.simulatedPing;
         totalPing.text = "Total Delay: " + (NetworkManager.pingTime + net.simulatedPing);
         InputBuffer.text = "Input Buffer: " + PlayerInput.INPUT_DELAY;
-
+        GameState g;
+        if ((g = Transport.current) != null)
+        {
+            p1state.text = (NetworkManager.hosting ? "Local" : "Remote") + " State: " + g.players[0].state;
+            p2state.text = (!NetworkManager.hosting ? "Local" : "Remote") + " State: " + g.players[1].state;
+        }
 
        if((t+=Time.deltaTime) >= 1) //triggers every second
         {

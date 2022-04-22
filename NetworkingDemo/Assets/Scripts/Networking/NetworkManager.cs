@@ -9,6 +9,7 @@ public class NetworkManager : MonoBehaviour
     public Peer localPeer;
     Thread GameThread;
     [SerializeField] public int simulatedPing;
+    public static bool hosting;
 
     private void Start()
     {
@@ -75,6 +76,7 @@ public class NetworkManager : MonoBehaviour
     void OnOutgoingConnectionSucceeded()
     {
         Debug.Log("ESTABLISHED CONNECTION");
+        hosting = false;
         CreateGameThread(true); //Start game sim as client
     }
 
@@ -96,6 +98,7 @@ public class NetworkManager : MonoBehaviour
     void OnRecieveConnection()
     {
         Debug.Log("FOUND CLIENT");
+        hosting = true; 
         CreateGameThread(false); //Start game sim as server
     }
 

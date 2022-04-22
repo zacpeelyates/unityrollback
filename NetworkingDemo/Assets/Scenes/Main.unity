@@ -1152,12 +1152,14 @@ MonoBehaviour:
   remoteFrame: {fileID: 1368909162}
   frameDifference: {fileID: 1631465024}
   debugText: {fileID: 835109754}
-  localInput: {fileID: 0}
-  state: {fileID: 0}
   simFramerate: {fileID: 219248331}
   renderFramerate: {fileID: 93505764}
   rollbackCount: {fileID: 207869814}
-  ping: {fileID: 0}
+  ping: {fileID: 90209910}
+  simPing: {fileID: 741094042}
+  totalPing: {fileID: 230360446}
+  InputBuffer: {fileID: 1483520540}
+  net: {fileID: 856772297}
 --- !u!1001 &696812621
 PrefabInstance:
   m_ObjectHideFlags: 0

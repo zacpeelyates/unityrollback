@@ -20,13 +20,6 @@ TMP_Text localFrame;
     [SerializeField]
  TMP_Text debugText;
 
-
-    [SerializeField]
-    TMP_Text localInput;
-
-    [SerializeField]
-    TMP_Text state;
-
     [SerializeField]
     TMP_Text simFramerate;
 
@@ -48,6 +41,9 @@ TMP_Text localFrame;
     [SerializeField]
     TMP_Text InputBuffer;
 
+    [SerializeField]
+    NetworkManager net;
+
     float t = 0;
     int frameOneSecondAgo = 0;
 
@@ -62,15 +58,10 @@ TMP_Text localFrame;
         frameDifference.text = "Frame Advantage: " + (l - r).ToString();
         rollbackCount.text = $"Total Rollbacks: {GameSimulation.rollbackCount}";
         ping.text = "Network Ping: " + NetworkManager.pingTime;
-        simPing.text = "Simulated Ping: " + NetworkManager.simulatedPing;
-        totalPing.text = "Total Delay: " + (NetworkManager.pingTime + NetworkManager.simulatedPing);
+        simPing.text = "Simulated Ping: " + net.simulatedPing;
+        totalPing.text = "Total Delay: " + (NetworkManager.pingTime + net.simulatedPing);
         InputBuffer.text = "Input Buffer: " + PlayerInput.INPUT_DELAY;
-        GameState g;
-        if((g = Transport.current) != null)
-        {
-            SimPlayer local = g.players[0];
-            state.text = "State: " + local.state;         
-        }
+
 
        if((t+=Time.deltaTime) >= 1) //triggers every second
         {

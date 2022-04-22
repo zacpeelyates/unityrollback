@@ -8,7 +8,7 @@ public class NetworkManager : MonoBehaviour
 {
     public Peer localPeer;
     Thread GameThread;
-    [SerializeField] public const int simulatedPing = 0;
+    [SerializeField] public int simulatedPing;
 
     private void Start()
     {

@@ -80,7 +80,7 @@ public class GameSimulation
                 localFrame++;
                 lag -= TICKS_PER_FRAME;
                 //handle rollbacks
-                //if (RollbackFrames.Count > 0) current = HandleRollbacks();
+                if (RollbackFrames.Count > 0) current = HandleRollbacks();
                 //get inputs for this frame
                 FrameInputDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
                 //predict remote inputs

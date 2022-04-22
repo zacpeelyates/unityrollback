@@ -80,11 +80,11 @@ public class GameSimulation
                 localFrame++;
                 lag -= TICKS_PER_FRAME;
                 //handle rollbacks
-                if (RollbackFrames.Count > 0) current = HandleRollbacks();
+                //if (RollbackFrames.Count > 0) current = HandleRollbacks();
                 //get inputs for this frame
                 FrameInputDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
                 //predict remote inputs
-                if (f!=null && f.GetRemoteInputs() == null) PredictRemoteInputs(localFrame - LastRemoteFrame);
+                //if (f!=null && f.GetRemoteInputs() == null) PredictRemoteInputs(localFrame - LastRemoteFrame);
                 //update gamestate
                 current = current.Tick(f);
                 //store gamestate in buffer

@@ -10,7 +10,8 @@ public class NetworkConfig : MonoBehaviour
     public int listenPort;
     [SerializeField]
     public string remoteIP;
-    public string localIP;
+
+    public string localIP {  get; private set; }
 
 
     private void Reset()

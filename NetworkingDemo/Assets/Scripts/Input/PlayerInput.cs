@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     public InputSerialization.DirectionalInput dirInput;
     InputSerialization.Inputs InputThisFrame;
     bool[] isHeld = new bool[(int)InputSerialization.ButtonID.BUTTON_COUNT];
-    [SerializeField] const int INPUT_DELAY = 2;
+    [SerializeField]public const int INPUT_DELAY = 2;
     
    
     private void Awake()

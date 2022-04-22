@@ -8,11 +8,11 @@ public class NetworkManager : MonoBehaviour
 {
     public Peer localPeer;
     Thread GameThread;
-    
+    [SerializeField] public const int simulatedPing = 0;
+
     private void Start()
     {
         if (!localPeer) localPeer = GetComponent<Peer>();
-
         //setup delegates
         localPeer.outgoingConnectionSucceeded = OnOutgoingConnectionSucceeded;
         localPeer.outgoingConnectionFailed = OnOutgoingConnectionFailed;
@@ -24,11 +24,21 @@ public class NetworkManager : MonoBehaviour
 
     }
 
+    public static int pingTime = 404;
+
     private void FixedUpdate()
     {
         if (localPeer != null)
         {
-            if (localPeer.messagesToSend.Count != 0) localPeer.Send();
+            Ping(localPeer);
+            if (localPeer.messagesToSend.Count != 0)
+            {
+                if (simulatedPing > 0)
+                {
+                    new System.Threading.ManualResetEvent(false).WaitOne(simulatedPing);
+                }
+                localPeer.Send();
+            }
             while (localPeer.recievedMessageQueue.Count > 0)
             {
                 if(localPeer.recievedMessageQueue.TryDequeue(out byte[] message))
@@ -39,8 +49,16 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
-    public void SendMessage(byte[] message)
+    IEnumerator Ping(Peer peer)
     {
+        Ping ping = new Ping(peer.config.remoteIP);
+        while (!ping.isDone) yield return null;
+        pingTime = ping.time;
+    }
+
+
+    public void SendMessage(byte[] message)
+    { 
         localPeer.messagesToSend.Enqueue(message);
     }
 

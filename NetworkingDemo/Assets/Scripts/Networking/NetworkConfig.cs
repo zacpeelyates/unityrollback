@@ -10,8 +10,8 @@ public class NetworkConfig : MonoBehaviour
     public int listenPort;
     [SerializeField]
     public string remoteIP;
-    [SerializeField]
     public string localIP;
+
 
     private void Reset()
     {
@@ -24,6 +24,7 @@ public class NetworkConfig : MonoBehaviour
     private void Awake()
     {
         localIP = FindLocalIP();
+
     }
 
     public void SwapPorts()

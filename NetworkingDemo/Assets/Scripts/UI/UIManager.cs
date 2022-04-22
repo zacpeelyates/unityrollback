@@ -36,18 +36,35 @@ TMP_Text localFrame;
     [SerializeField]
     TMP_Text rollbackCount;
 
+    [SerializeField]
+    TMP_Text ping;
+
+    [SerializeField]
+    TMP_Text simPing;
+
+    [SerializeField]
+    TMP_Text totalPing;
+
+    [SerializeField]
+    TMP_Text InputBuffer;
+
     float t = 0;
-    int frameOneSecondAgo = 0; 
+    int frameOneSecondAgo = 0;
+
     private void Update()
     {
         ushort l =  GameSimulation.localFrame;
         ushort r =  GameSimulation.LastRemoteFrame;
-      
+
 
         localFrame.text = "Local Frame: " + l.ToString();
         remoteFrame.text = "Remote Frame: " + r.ToString();
         frameDifference.text = "Frame Advantage: " + (l - r).ToString();
         rollbackCount.text = $"Total Rollbacks: {GameSimulation.rollbackCount}";
+        ping.text = "Network Ping: " + NetworkManager.pingTime;
+        simPing.text = "Simulated Ping: " + NetworkManager.simulatedPing;
+        totalPing.text = "Total Delay: " + (NetworkManager.pingTime + NetworkManager.simulatedPing);
+        InputBuffer.text = "Input Buffer: " + PlayerInput.INPUT_DELAY;
         GameState g;
         if((g = Transport.current) != null)
         {

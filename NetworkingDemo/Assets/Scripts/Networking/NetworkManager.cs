@@ -30,7 +30,7 @@ public class NetworkManager : MonoBehaviour
     {
         if (localPeer != null)
         {
-            Ping(localPeer);
+            StartCoroutine(Ping(localPeer));
             if (localPeer.messagesToSend.Count != 0)
             {
                 if (simulatedPing > 0)

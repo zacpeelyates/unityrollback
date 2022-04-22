@@ -84,7 +84,7 @@ public class GameSimulation
                 //get inputs for this frame
                 FrameInputDictionary.TryGetValue(localFrame, out InputSerialization.FrameInfo f);
                 //predict remote inputs
-                if (f==null || f.GetRemoteInputs() == null) PredictRemoteInputs(localFrame - LastRemoteFrame);
+                if (f!=null && f.GetRemoteInputs() == null) PredictRemoteInputs(localFrame - LastRemoteFrame);
                 //update gamestate
                 current = current.Tick(f);
                 //store gamestate in buffer

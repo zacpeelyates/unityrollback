@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localPeer: {fileID: 856772294}
-  simulatedPing: 0
+  simulatedPing: 100
 --- !u!1 &896732996
 GameObject:
   m_ObjectHideFlags: 0

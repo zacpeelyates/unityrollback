@@ -146,7 +146,6 @@ public class Peer : MonoBehaviour
             {
                 Debug.Log("Couldn't access queue");
             }
-           }
 
         }
     }

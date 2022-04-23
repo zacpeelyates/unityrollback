@@ -115,6 +115,7 @@ public class Peer : MonoBehaviour
     {
         if (ConnectionStream != null)
         {
+            
                 if (!ConnectionStream.CanWrite) peerDisconnected?.Invoke();         
                 else while (ConnectionStream.CanWrite && messagesToSend.Count != 0)
                 {

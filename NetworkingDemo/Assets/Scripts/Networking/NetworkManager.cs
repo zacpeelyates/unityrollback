@@ -9,7 +9,6 @@ public class NetworkManager : MonoBehaviour
 {
     public Peer localPeer;
     Thread GameThread;
-    [SerializeField] public int simulatedPing;
     public static bool hosting;
 
     private void Start()
@@ -34,14 +33,8 @@ public class NetworkManager : MonoBehaviour
         if (localPeer != null)
         {
             StartCoroutine(Ping(localPeer));
-            if (localPeer.messagesToSend.Count != 0)
-            {               
-                if(simulatedPing > 0)
-                {
-                    SendMessageWithSimulatedPing();
-                } 
-                else localPeer.Send();
-            }
+            if (localPeer.messagesToSend.Count != 0) localPeer.Send();
+            
             while (localPeer.recievedMessageQueue.Count > 0)
             {
                 if(localPeer.recievedMessageQueue.TryDequeue(out byte[] message))
@@ -52,11 +45,6 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
-     async void SendMessageWithSimulatedPing()
-     {
-        await Task.Delay(simulatedPing);
-        localPeer.Send();
-     }
 
     IEnumerator Ping(Peer peer)
     {
@@ -74,9 +62,7 @@ public class NetworkManager : MonoBehaviour
     void HandleMessage(byte[] message)
     {
         //send message to our game sim       
-        var test = InputSerialization.Inputs.FromBytes(message);
-        //Debug.Log("Recived: " + test.ToString());
-        GameSimulation.AddRemoteInput(test,false);    
+        GameSimulation.AddRemoteInput(InputSerialization.Inputs.FromBytes(message),false);    
     }
 
     void OnOutgoingConnectionSucceeded()

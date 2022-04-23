@@ -66,8 +66,6 @@ TMP_Text localFrame;
         frameDifference.text = "Frame Advantage: " + (l - r).ToString();
         rollbackCount.text = $"Total Rollbacks: {GameSimulation.rollbackCount}";
         ping.text = "Network Ping: " + NetworkManager.pingTime;
-        simPing.text = "Simulated Ping: " + net.simulatedPing;
-        totalPing.text = "Total Delay: " + (NetworkManager.pingTime + net.simulatedPing);
         InputBuffer.text = "Input Buffer: " + PlayerInput.INPUT_DELAY;
         GameState g;
         if ((g = Transport.current) != null)
@@ -80,9 +78,7 @@ TMP_Text localFrame;
         {
             t = 0;
             RemoveLine(1);
-            simFramerate.text = "Sim FPS: " + ((float)(l - frameOneSecondAgo)).ToString();
             frameOneSecondAgo = l;
-
             renderFramerate.text = "Render FPS: " + Mathf.CeilToInt(Time.frameCount / Time.time);
         }     
     }

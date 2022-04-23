@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(Peer))]
@@ -27,7 +28,6 @@ public class NetworkManager : MonoBehaviour
 
     public static int pingTime = 404;
 
-    readonly ManualResetEvent m = new ManualResetEvent(false);
 
     private void FixedUpdate()
     {
@@ -35,12 +35,12 @@ public class NetworkManager : MonoBehaviour
         {
             StartCoroutine(Ping(localPeer));
             if (localPeer.messagesToSend.Count != 0)
-            {
-                if (simulatedPing > 0)
+            {               
+                if(simulatedPing > 0)
                 {
-                    m.WaitOne(simulatedPing);
-                }
-                localPeer.Send();
+                    SendMessageWithSimulatedPing();
+                } 
+                else localPeer.Send();
             }
             while (localPeer.recievedMessageQueue.Count > 0)
             {
@@ -51,6 +51,12 @@ public class NetworkManager : MonoBehaviour
             }
         }
     }
+
+     async void SendMessageWithSimulatedPing()
+     {
+        await Task.Delay(simulatedPing);
+        localPeer.Send();
+     }
 
     IEnumerator Ping(Peer peer)
     {

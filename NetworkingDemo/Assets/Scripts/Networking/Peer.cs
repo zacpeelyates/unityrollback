@@ -132,6 +132,25 @@ public class Peer : MonoBehaviour
         }
     }
 
+    public void SendOne()
+    {
+        if (ConnectionStream != null)
+        {
+            if (!ConnectionStream.CanWrite) peerDisconnected?.Invoke();
+            else if (messagesToSend.TryDequeue(out byte[] message))
+            {
+                ConnectionStream.WriteAsync(message, 0, message.Length);
+                ConnectionStream.FlushAsync();
+            }
+            else
+            {
+                Debug.Log("Couldn't access queue");
+            }
+           }
+
+        }
+    }
+
     #endregion
 
     #region Listener

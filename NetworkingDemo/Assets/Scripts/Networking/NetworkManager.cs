@@ -55,7 +55,7 @@ public class NetworkManager : MonoBehaviour
      async void SendMessageWithSimulatedPing()
      {
         await Task.Delay(simulatedPing);
-        localPeer.Send();
+        localPeer.SendOne();
      }
 
     IEnumerator Ping(Peer peer)

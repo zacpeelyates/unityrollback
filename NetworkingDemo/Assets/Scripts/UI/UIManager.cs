@@ -78,6 +78,7 @@ TMP_Text localFrame;
         {
             t = 0;
             RemoveLine(1);
+            simFramerate.text = "Sim FPS: " + (l - frameOneSecondAgo);
             frameOneSecondAgo = l;
             renderFramerate.text = "Render FPS: " + Mathf.CeilToInt(Time.frameCount / Time.time);
         }     

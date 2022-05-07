@@ -102,7 +102,10 @@ public enum PlayerState
     PS_IDLE,
     PS_WALK,
     PS_CROUCH,
+    PS_PUNCH,
     PS_KICK,
+    PS_SLASH,
+    PS_HSLASH,
     PS_AIRBORNE,
 
 

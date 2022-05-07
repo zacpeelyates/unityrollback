@@ -86,7 +86,12 @@ public class SimPlayer
 
         if (IsGrounded && h != 0) state = PlayerState.PS_WALK;
         if (IsGrounded && v < 0) state = PlayerState.PS_CROUCH;
+        if (state == PlayerState.PS_CROUCH || IsGrounded && h == 0 || FInt32.Abs(temp) > FInt32.Abs(vel.x)) vel.x = 0;
+
+        if (IsGrounded && i.buttons[(int)InputSerialization.ButtonID.BUTTON_PUNCH] == InputSerialization.ButtonInputType.BINPUT_HELD) state = PlayerState.PS_PUNCH;
         if (IsGrounded && i.buttons[(int)InputSerialization.ButtonID.BUTTON_KICK] == InputSerialization.ButtonInputType.BINPUT_HELD) state = PlayerState.PS_KICK;
+        if (IsGrounded && i.buttons[(int)InputSerialization.ButtonID.BUTTON_SLASH] == InputSerialization.ButtonInputType.BINPUT_HELD) state = PlayerState.PS_SLASH;
+        if (IsGrounded && i.buttons[(int)InputSerialization.ButtonID.BUTTON_HSLASH] == InputSerialization.ButtonInputType.BINPUT_HELD) state = PlayerState.PS_HSLASH;
         if (state == PlayerState.PS_CROUCH  || IsGrounded && h == 0|| FInt32.Abs(temp) > FInt32.Abs(vel.x)) vel.x = 0;
        
 

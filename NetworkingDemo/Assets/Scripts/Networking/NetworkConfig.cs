@@ -13,7 +13,6 @@ public class NetworkConfig : MonoBehaviour
 
     public string localIP {  get; private set; }
 
-
     private void Reset()
     {
         localIP = FindLocalIP();

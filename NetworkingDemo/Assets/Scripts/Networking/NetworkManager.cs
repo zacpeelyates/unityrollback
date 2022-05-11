@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Peer))]
 public class NetworkManager : MonoBehaviour
 {
@@ -11,10 +12,8 @@ public class NetworkManager : MonoBehaviour
     Thread GameThread;
     public static bool hosting;
 
-    private void Start()
+    public void Start()
     {
-        CreateGameThread(false);
-
         if (!localPeer) localPeer = GetComponent<Peer>();
         //setup delegates
         localPeer.outgoingConnectionSucceeded = OnOutgoingConnectionSucceeded;

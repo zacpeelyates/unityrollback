@@ -50,7 +50,13 @@ TMP_Text localFrame;
     [SerializeField]
     NetworkManager net;
 
-  
+    [SerializeField]
+    NetworkConfig cfg;
+
+    [SerializeField]
+    TMP_InputField ipentry;
+
+
 
     float t = 0;
     int frameOneSecondAgo = 0;

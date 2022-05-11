@@ -45,6 +45,12 @@ public class GameState
             
             s.pos += s.vel;
         }
+
+        bool direction = players[0].pos.x < players[1].pos.x;
+        players[0].facingLeft = !direction; 
+        players[1].facingLeft = direction; 
+        
+
        return next;
     }
 }
@@ -61,7 +67,8 @@ public class SimPlayer
     public static readonly FInt32 GRAVITY_PREAPEX = FInt32.FromString("0.0075");
     public static readonly FInt32 GRAVITY_POSTAPEX = FInt32.FromString("0.075");
     public static readonly FInt32 APEX = 2;
-
+    public bool facingLeft;
+    public FInt32 FORWARD => facingLeft ? -1 : 1;
 
 
 
@@ -93,7 +100,6 @@ public class SimPlayer
         if (IsGrounded && i.buttons[(int)InputSerialization.ButtonID.BUTTON_SLASH] == InputSerialization.ButtonInputType.BINPUT_HELD) state = PlayerState.PS_SLASH;
         if (IsGrounded && i.buttons[(int)InputSerialization.ButtonID.BUTTON_HSLASH] == InputSerialization.ButtonInputType.BINPUT_HELD) state = PlayerState.PS_HSLASH;
         if (state == PlayerState.PS_CROUCH  || IsGrounded && h == 0|| FInt32.Abs(temp) > FInt32.Abs(vel.x)) vel.x = 0;
-       
 
     }
 

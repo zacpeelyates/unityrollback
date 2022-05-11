@@ -13,6 +13,8 @@ public class NetworkManager : MonoBehaviour
 
     private void Start()
     {
+        CreateGameThread(false);
+
         if (!localPeer) localPeer = GetComponent<Peer>();
         //setup delegates
         localPeer.outgoingConnectionSucceeded = OnOutgoingConnectionSucceeded;

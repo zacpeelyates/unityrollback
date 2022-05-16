@@ -7,6 +7,7 @@ public class GameState
     public SimPlayer[] players = new SimPlayer[2];
 
     static readonly FInt32 STARTPOS = 2 + FInt32.HALF;
+    public InputSerialization.FrameInfo cachedInfo;
 
     public int frameID;
 
@@ -21,14 +22,9 @@ public class GameState
         frameID = 0;
     }
 
-    public GameState(GameState g)
-    {
-        players = new SimPlayer[] { new SimPlayer(g.players[0]), new SimPlayer(g.players[1]) };
-        frameID = g.frameID;
-    }
-
     public GameState Tick(InputSerialization.FrameInfo f)
     {
+       cachedInfo = f;
        GameState next = this;
        next.frameID = frameID + 1;
        foreach (SimPlayer s in next.players)
@@ -84,14 +80,7 @@ public class SimPlayer
         state = PlayerState.PS_IDLE;
     }
 
-    public SimPlayer(SimPlayer s)
-    {
-        pos = s.pos;
-        vel = s.vel;
-        isRemote = s.isRemote;
-        state = s.state;
-        facingLeft = s.facingLeft;
-    }
+
 
     public void ApplyInput(InputSerialization.Inputs i)
     {

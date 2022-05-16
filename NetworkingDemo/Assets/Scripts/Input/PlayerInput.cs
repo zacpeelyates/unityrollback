@@ -100,12 +100,10 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     public void OnSlash(InputAction.CallbackContext context) => OnButton(context, (int)InputSerialization.ButtonID.BUTTON_SLASH);
 
     public void OnHSlash(InputAction.CallbackContext context) => OnButton(context, (int)InputSerialization.ButtonID.BUTTON_HSLASH);
- 
+
 
     public void OnTestMessage(InputAction.CallbackContext context)
     {
-        if (!context.started) return;
-        Debug.Log("testing rollback");
-        GameSimulation.LoadPreviousGamestate(512);
+        networkManager.SendMessage(new byte[] { 1, 2, 3, 4 });
     }
 }

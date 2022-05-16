@@ -13,7 +13,9 @@ public class GameSimulation
      const ushort MAX_FRAME_BUFFER = 8;
      private static HashSet<ushort> RollbackFrames;
      private static Dictionary<int, GameState> GameStateDictionary;
-     public static uint rollbackCount = 0;  
+     public static uint rollbackCount = 0; 
+     
+     
 
     private static InputSerialization.Inputs LastRemoteInputRecieved;
 
@@ -72,43 +74,26 @@ public class GameSimulation
             long elapsed = now - prev;
             prev = now;
             lag += elapsed;
-            while (lag >= TICKS_PER_FRAME) //allows multiple loops in a single frame to catch up if we lag
+            while (lag >= TICKS_PER_FRAME)
             {
-                    lag -= TICKS_PER_FRAME;
-                    //handle rollbacks
-                    if (RollbackFrames.Count > 0) current = HandleRollbacks();
-                    //get inputs for this frame
-                    FrameInputDictionary.TryGetValue((ushort)current.frameID, out InputSerialization.FrameInfo frameInputs);
-                    //predict remote inputs
-                    PredictRemoteInputs(current.frameID - LastRemoteFrame);
-                    //update gamestate
-                    current = current.Tick(frameInputs);
-                    //handle state
-                    if (!GameStateDictionary.ContainsKey(current.frameID))
-                    {                     
-                        GameStateDictionary.Add(current.frameID, new GameState(current));  //copy gamestate into dictionary
-                    }
-                    //send gamestate to unity main thread / renderer
-                    Transport.current = current;
-
-                    //cleanup (comment this out to store entire frame by frame gamestate for testing/replays)
-                    //remove stored information out of max rollback range
-                    ushort earliestBufferedFrame =(ushort)(current.frameID - MAX_FRAME_BUFFER);
-                    FrameInputDictionary.TryRemove(earliestBufferedFrame, out _);
-                    GameStateDictionary.Remove(earliestBufferedFrame);
+                lag -= TICKS_PER_FRAME;
+                //handle rollbacks
+                if (RollbackFrames.Count > 0) current = HandleRollbacks();
+                //get inputs for this frame
+                FrameInputDictionary.TryGetValue((ushort)current.frameID, out InputSerialization.FrameInfo frameInputs);
+                //predict remote inputs
+                PredictRemoteInputs(current.frameID - LastRemoteFrame);
+                //update gamestate
+                current = current.Tick(frameInputs);
+                //store gamestate in buffer
+                GameStateDictionary.Add(current.frameID, current);
+                //send gamestate to unity main thread / renderer
+                Transport.current = current;
+                //cleanup
+                ushort earliestBufferedFrame =(ushort)(current.frameID - MAX_FRAME_BUFFER);
+                FrameInputDictionary.TryRemove(earliestBufferedFrame, out _);
+                GameStateDictionary.Remove(earliestBufferedFrame);
             }                    
-        }
-    }
-    public static void LoadPreviousGamestate(ushort frameID)
-    {
-        if (frameID >= current.frameID) return;
-        //used for testing only
-        lock (GameStateDictionary)
-        {
-            lock (current)
-            {
-                current = GameStateDictionary[frameID];
-            }
         }
     }
 
@@ -117,13 +102,12 @@ public class GameSimulation
         GameState g = null;
         lock (GameStateDictionary)
         {
-            GameStateDictionary.TryGetValue(RollbackFrames.Min(), out g);  //get earliest rollback frame, could just store the first one found since last rollback, but this helps against out of order packets
+            GameStateDictionary.TryGetValue(RollbackFrames.Min(), out g);
             RollbackFrames.Clear();
         }
         if (g == null) return current;
         for (int i = g.frameID; i < current.frameID;)
         {
-            //update until we are back at the current frame
             FrameInputDictionary.TryGetValue((ushort)i, out InputSerialization.FrameInfo f);
             g = g.Tick(f);
         }

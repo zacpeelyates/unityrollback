@@ -205,10 +205,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8f4fce9f-7264-4256-9f37-b5f0c437d7a5"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Default"",
+                    ""groups"": """",
                     ""action"": ""TestMessage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

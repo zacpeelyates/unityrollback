@@ -7,13 +7,23 @@ using UnityEngine.Animations;
 public class PlayerRenderer : MonoBehaviour
 {
     [SerializeField] int ID;
+    [SerializeField] float baseRotation = 90;
 
     static Vector3 basePos = new Vector3(0,-1,0);
+    static Vector3 baseRot;
+    static Vector3 flipRot; 
+
+
+
 
     Animator anim;
     private void Start()
     {
         anim = GetComponent<Animator>();
+        baseRot = new Vector3(0, baseRotation, 0);
+        flipRot = new Vector3(0, baseRotation - 180, 0);
+        transform.rotation = Quaternion.Euler(ID == 1 ? baseRot : flipRot);
+
     }
 
     
@@ -32,6 +42,11 @@ public class PlayerRenderer : MonoBehaviour
             anim.SetBool("slash", simPlayer.state == PlayerState.PS_SLASH);
             anim.SetBool("heavyslash", simPlayer.state == PlayerState.PS_HSLASH);
             anim.SetBool("land", simPlayer.IsGrounded);
+
+           
+            
+           transform.rotation = Quaternion.Euler(simPlayer.facingLeft ? flipRot : baseRot);
+            
         }
         
         

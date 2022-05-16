@@ -19,7 +19,7 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     public InputSerialization.DirectionalInput dirInput;
     InputSerialization.Inputs InputThisFrame;
     bool[] isHeld = new bool[(int)InputSerialization.ButtonID.BUTTON_COUNT];
-    [SerializeField]public const int INPUT_DELAY = 2;
+    [SerializeField]public const int INPUT_DELAY = 1;
     
    
     private void Awake()
@@ -100,10 +100,12 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
     public void OnSlash(InputAction.CallbackContext context) => OnButton(context, (int)InputSerialization.ButtonID.BUTTON_SLASH);
 
     public void OnHSlash(InputAction.CallbackContext context) => OnButton(context, (int)InputSerialization.ButtonID.BUTTON_HSLASH);
-
+ 
 
     public void OnTestMessage(InputAction.CallbackContext context)
     {
-        networkManager.SendMessage(new byte[] { 1, 2, 3, 4 });
+        if (!context.started) return;
+        Debug.Log("testing rollback");
+        GameSimulation.LoadPreviousGamestate(512);
     }
 }

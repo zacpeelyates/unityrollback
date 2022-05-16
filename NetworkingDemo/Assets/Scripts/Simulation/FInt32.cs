@@ -171,7 +171,7 @@ public class FInt32
     }
 
     //Possible TODO: trig lookup tables?
-
+    
 
 }
 

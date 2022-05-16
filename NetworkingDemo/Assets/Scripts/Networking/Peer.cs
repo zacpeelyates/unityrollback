@@ -33,7 +33,7 @@ public class Peer : MonoBehaviour
 
     public void Close()
     {
-
+        //cleanup= 
         if(listener != null) listener.Stop();
         if(localClient != null) localClient.Close();
     }
@@ -61,18 +61,18 @@ public class Peer : MonoBehaviour
             Debug.LogError(e.Message);
         }
 
-        if (localClient != null && localClient.Connected)
+        if (localClient != null && localClient.Connected) //successfully connected 
         {
             localClient.ReceiveTimeout = 1;
             outgoingConnectionSucceeded?.Invoke();
             CreateClientThread(localClient); //create new thread to handle connection
             
         }
-        else
+        else //failed to connect 
         {
             outgoingConnectionFailed?.Invoke();
             Debug.Log("Attempting to act as server as no server found...");
-            config.SwapPorts();
+            config.SwapPorts(); //swap listen and remote ports as we want to act as server 
             InitListener();
         }
 
@@ -80,6 +80,7 @@ public class Peer : MonoBehaviour
 
     private void CreateClientThread(TcpClient tcpClient)
     {
+        //create and run message reciever in background 
         Thread thread = new Thread(MessageRecieverTask){ IsBackground = true};
         thread.Start(tcpClient);
     }
@@ -88,34 +89,32 @@ public class Peer : MonoBehaviour
     {
         TcpClient client = (TcpClient)obj;
         client.NoDelay = true;
-        //remove this, testing 
-        client.SendTimeout = 10000;
-        client.ReceiveTimeout = 10000;
-        const int SIZE = InputSerialization.Inputs.MessageSizeInBytes;
+        client.SendTimeout = 1000;
+        client.ReceiveTimeout = 1000;
+        const int SIZE = InputSerialization.Inputs.MessageSizeInBytes; //size of each frame message
 
         Debug.Log("Reciever thread active...");
         ConnectionStream = client.GetStream();
-        byte[] message = new byte[SIZE];
+        byte[] message = new byte[SIZE]; //read buffer 
         while (client.Connected)
         {
             if (ConnectionStream.CanRead)
             {
                 
-                if (ConnectionStream.ReadAsync(message, 0, SIZE).Result >= SIZE)
+                if (ConnectionStream.ReadAsync(message, 0, SIZE).Result >= SIZE) //while we have messages in the stream 
                 {
-                    recievedMessageQueue.Enqueue(message);
+                    recievedMessageQueue.Enqueue(message); //queue up message for processing
                     message = new byte[SIZE];
                     ConnectionStream.FlushAsync();
                 }
             }
         }
-        ConnectionStream.Close();
+        ConnectionStream.Close(); //close stream 
     }
-    public virtual void Send()
+    public virtual void Send() //sends a message over the network to remote 
     {
         if (ConnectionStream != null)
-        {
-            
+        {  
                 if (!ConnectionStream.CanWrite) peerDisconnected?.Invoke();         
                 else while (ConnectionStream.CanWrite && messagesToSend.Count != 0)
                 {
@@ -148,16 +147,18 @@ public class Peer : MonoBehaviour
         allowRemoteConnections?.Invoke();
     }
 
-    private void MessageListenerTask()
+    private void MessageListenerTask() //sets up listener for messages sent to our IP
     {
         if (listener != null)
         {
             Debug.LogError($"listener already initialised, listening at {config.localIP}::{config.listenPort}");
             return;
         }
+        //local 
         listener = new TcpListener(IPAddress.Parse(config.localIP), config.listenPort);
         listener.Start();
         Debug.Log("listening...");
+        //remote 
         TcpClient remoteClient = listener.AcceptTcpClient();
         if (remoteClient == null) Debug.Log("Failed to accept a client"); 
         recievedConnection?.Invoke();

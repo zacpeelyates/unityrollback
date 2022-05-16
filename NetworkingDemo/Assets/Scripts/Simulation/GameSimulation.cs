@@ -74,7 +74,7 @@ public class GameSimulation
             long elapsed = now - prev;
             prev = now;
             lag += elapsed;
-            while (lag >= TICKS_PER_FRAME)
+            while (lag >= TICKS_PER_FRAME) //lets us update many times if we lag behind
             {
                 lag -= TICKS_PER_FRAME;
                 //handle rollbacks
@@ -86,7 +86,7 @@ public class GameSimulation
                 //update gamestate
                 current = current.Tick(frameInputs);
                 //store gamestate in buffer
-                GameStateDictionary.Add(current.frameID, current);
+                GameStateDictionary.Add(current.frameID, new GameState(current)); //must copy ctor in otherwise value updates with current for some godforsaken reason
                 //send gamestate to unity main thread / renderer
                 Transport.current = current;
                 //cleanup
@@ -121,9 +121,20 @@ public class GameSimulation
        InputSerialization.Inputs predictedRemote = LastRemoteInputRecieved;
        for (int i = 1; i <= localFrameAdvantage; ++i) //fill in missing remote inputs
        {
+            //update until we are back at current frame
          predictedRemote.FrameID = (ushort)(LastRemoteFrame + i);
          AddRemoteInput(predictedRemote, true);
        }           
     }
 
-}
+    public static void LoadPreviousGamestate(ushort FrameID)
+    {
+        lock (GameStateDictionary)
+        {
+            lock (current)
+            {
+                current = GameStateDictionary[FrameID];
+            }
+        }
+
+    }

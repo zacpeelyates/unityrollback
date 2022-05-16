@@ -104,6 +104,6 @@ public class PlayerInput : MonoBehaviour, PlayerInputActions.IPlayerActions
 
     public void OnTestMessage(InputAction.CallbackContext context)
     {
-        networkManager.SendMessage(new byte[] { 1, 2, 3, 4 });
+        //networkManager.SendMessage(new byte[] { 1, 2, 3, 4 });
     }
 }

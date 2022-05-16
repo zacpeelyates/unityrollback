@@ -22,6 +22,13 @@ public class GameState
         frameID = 0;
     }
 
+    public GameState(GameState g)
+    {
+        frameID = g.frameID;
+        players[0] = new SimPlayer(g.players[0]);
+        players[1] = new SimPlayer(g.players[1]);
+    }
+
     public GameState Tick(InputSerialization.FrameInfo f)
     {
        cachedInfo = f;
@@ -80,7 +87,13 @@ public class SimPlayer
         state = PlayerState.PS_IDLE;
     }
 
-
+    public SimPlayer(SimPlayer s)
+    {
+        pos = s.pos;
+        vel = s.vel;
+        isRemote = s.isRemote;
+        state = s.state;
+    }
 
     public void ApplyInput(InputSerialization.Inputs i)
     {

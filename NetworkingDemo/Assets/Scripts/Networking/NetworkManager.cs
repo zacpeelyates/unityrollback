@@ -22,32 +22,32 @@ public class NetworkManager : MonoBehaviour
         localPeer.recievedConnection = OnRecieveConnection;
         localPeer.peerDisconnected = OnPeerDisconnect;
 
-        localPeer.InitClient();
+        localPeer.InitClient(); //run peer setup (creates all our threads and acts as server or client as needed)
 
     }
 
-    public static int pingTime = 404;
+    public static int pingTime = -1; 
 
 
-    private void FixedUpdate()
+    private void FixedUpdate() 
     {
         if (localPeer != null)
         {
-            StartCoroutine(Ping(localPeer));
-            if (localPeer.messagesToSend.Count != 0) localPeer.Send();
+            StartCoroutine(Ping(localPeer)); //update ping
+            if (localPeer.messagesToSend.Count != 0) localPeer.Send(); //send all messages 
             
-            while (localPeer.recievedMessageQueue.Count > 0)
+            while (localPeer.recievedMessageQueue.Count > 0) //recieve all messages
             {
                 if(localPeer.recievedMessageQueue.TryDequeue(out byte[] message))
                 {
-                    HandleMessage(message);
+                    HandleMessage(message); 
                 }              
             }
         }
+        
     }
 
-
-    IEnumerator Ping(Peer peer)
+    IEnumerator Ping(Peer peer) //get ping to remote 
     {
         Ping ping = new Ping(peer.config.remoteIP);
         while (!ping.isDone) yield return null;
@@ -66,17 +66,30 @@ public class NetworkManager : MonoBehaviour
         GameSimulation.AddRemoteInput(InputSerialization.Inputs.FromBytes(message),false);    
     }
 
+
+    //run our game simulation (called in creategamethread)
+    private static void RunAsClient() => GameSimulation.Run(false); 
+    private static void RunAsServer() => GameSimulation.Run(true);
+
+    //with this setup host is always left side / player 1
+
+    
+    void CreateGameThread(bool isClient) //create and run our game simulation thread 
+    {
+        GameThread = isClient ? new Thread(RunAsClient) : new Thread(RunAsServer); //cant write the ternary operator in ctor because this is c# 8.0 and thats a >=9.0 feature
+        GameThread.IsBackground = true;
+        GameThread.Start();
+    }
+
+    #region PeerDelegates
+
+
     void OnOutgoingConnectionSucceeded()
     {
         Debug.Log("ESTABLISHED CONNECTION");
         hosting = false;
         CreateGameThread(true); //Start game sim as client
     }
-
-    private static void RunAsClient() => GameSimulation.Run(false); 
-    private static void RunAsServer() => GameSimulation.Run(true);
-
-    //with this setup host is always left side / player 1
 
     void OnOutgoingConnectionFailed()
     {
@@ -88,18 +101,11 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("SETTING UP SERVER");
     }
 
-    void OnRecieveConnection()
+    void OnRecieveConnection() 
     {
         Debug.Log("FOUND CLIENT");
         hosting = true; 
         CreateGameThread(false); //Start game sim as server
-    }
-
-    void CreateGameThread(bool isClient)
-    {
-        GameThread = isClient ? new Thread(RunAsClient) : new Thread(RunAsServer); //cant write the ternary operator in ctor because this is c# 8.0 and thats a >=9.0 feature
-        GameThread.IsBackground = true;
-        GameThread.Start();
     }
 
     void OnPeerDisconnect()
@@ -109,5 +115,7 @@ public class NetworkManager : MonoBehaviour
         GameSimulation.isAlive = false;
         GameThread.Abort();
     }
+
+    #endregion [PeerDelegates]
 
 }

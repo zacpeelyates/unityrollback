@@ -22,7 +22,7 @@ public class NetworkManager : MonoBehaviour
         localPeer.recievedConnection = OnRecieveConnection;
         localPeer.peerDisconnected = OnPeerDisconnect;
 
-        //localPeer.InitClient(); //run peer setup (creates all our threads and acts as server or client as needed)
+        localPeer.InitClient(); //run peer setup (creates all our threads and acts as server or client as needed)
 
     }
 

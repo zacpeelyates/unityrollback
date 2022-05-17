@@ -37,7 +37,7 @@ public class PlayerRenderer : MonoBehaviour
             anim.SetBool("heavyslash", simPlayer.state == PlayerState.PS_HSLASH);
             anim.SetBool("land", simPlayer.IsGrounded);
 
-            transform.rotation = Quaternion.Euler(simPlayer.facingLeft ? baseRot : flipRot);
+            transform.rotation = Quaternion.Euler(simPlayer.facingLeft ? flipRot : baseRot);
         }
 
 

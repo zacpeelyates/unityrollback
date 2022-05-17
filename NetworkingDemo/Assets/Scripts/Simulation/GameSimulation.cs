@@ -32,6 +32,7 @@ public class GameSimulation
 
     public static void AddLocalInput(InputSerialization.Inputs input)
     {
+        if (input == null) return; //early out
         InputSerialization.FrameInfo temp = new InputSerialization.FrameInfo();
         temp.SetLocalInputs(input);
         FrameInputDictionary.AddOrUpdate(input.FrameID, temp, (k, v) => v.ReturnWithNewInput(input, false));
@@ -39,6 +40,7 @@ public class GameSimulation
 
     public static void AddRemoteInput(InputSerialization.Inputs input, bool isPredicted)
     {
+        if (input == null) return; //early out
         if (!isPredicted) LastRemoteInputRecieved = input;
         InputSerialization.FrameInfo temp = new InputSerialization.FrameInfo();
         temp.SetRemoteInputs(input);

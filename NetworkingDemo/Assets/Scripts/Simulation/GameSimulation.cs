@@ -7,15 +7,15 @@ using System;
 
 public class GameSimulation
 {
-     static GameState current;
-     public static bool isAlive = false;
-     public static ConcurrentDictionary<ushort, InputSerialization.FrameInfo> FrameInputDictionary;
-     const ushort MAX_FRAME_BUFFER = 8;
-     private static HashSet<ushort> RollbackFrames;
-     private static Dictionary<int, GameState> GameStateDictionary;
-     public static uint rollbackCount = 0; 
-     
-     
+    static GameState current;
+    public static bool isAlive = false;
+    public static ConcurrentDictionary<ushort, InputSerialization.FrameInfo> FrameInputDictionary;
+    const ushort MAX_FRAME_BUFFER = 8;
+    private static HashSet<ushort> RollbackFrames;
+    private static Dictionary<int, GameState> GameStateDictionary;
+    public static uint rollbackCount = 0;
+
+
 
     private static InputSerialization.Inputs LastRemoteInputRecieved;
 
@@ -45,10 +45,10 @@ public class GameSimulation
         temp.remoteIsPredicted = isPredicted;
         FrameInputDictionary.AddOrUpdate(input.FrameID, temp, (k, v) =>
         {
-            if(!isPredicted && v.remoteIsPredicted)
+            if (!isPredicted && v.remoteIsPredicted)
             {
                 InputSerialization.Inputs existingInput;
-                if((existingInput = v.GetRemoteInputs()) != input) //predicted input was wrong
+                if ((existingInput = v.GetRemoteInputs()) != input) //predicted input was wrong
                 {
                     //we are overwriting an input prediction -- must rollback to correct our mispredict
                     RollbackFrames.Add(input.FrameID);
@@ -65,10 +65,10 @@ public class GameSimulation
         Init(p1Local);
         current.frameID = 0;
         long prev = System.DateTime.UtcNow.Ticks;
-        long lag = 0; 
-        
-     
-        while(isAlive) //update loop
+        long lag = 0;
+
+
+        while (isAlive) //update loop
         {
             long now = System.DateTime.UtcNow.Ticks;
             long elapsed = now - prev;
@@ -90,10 +90,10 @@ public class GameSimulation
                 //send gamestate to unity main thread / renderer
                 Transport.current = current;
                 //cleanup
-                ushort earliestBufferedFrame =(ushort)(current.frameID - MAX_FRAME_BUFFER);
+                ushort earliestBufferedFrame = (ushort)(current.frameID - MAX_FRAME_BUFFER);
                 FrameInputDictionary.TryRemove(earliestBufferedFrame, out _);
                 GameStateDictionary.Remove(earliestBufferedFrame);
-            }                    
+            }
         }
     }
 
@@ -112,19 +112,19 @@ public class GameSimulation
             g = g.Tick(f);
         }
         rollbackCount++;
-        return g;        
+        return g;
     }
 
     private static void PredictRemoteInputs(int localFrameAdvantage)
     {
-       if (localFrameAdvantage <= 0 || LastRemoteInputRecieved == null) return;
-       InputSerialization.Inputs predictedRemote = LastRemoteInputRecieved;
-       for (int i = 1; i <= localFrameAdvantage; ++i) //fill in missing remote inputs
-       {
+        if (localFrameAdvantage <= 0 || LastRemoteInputRecieved == null) return;
+        InputSerialization.Inputs predictedRemote = LastRemoteInputRecieved;
+        for (int i = 1; i <= localFrameAdvantage; ++i) //fill in missing remote inputs
+        {
             //update until we are back at current frame
-         predictedRemote.FrameID = (ushort)(LastRemoteFrame + i);
-         AddRemoteInput(predictedRemote, true);
-       }           
+            predictedRemote.FrameID = (ushort)(LastRemoteFrame + i);
+            AddRemoteInput(predictedRemote, true);
+        }
     }
 
     public static void LoadPreviousGamestate(ushort FrameID)
@@ -138,3 +138,4 @@ public class GameSimulation
         }
 
     }
+}

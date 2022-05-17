@@ -59,6 +59,7 @@ public class GameSimulation
         });
     }
 
+
     readonly static long TICKS_PER_FRAME = 166667; //16.67ms for 60fps
     public static void Run(bool p1Local)
     {
@@ -70,7 +71,7 @@ public class GameSimulation
 
         while (isAlive) //update loop
         {
-            long now = System.DateTime.UtcNow.Ticks;
+          long now = System.DateTime.UtcNow.Ticks;
             long elapsed = now - prev;
             prev = now;
             lag += elapsed;
@@ -86,13 +87,14 @@ public class GameSimulation
                 //update gamestate
                 current = current.Tick(frameInputs);
                 //store gamestate in buffer
-                GameStateDictionary.Add(current.frameID, new GameState(current)); //must copy ctor in otherwise value updates with current for some godforsaken reason
+                GameStateDictionary.Add(current.frameID, current); //must copy ctor in otherwise value updates with current for some godforsaken reason
                 //send gamestate to unity main thread / renderer
                 Transport.current = current;
                 //cleanup
                 ushort earliestBufferedFrame = (ushort)(current.frameID - MAX_FRAME_BUFFER);
                 FrameInputDictionary.TryRemove(earliestBufferedFrame, out _);
                 GameStateDictionary.Remove(earliestBufferedFrame);
+            
             }
         }
     }

@@ -87,8 +87,8 @@ public class GameSimulation
                 //predict remote inputs
                 PredictRemoteInputs(current.frameID - LastRemoteFrame);
                 //store gamestate in buffer
-                if (!GameStateDictionary.ContainsKey(current.frameID)) GameStateDictionary.Add(current.frameID, new GameState(current)); //must clone in otherwise value updates with current for some godforsaken reason
-                else GameStateDictionary[current.frameID] = new GameState(current);
+                if (!GameStateDictionary.ContainsKey(current.frameID)) GameStateDictionary.Add(current.frameID, current); //must clone in otherwise value updates with current for some godforsaken reason
+                else GameStateDictionary[current.frameID] = current;
                 //update gamestate
                 current = current.Tick(frameInputs);
                 //send gamestate to unity main thread / renderer

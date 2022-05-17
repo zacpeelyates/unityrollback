@@ -10,7 +10,7 @@ public class NetworkManager : MonoBehaviour
 {
     public Peer localPeer;
     Thread GameThread;
-    public bool hosting;
+    static public bool hosting;
     [SerializeField] bool offline = false;
 
     public void Start()

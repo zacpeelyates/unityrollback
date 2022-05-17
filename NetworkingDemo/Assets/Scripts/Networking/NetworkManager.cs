@@ -10,13 +10,15 @@ public class NetworkManager : MonoBehaviour
 {
     public Peer localPeer;
     Thread GameThread;
-    public static bool hosting;
+    public bool hosting;
+    [SerializeField] bool offline = false;
 
     public void Start()
     {
         if (!localPeer) localPeer = GetComponent<Peer>();
 
-        CreateGameThread(false);
+        if (offline) CreateGameThread(false);
+        else localPeer.InitClient();
 
         //setup delegates
         localPeer.outgoingConnectionSucceeded = OnOutgoingConnectionSucceeded;
@@ -24,8 +26,6 @@ public class NetworkManager : MonoBehaviour
         localPeer.allowRemoteConnections = OnAllowRemoteConnections;
         localPeer.recievedConnection = OnRecieveConnection;
         localPeer.peerDisconnected = OnPeerDisconnect;
-
-        //localPeer.InitClient();
 
     }
 

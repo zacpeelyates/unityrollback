@@ -61,7 +61,6 @@ public class GameSimulation
         });
     }
 
-
     readonly static long TICKS_PER_FRAME = 166667; //16.67ms for 60fps
     public static void Run(bool p1Local)
     {
@@ -69,7 +68,7 @@ public class GameSimulation
         current.frameID = 0;
         long prev = System.DateTime.UtcNow.Ticks;
         long lag = 0;
-
+        int test = -2;
 
         while (isAlive) //update loop
         {
@@ -79,6 +78,7 @@ public class GameSimulation
             lag += elapsed;
             while (lag >= TICKS_PER_FRAME) //lets us update many times if we lag behind
             {
+                test = current.frameID;
                 lag -= TICKS_PER_FRAME;
                 //handle rollbacks
                 if (RollbackFrames.Count > 0) current = HandleRollbacks();
@@ -95,7 +95,8 @@ public class GameSimulation
                 //cleanup
                 ushort earliestBufferedFrame = (ushort)(current.frameID - MAX_FRAME_BUFFER);
                 FrameInputDictionary.TryRemove(earliestBufferedFrame, out _);
-                GameStateDictionary.Remove(earliestBufferedFrame);            
+                GameStateDictionary.Remove(earliestBufferedFrame);    
+                
             }
         }
     }
@@ -109,9 +110,9 @@ public class GameSimulation
             RollbackFrames.Clear();
         }
         if (g == null) return current;
-        for (int i = g.frameID; i < current.frameID;)
+        while (g.frameID < current.frameID)
         {
-            FrameInputDictionary.TryGetValue((ushort)i, out InputSerialization.FrameInfo f);
+            FrameInputDictionary.TryGetValue((ushort)g.frameID, out InputSerialization.FrameInfo f);
             g = g.Tick(f);
         }
         rollbackCount++;

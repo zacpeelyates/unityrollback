@@ -11,14 +11,13 @@ public class NetworkManager : MonoBehaviour
     public Peer localPeer;
     Thread GameThread;
     static public bool hosting;
-    [SerializeField] bool offline = false;
 
     public void Start()
     {
         if (!localPeer) localPeer = GetComponent<Peer>();
 
-        if (offline) CreateGameThread(false);
-        else localPeer.InitClient();
+        //CreateGameThread(false); //offline
+        localPeer.InitClient(); //online
 
         //setup delegates
         localPeer.outgoingConnectionSucceeded = OnOutgoingConnectionSucceeded;

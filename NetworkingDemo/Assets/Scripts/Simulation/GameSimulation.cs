@@ -84,10 +84,10 @@ public class GameSimulation
                 FrameInputDictionary.TryGetValue((ushort)current.frameID, out InputSerialization.FrameInfo frameInputs);
                 //predict remote inputs
                 PredictRemoteInputs(current.frameID - LastRemoteFrame);
-                //update gamestate
-                current = current.Tick(frameInputs);
                 //store gamestate in buffer
                 GameStateDictionary.Add(current.frameID, current.Clone()); //must clone in otherwise value updates with current for some godforsaken reason
+                //update gamestate
+                current = current.Tick(frameInputs);
                 //send gamestate to unity main thread / renderer
                 Transport.current = current;
                 //cleanup

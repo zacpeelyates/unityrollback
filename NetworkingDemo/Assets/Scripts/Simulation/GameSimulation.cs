@@ -87,7 +87,7 @@ public class GameSimulation
                 //update gamestate
                 current = current.Tick(frameInputs);
                 //store gamestate in buffer
-                GameStateDictionary.Add(current.frameID, current); //must copy ctor in otherwise value updates with current for some godforsaken reason
+                GameStateDictionary.Add(current.frameID, current.Clone()); //must clone in otherwise value updates with current for some godforsaken reason
                 //send gamestate to unity main thread / renderer
                 Transport.current = current;
                 //cleanup

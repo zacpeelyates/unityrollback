@@ -39,10 +39,6 @@ public class PlayerRenderer : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(simPlayer.facingLeft ? flipRot : baseRot);
         }
-
-
-
-        
         
     }
 }

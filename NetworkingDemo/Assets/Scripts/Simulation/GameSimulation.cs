@@ -85,16 +85,15 @@ public class GameSimulation
                 //predict remote inputs
                 PredictRemoteInputs(current.frameID - LastRemoteFrame);
                 //store gamestate in buffer
-                GameStateDictionary.Add(current.frameID, current); //must clone in otherwise value updates with current for some godforsaken reason
+                if(!GameStateDictionary.ContainsKey(current.frameID)) GameStateDictionary.Add(current.frameID, new GameState(current)); //must clone in otherwise value updates with current for some godforsaken reason
                 //update gamestate
                 current = current.Tick(frameInputs);
                 //send gamestate to unity main thread / renderer
                 Transport.current = current;
                 //cleanup
-                ushort earliestBufferedFrame = (ushort)(current.frameID - MAX_FRAME_BUFFER);
-                FrameInputDictionary.TryRemove(earliestBufferedFrame, out _);
-                GameStateDictionary.Remove(earliestBufferedFrame);
-            
+                //ushort earliestBufferedFrame = (ushort)(current.frameID - MAX_FRAME_BUFFER);
+                //FrameInputDictionary.TryRemove(earliestBufferedFrame, out _);
+                //GameStateDictionary.Remove(earliestBufferedFrame);            
             }
         }
     }
@@ -129,13 +128,13 @@ public class GameSimulation
         }
     }
 
-    public static void LoadPreviousGamestate(ushort FrameID)
+    public static void LoadPreviousGamestate(ushort diff)
     {
         lock (GameStateDictionary)
         {
             lock (current)
             {
-                current = GameStateDictionary[FrameID];
+                current = GameStateDictionary[diff];
             }
         }
 

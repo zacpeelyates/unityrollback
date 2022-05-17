@@ -15,6 +15,9 @@ public class NetworkManager : MonoBehaviour
     public void Start()
     {
         if (!localPeer) localPeer = GetComponent<Peer>();
+
+        CreateGameThread(false);
+
         //setup delegates
         localPeer.outgoingConnectionSucceeded = OnOutgoingConnectionSucceeded;
         localPeer.outgoingConnectionFailed = OnOutgoingConnectionFailed;
@@ -22,7 +25,7 @@ public class NetworkManager : MonoBehaviour
         localPeer.recievedConnection = OnRecieveConnection;
         localPeer.peerDisconnected = OnPeerDisconnect;
 
-        localPeer.InitClient();
+        //localPeer.InitClient();
 
     }
 

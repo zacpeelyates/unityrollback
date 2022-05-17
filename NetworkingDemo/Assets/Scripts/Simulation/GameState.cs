@@ -21,12 +21,11 @@ public class GameState
         frameID = 0;
     }
 
-    public GameState Clone()
+    public GameState(GameState g)
     {
-        GameState clone = (GameState)MemberwiseClone();
-        clone.players[0] = players[0].Clone();
-        clone.players[1] = players[1].Clone();
-        return clone;
+        frameID = g.frameID;
+        players[0] = new SimPlayer(g.players[0]);
+        players[1] = new SimPlayer(g.players[1]);
     }
 
     public GameState Tick(InputSerialization.FrameInfo f)
@@ -76,22 +75,21 @@ public class SimPlayer
     public bool facingLeft;
     public FInt32 FORWARD => facingLeft ? -1 : 1;
 
+    public SimPlayer(SimPlayer s)
+    {
+        pos = s.pos;
+        vel = s.vel;
+        isRemote = s.isRemote;
+        state = s.state;
+        facingLeft = s.facingLeft;
+    }
+
     public SimPlayer(bool remote)
     {
         pos = new FVec2(0, 0);
         vel = new FVec2(0, 0);
         isRemote = remote;
         state = PlayerState.PS_IDLE;
-    }
-
-    public SimPlayer Clone()
-    {
-        SimPlayer clone = new SimPlayer(isRemote);
-        clone.pos = pos;
-        clone.state = state;
-        clone.vel = vel;
-        clone.facingLeft = facingLeft;
-        return clone;
     }
 
     public void ApplyInput(InputSerialization.Inputs i)

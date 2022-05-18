@@ -9,7 +9,7 @@ public class PlayerRenderer : MonoBehaviour
     [SerializeField] int ID;
 
     static Vector3 basePos = new Vector3(0,-1,0);
-    [SerializeField] static int rot = 150; 
+    [SerializeField] static int rot = 100; 
     static Vector3 baseRot;
     static Vector3 flipRot;
     Animator anim;

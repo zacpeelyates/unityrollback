@@ -422,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582772451007844789, guid: 7ab05679baae4ae439cbcc1045e13a04, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2588191
+      value: 0.9659259
       objectReference: {fileID: 0}
     - target: {fileID: 2582772451007844789, guid: 7ab05679baae4ae439cbcc1045e13a04, type: 3}
       propertyPath: m_LocalRotation.x
@@ -430,7 +430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582772451007844789, guid: 7ab05679baae4ae439cbcc1045e13a04, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9659258
+      value: -0.258819
       objectReference: {fileID: 0}
     - target: {fileID: 2582772451007844789, guid: 7ab05679baae4ae439cbcc1045e13a04, type: 3}
       propertyPath: m_LocalRotation.z
@@ -442,7 +442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582772451007844789, guid: 7ab05679baae4ae439cbcc1045e13a04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -150
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 2582772451007844789, guid: 7ab05679baae4ae439cbcc1045e13a04, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1527,9 +1527,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b11f233889f870446b063846927b1a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remotePort: 5555
-  listenPort: 5556
-  remoteIP: 80.114.160.91
+  remotePort: 0
+  listenPort: 0
+  remoteIP: 
 --- !u!4 &856772296
 Transform:
   m_ObjectHideFlags: 0
